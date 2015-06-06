@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:cdv = "http://cordova.apache.org/ns/1.0"
+        id        = "nl.corsozundert.corsozundert"
+        version   = "2.2.1">
+    <name>Corso Zundert</name>
+
+    <description>
+        The App from Corso Zundert.
+    </description>
+
+    <author href="http://corsozundert.nl" email="info@corsozundert.nl">
+        Stichting Bloemencorso Zundert
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-device" version="0.2.8" />
+    <plugin name="cordova-plugin-inappbrowser" version="0.2.4" />
+    <plugin name="cordova-plugin-splashscreen" version="0.2.7" />
+    <plugin name="cordova-plugin-statusbar" version="1.1.0" />
+    
+    <preference name="orientation"      value="portrait" />
+    <preference name="target-device"    value="universal" />
+    <preference name="fullscreen"       value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
+    <preference name="stay-in-webview" value="true" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    
+    <icon src="www/res/icon.png" />
+    <icon src="www/res/icon_ios57.png" platform="ios" width="57" height="57" />
+    <icon src="www/res/icon_ios72.png" platform="ios" width="72" height="72" />
+    <icon src="www/res/icon_ios114.png" platform="ios" width="114" height="114" />
+    <icon src="www/res/icon_ios120.png" platform="ios" width="120" height="120" />
+    <icon src="www/res/icon_ios144.png" platform="ios" width="144" height="144" />
+    
+    <splash src="www/res/splash.png" width="640" height="960" />
+    <!-- iPhone 5 / iPod Touch (5th Generation) -->
+    <splash src="www/res/splash-568h@2x.png" platform="ios" width="640" height="1136" />
+    
+</widget>

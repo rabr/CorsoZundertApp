@@ -1,0 +1,1295 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=5.0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Corso Zundert</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  
+  <script type="text/javascript" src="cordova.js"></script>
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <!--
+  <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+  <script src="js/jquery.mobile.custom.min.js"></script>
+  <script src="js/jquery.ui.touch-punch.js"></script>
+  -->
+  <script src="js/jquery.plugin.pullToRefresh.modified.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/jquery.paging.js"></script>
+  <script src="js/overthrow.js"></script>
+  <script src="js/app.js"></script>
+    
+</head>
+<body>
+
+
+<header>
+    <h1>CORSO ZUNDERT</h1>
+    <h2 id="titel">programma en tijden</h2>
+</header>
+
+<div id="info-button"></div>
+<div id="zoom-button"></div>
+<div id="refresh-button"></div>
+<div id="app-info">
+<p><b>INFO</b><br>Deze app wordt uitgebracht door <b>Stichting Bloemencorso Zundert</b>. Mail je feedback naar 
+  <a href="mailto:app@corsozundert.nl">app@corsozundert.nl</a><br>
+  Versie: 2.2.1</p>
+  <p>
+  WEB | <a href="http://www.corsozundert.nl" rel="external" target="_new">CORSOZUNDERT.NL</a><br>
+  FACEBOOK | <a href="http://www.facebook.com/corsozundert" rel="external" target="_new">FACEBOOK.COM/CORSOZUNDERT</a><br>
+  TWITTER | #CORSOZUNDERT<br>
+  INSTAGRAM | #CORSOZUNDERT
+  </p>
+  <p><b>HELP</b><br>
+  Swipe naar links en rechts om tussen sub-pagina's te wisselen.
+  Klik op een balk bij <i>optocht</i> om hem uit te klappen voor meer informatie. Gebruik de zoom button (+/-) om
+  de <i>plattegrond</i> in of uit te zoomen. Voor <i>uitslag & nieuws</i> is een internet verbinding nodig. Je kunt deze 
+  pagina's verversen door ze naar beneden te slepen bij iOS en bij Android door te klikken op de refresh button.
+  </p>
+  
+</div>
+
+<div id="overlay"></div>
+
+<div id="canvas" > 
+
+<img id="locaties" src="img/timetable/timetable-locaties.png">
+
+<div id="page1" class="overthrow snap">
+    <div id="main-content">
+        <div class="sections">
+            
+            <div id="wat">   
+               
+                  <img id="tijden" src="img/timetable/timetable-tijden.png">
+
+               <!--
+               <img id="bgimage" src="img/layout/programma_bg.jpg">
+               <div id="prog">
+               <h2 class="progitem">ZATERDAG 11 JANUARI 2014 | VAANDELFEEST</h2>
+               <div class="proginfo">
+               	<p>Zaterdag 11 januari viert buurtschap Laer-Akkermolen nog eenmaal haar overwinning in het corso van 2013. En dat
+               		doet zij uiteraard geheel in stijl en met de hele corsogemeenschap. Traditiegetrouw wordt de winnaar van het corso
+               		niet alleen gehuldigd met een wisselbeker, maar ook met een blijvende herinnering in de vorm van een ere-vaandel.<br> 
+         				Deze vaandeluitreiking is een feestje voor alle corsobouwers- en liefhebbers.
+               		De buurtschap zal rond 19:30 bij het CultuurCentrum Zundert arriveren om het vaandel op spectaculaire wijze te onthullen.
+               		De dresscode voor die avond is Goud&Fout!</p>
+               </div>
+               <div class="spacer"></div>
+               <h2 class="progitem">ZATERDAG 21 JUNI 2014 | VOLGORDE BEKENDMAKING</h2>
+               <div class="proginfo">
+   					<p>Het weekend van de Aardbeienfeesten in Zundert staat altijd bol van de corso-activiteiten. Het gehele weekend
+                     is er een tentoonstelling in het CultuurCentrum Zundert van de twintig maquettes van het komende corso. 
+                     Zaterdag zijn de maquettes te bekijken van 14:00 tot 23:00 uur.
+                     Op zaterdagavond wordt om 20:00 de stoetvolgorde bekendgemaakt en de aftrap van het bouwseizoen gegeven.<p>            	 
+               </div>
+               <div class="spacer"></div>
+               
+               <h2 class="progitem">ZONDAG 22 JUNI 2014 | MAQUETTE PRESENTATIE</h2>	
+               <div class="proginfo">
+               	<p>Op zondag tijdens de Aardbeienfeesten kunt u in het CultuurCentrum Zundert van 10:00 tot 19:00 uur de twintig
+               	   maquettes van het komende corso bewonderen en speculeren over hoe de uitslag in 2014 er uit zal gaan zien.<p>   
+               </div>
+               <div class="spacer"></div>
+               <h2 class="progitem">ZONDAG 7 SEPTEMBER 2014 | OPTOCHT</h2>
+               <div class="proginfo">
+                 <p>De corsostoet op zondag vormt het hoogtepunt van het bloemencorso. Maar daarnaast is er in Zundert nog veel
+                    meer te beleven. Dweilbandjes, levende standbeelden en diverse jaarmarkten maken van het corso een afwisselend
+                    dagje uit. Ook kunt u na afloop alle wagens nog eens rustig bekijken op het tentoonstellingsterrein. Of breng
+                    een bezoekje aan de Zonnewende; een feestelijk plein met een ruim terras en optredens van diverse bands.</p>
+                 <h3>BELANGRIJKE TIJDEN</h3>
+                 <table>
+                    <tbody>
+                    <tr><td class="tijd">09.00</td><td class="programma">Jaarmarkt Eikenlaan/Beukenlaan en sfeerpleinen vol vertier</td></tr>
+                    <tr><td class="tijd">13.30</td><td class="programma">Aanvang optocht</td></tr>
+                    <tr><td class="tijd">14:00</td><td class="programma">Eerste doorkomst op de Markt.</td></tr>
+                    <tr><td class="tijd">16.30</td><td class="programma">Tweede doorkomst op de Markt met 1 wagen die mag stoppen en de 'Zundertse jubel' mag laten zien</td></tr>
+                    <tr><td class="tijd">18.00</td><td class="programma">Tentoonstellingsterrein geopend tot 23:00 met verlichte wagens.</td></tr>
+                    </tbody>
+                 </table>
+               </div>
+               <div class="spacer"></div>
+               <h2 class="progitem">ZONDAG 1 SEPTEMBER 2014 | FEESTPROGRAMMA</h2>
+               <div class="proginfo">
+                 <table>
+                    <tbody>
+                    <tr><td class="lokatie" colspan="2">FEESTHAL TENTOONSTELLINGSTERREIN</td></tr>
+                    <tr><td class="tijd2">18.00-20.30u</td><td class="programma">DJ Jozke</td></tr>
+                    <tr><td class="tijd2">20.30-21.00u</td><td class="programma">DJ Twannie</td></tr>
+                    <tr><td class="tijd2">21.00-22.10u</td><td class="programma">BitsNBeats</td></tr>
+                    <tr><td class="tijd2">22.10-22.40u</td><td class="programma">DJ Twannie</td></tr>
+                    <tr><td class="tijd2">22.40-00.00u</td><td class="programma">BitsNBeats</td></tr>
+                    <tr><td class="tijd2">00.00-01.00u</td><td class="programma">DJ Twannie</td></tr>
+                    <tr><td class="lokatie" colspan="2">ZONNEWENDE</td></tr>
+                    <tr><td class="tijd2">14.00-19.00u</td><td class="programma">Disco 4 You</td></tr>
+                    <tr><td class="tijd2">16:00-18:00u</td><td class="programma">Prijsuitreiking op groot scherm!</td></tr>
+                    <tr><td class="tijd2">19:00-20:15u</td><td class="programma">Van Brenghe</td></tr>
+                    <tr><td class="tijd2">20:15-21:00u</td><td class="programma">Disco 4 You</td></tr>
+                    <tr><td class="tijd2">21.00-22.30u</td><td class="programma">Cookies and Cream</td></tr>
+                    <tr><td class="tijd2">22.30-23.00u</td><td class="programma">Disco 4 You</td></tr>
+                    <tr><td class="tijd2">23.00-23.30u</td><td class="programma">De Alpenzusjes</td></tr>
+                    <tr><td class="tijd2">23.30-01.00u</td><td class="programma">Disco 4 You</td></tr>
+                    <tr><td class="lokatie" colspan="2">CAFE DEN BELS</td></tr>
+                    <tr><td class="tijd2">19.00u</td><td class="programma">Once Upon a Time</td></tr>
+                    <tr><td class="tijd2">23:00u</td><td class="programma">Canvas</td></tr>
+                    <tr><td class="lokatie" colspan="2">CAFE/ZAAL VICTORIA</td></tr>
+                    <tr><td class="tijd2"> </td><td class="programma">"Action Music" drive-in show</td></tr>
+                    <tr><td class="lokatie" colspan="2">EETCAFE DEN SOETE INVAL</td></tr>
+                    <tr><td class="tijd2"> </td><td class="programma">Double D Drive in Show</td></tr>
+                    <tr><td class="tijd2">na de optocht</td><td class="programma">Roger van Meer</td></tr>
+                    <tr><td class="lokatie" colspan="2">CAFE DE OSSEKOP</td></tr>
+                    <tr><td class="tijd2">vanaf 12.00u</td><td class="programma">Disco Frans van Gorp</td></tr>
+                    <tr><td class="lokatie" colspan="2">NASSAUPLEIN</td></tr>
+                    <tr><td class="tijd2">14:00-16:00u</td><td class="programma">DJ Frans</td></tr>
+                    <tr><td class="tijd2">16:00-18:00u</td><td class="programma">Prijsuitreiking op groot scherm!</td></tr>
+                    <tr><td class="tijd2">16:30-18:00u</td><td class="programma">Kompact</td></tr>
+                    <tr><td class="tijd2">17:30-18:30u</td><td class="programma">DJ Frans</td></tr>
+                    <tr><td class="tijd2">18:30-20:00u</td><td class="programma">Kompact</td></tr>
+                    <tr><td class="tijd2">20:00-21:00u</td><td class="programma">DJ Frans</td></tr>
+                    </tbody>
+                 </table>
+               </div>
+               <div class="spacer"></div>
+               <h2 class="progitem">MAANDAG 8 SEPTEMBER 2014 | TENTOONSTELLING</h2>
+               <div class="proginfo">
+                 <table>
+                    <tbody>
+                    <tr><td class="tijd">9.00</td><td class="programma">Tentoonstellingsterrein geopend, met gratis rondleidingen door corso-gidsen.</td></tr>
+                    <tr><td class="tijd">11.00</td><td class="programma">Eerste presentatieronde waarin alle wagens zich tonen in vol ornaat met geluid, figuratie en beweging, tot 13.00 uur. Ook start een doorlopend muziekprogramma van tientallen artiesten op de verschillende podia in Zundert.</td></tr>
+                    <tr><td class="tijd">12.00</td><td class="programma">Aanvang jaarmarkt in de Molenstraat.</td></tr>
+                    <tr><td class="tijd">14.30</td><td class="programma">Tweede presentatieronde, tot 16.30 uur.</td></tr>
+                    <tr><td class="tijd">18:30</td><td class="programma">Derde en laatste presentatieronde tot 20.30 uur, waarna de corsobouwers feestelijk afscheid nemen van de wagens.</td></tr>
+                    </tbody>
+                 </table>            
+               </div>
+               <div class="spacer"></div>
+               <h2 class="progitem">MAANDAG 2 SEPTEMBER 2013 | FEESTPROGRAMMA</h2>
+               <div class="proginfo">
+                 <table>
+                    <tbody>
+                    <tr><td class="lokatie" colspan="2">FEESTHAL TENTOONSTELLINGSTERREIN</td></tr>
+                    <tr><td class="tijd2">19.30-20.30u</td><td class="programma">DJ Jozke</td></tr>
+                    <tr><td class="tijd2">20.30-22.45u</td><td class="programma">Live Request</td></tr>
+                    <tr><td class="tijd2">22.45-23.15u</td><td class="programma">Johnny Gold</td></tr>
+                    <tr><td class="tijd2">23.15-23.30u</td><td class="programma">Live Request</td></tr>
+                    <tr><td class="tijd2">23.30-23.45u</td><td class="programma">DJ Stoffel</td></tr>
+                    <tr><td class="tijd2">23.45-00.30u</td><td class="programma">Live Request</td></tr>
+                    <tr><td class="lokatie" colspan="2">ZONNEWENDE</td></tr>
+                    <tr><td class="tijd2">omlijsting</td><td class="programma">Disco 4 You</td></tr>
+                    <tr><td class="tijd2">(14.30-18.30)</td><td class="programma">ZUNDERTSE MIDDAG:</td></tr>
+                    <tr><td class="tijd2">14.30-15.15u</td><td class="programma">Unanime</td></tr>
+                    <tr><td class="tijd2">15.15-16.00u</td><td class="programma">Strawberry Sailor Singers</td></tr>
+                    <tr><td class="tijd2">16.00-17.00u</td><td class="programma">BigBand BuZz</td></tr>
+                    <tr><td class="tijd2">17.15-17.45u</td><td class="programma">Randy Watzeels</td></tr>
+                    <tr><td class="tijd2">18.00-18.30u</td><td class="programma">Jolanda Zoomer</td></tr>
+                    <tr><td class="tijd2">20.00-21.30u</td><td class="programma">De Rustige 5</td></tr>
+                    <tr><td class="tijd2">21.30-22.00u</td><td class="programma">Corsong top 3<br>Uitreiking 'Rode Lantaarn'<br>Uitreiking 'Ostaayen-troffee'<br>Shirtwissel voorzitters</td></tr>
+                    <tr><td class="tijd2">22.00-22.30u</td><td class="programma">Jeroen van Zelst</td></tr>
+                    <tr><td class="tijd2">22.30-00.30u</td><td class="programma">Drievoud</td></tr>
+                    <tr><td class="tijd2">00:30-01:00u</td><td class="programma">Centrale Afsluiting Corso 2013!</td></tr>
+                    <tr><td class="lokatie" colspan="2">CAFE DEN BELS</td></tr>
+                    <tr><td class="tijd2">08:00-11:00u</td><td class="programma">PROJECT HANGOVER mmv DJ ZOLAV</td></tr>
+                    <tr><td class="tijd2">17.00u</td><td class="programma">DJ ZOLAV</td></tr>
+                    <tr><td class="tijd2">20.00u</td><td class="programma">Dr Dani&euml;ls</td></tr>
+                    <tr><td class="tijd2">22.00u</td><td class="programma">Band Marginal<br>Fragment</td></tr>
+                    <tr><td class="lokatie" colspan="2">CAFE/ZAAL VICTORIA</td></tr>
+                    <tr><td class="tijd2"> </td><td class="programma">"Action Music" drive-in show</td></tr>
+                    <tr><td class="lokatie" colspan="2">EETCAFE DEN SOETE INVAL</td></tr>
+                    <tr><td class="tijd2">14.00-01.00u</td><td class="programma">Optredens van o.a. Johnny Gold, Bobby Prins, Anita, Jeroen Spierenburg, Roger van Meer, Yoeri L'Abee, Johan Linssen, Collin, Randy Watzeels, Tommy Lips, Karin Welsing, Marco den Hollander, Corsong Winnaars 2013</td></tr>
+                    <tr><td class="lokatie" colspan="2">CAFE DE OSSEKOP</td></tr>
+                    <tr><td class="tijd2">10:00-11:30u</td><td class="programma">Ontbijt</td></tr>
+                    <tr><td class="tijd2">na 11:30</td><td class="programma">Disco Frans van Gorp</td></tr>
+                    </tbody>
+                 </table>
+               </div>
+               <div class="spacer"></div>
+               
+               <h2 class="progitem">DE CORSOMUNT</h2>
+               <div class="proginfo">
+               <p>
+               Vanaf dit jaar is er 1 gezamelijke corsomunt waarmee betaalt kan worden bij veel horeca
+               gelegenheden tijdens het corso. De verkoopprijs van de corsomunt bedraagt &euro;2,-. Het muntsysteem kent twee 
+               soorten munten: breekmunten van 1 consumptie, welke gebroken de helft van zijn waarde heeft en munten van 10 
+               consumpties. De munten zijn geldig van zondag 1 september 2013 tot en met kindercorso, zondag 15 september 2013.
+               De deelnemers en verkooppunten zijn te herkennen aan de volgende posters:
+               </p>
+               <img class="poster" src="img/poster_corsomunt_accept.jpg"> 
+               <img class="poster" src="img/poster_corsomunt_verkoop.jpg">
+               <div id="clearfloat0"></div>
+               <p>
+               Bij de volgende ondernemers kunt u terecht met de corsomunt:
+               Auberge van Gogh<br>
+               Bij de Nonnen<br>
+               Cafe de Kèrel<br>
+               Cafe de Ossekop<br>
+               Cafe den Bels<br>
+               Cafe Neefs<br>
+               Cafe van T<br>
+               Cafe zaal Victoria<br>
+               Cafe-Zaal het wapen van Zundert<br>
+               CultuurCentrum Zundert<br>
+               Den Soete Inval<br>
+               Eetcafe Den Hoek<br>
+               Eethuis Jochems<br>
+               Hotel Eetcafe de Roskam<br>
+               Il Bambino<br>
+               In de Wandelgangen<br>
+               Koebrugge evenement catering<br>
+               Restaurant de Wissel<br>
+               Shoarma Grillroom Taba<br>
+               Stichting Bloemencorso Zundert<br>
+               Tennishal de Leeuwerik<br>
+               </p>
+               </div>
+               <div class="spacer"></div>
+               </div>
+               -->
+            </div>
+            
+            <div id="wie">
+              <div class="korps">
+  <div class="foto">
+    <img src="img/korpsen/kunst_en_genoegen.jpg" alt=""/>
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>Show and Marchingband Kunst en Genoegen</h2>
+    <p>Leiden, Nederland    </p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-KLE-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>1. Karavaan</h2>
+    <p><i>Buurtschap: </i>Klein Zundert<br>
+<i>Ontwerpers: </i>Sander van Hooydonk en Fedde van Erk<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-KLE-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">De stoet, de karavaan.
+
+Langzaam trekt ze voorbij.
+
+Een handelsgezelschap of pure commercie?
+
+Een klassieke karavaan, overgenomen door de Tour de France.</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/KLE.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Klein Zundert</p>
+      <p class="tekst">Het kerkdorp Klein-Zundert ten noordwesten van Zundert is een van de meest succesvolle deelnemers aan het corso. Zonnebloemen, zoals afgebeeld op het wapenschild, vormden vaak een onderdeel van de ontwerpen.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Klein Zundert met de wagen "MONSTERS" een 9e plaats met 526 punten.</p>
+</div><div class="spacer"></div><div class="korps">
+  <div class="foto">
+    <img src="img/korpsen/scheepjeswolharmonie.jpg" alt=""/>
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>Scheepjeswolharmonie</h2>
+    <p>Veenendaal, Nederland    </p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-STK-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>2. Deep Sea Explorers</h2>
+    <p><i>Buurtschap: </i>'t Stuk<br>
+<i>Ontwerpers: </i>JoÎl Sprenkels en Johan Raats<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-STK-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Al jaren doen verhalen de ronde dat de kraken, een reuzenoctopus, in de diepte van de oceaan leeft. Deze verhalen zijn altijd afgedaan als fabeltjes, maar in het recente verleden zijn aanwijzingen gevonden dat ze toch op waarheid berusten. Een onderzoeksteam wordt geformeerd om het wezen en zijn leefomgeving te ontdekken en bewijzen van zijn bestaan te verzamelen.</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/STK.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap 't Stuk</p>
+      <p class="tekst">Het gebied tussen Veldstraat en Molenstraat is het domein van buurtschap 't Stuk. Het is een van de jongere buurtschappen. Het wapenschildje toont een fragment van hun eersteprijswinnaar 'De gezichten uit de Beijing Opera' uit 1993.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap 't Stuk met de wagen "Global Warming" een 4e plaats met 602 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-ACH-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>3. Doorgedraaid</h2>
+    <p><i>Buurtschap: </i>Achtmaal<br>
+<i>Ontwerpers: </i>Erik van Aert, Marius Arnouts en Patrick Gommers<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-ACH-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen"></p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/ACH.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Achtmaal</p>
+      <p class="tekst">Achtmaal is een van de vijf kerkdorpen van de gemeente Zundert in het zuidwesten tegen de Belgische grens. Het wapenschildje verbeeldt een van de speelsere ontwerpen van deze buurtschap uit de jaren negentig.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Achtmaal met de wagen "Illusie?" een 11e plaats met 520 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-POT-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>4. Trots</h2>
+    <p><i>Buurtschap: </i>Poteind<br>
+<i>Ontwerpers: </i>Yuri Dils<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-POT-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Zelfbewust en ijdel, 
+
+geeft hij het oog te kijken. 
+
+kleuren stralen, pralen, 
+
+Paraderend treedt hij aan.
+
+Trots. 
+
+Trots als een pauw</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/POT.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Poteind</p>
+      <p class="tekst">Poteind, gesitueerd aan de zuidkant van de kom van Zundert, is een van de oudste Zundertse buurtschappen. De pot was de bijnaam voor de molen zonder wieken die nu terug te vinden is op het wapenschildje onder de bloemenkoningin, de wagen waarmee Poteind in 1947 het duwen introduceerde in het corso.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Poteind met de wagen "Altijd prijs" een 12e plaats met 514 punten.</p>
+</div><div class="spacer"></div><div class="korps">
+  <div class="foto">
+    <img src="img/korpsen/rheden.jpg" alt=""/>
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>Marching & Showband Rheden</h2>
+    <p>Rheden, Nederland    </p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-RSB-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>5. Bijvangst</h2>
+    <p><i>Buurtschap: </i>Rijsbergen<br>
+<i>Ontwerpers: </i>RenÈ de Theije en Cecile de Theije<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-RSB-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">De dag loopt ten einde.
+
+De laatste sleep wordt getrokken voordat de boot huiswaarts keert.
+
+De lijnen staan strak, de motoren draaien op volle kracht.
+
+Hoe groot zal de vangst zijn?</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/RSB.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Rijsbergen</p>
+      <p class="tekst">Rijsbergen is een dorp gelegen ten noorden van Zundert. Al sinds de samenvoeging van Zundert en Rijsbergen tot een gemeente in 1997 wordt gesproken over deelname van Rijsbergen aan het corso. Sinds 2008 doen ze officieel mee aan het corso.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Rijsbergen met de wagen "Streetview" een 17e plaats met 478 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-RAA-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>6. Comic</h2>
+    <p><i>Buurtschap: </i>Raamberg<br>
+<i>Ontwerpers: </i>Roy Verdaesdonck, Niek van den Broek en Koen Zagers<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-RAA-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">''Mijn passie, mijn leven, bestaat uit pen en papier.
+
+Als mijn tekening klaar is, wacht de volgende bladzijde op me.
+
+
+
+Weer een leegte die wacht om gevuld te worden met mijn fantasieÎn,
+
+die overslaan in de werkelijkheid als ze op papier staan.
+
+
+
+Het volgende schrift wacht op me.
+
+Mijn gedachten laten zich de vrije loop op papier, ook buiten mijn hoofd''</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/RAA.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Raamberg</p>
+      <p class="tekst">Raamberg is een buitenbuurtschap gelegen ten noorden van Zundert. De beeltenis van haar enige eerste prijs, "De Begijntjes", is terug te zien op het wapenschildje.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Raamberg met de wagen "Gordel" een 16e plaats met 480 punten.</p>
+</div><div class="spacer"></div><div class="korps">
+  <div class="foto">
+    <img src="img/korpsen/drumspirit.jpg" alt=""/>
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>DrumSpirit Percussion Ensemble</h2>
+    <p>Dadizele, Belgie    </p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-BER-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>7. Tokkelen</h2>
+    <p><i>Buurtschap: </i>De Berk<br>
+<i>Ontwerpers: </i>Aart-Jan Borrias, RenÈ Jochems en Erik van Elsacker<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-BER-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Het bespelen van snaren. Niet zoals u gewend bent uitgevoerd door mensenhanden, maar door mechanische vingers, strak gecomponeerd en computergestuurd.</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/BER.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap De Berk</p>
+      <p class="tekst">Voordat Rijsbergen mee ging doen, was De Berk nog de jongste buurtschap van Zundert. Ze begon haar geschiedenis in 1979 en beleefde in de jaren negentig een sterke periode met diverse eerste prijzen. Het wapenschildje toont de berkenboom en staat voor de stevige verankering in de buurtschap.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap De Berk met de wagen "Ik was het niet" een 8e plaats met 534 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-LAA-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>8. Speeldoosje</h2>
+    <p><i>Buurtschap: </i>Laarheide<br>
+<i>Ontwerpers: </i>Brian Boot, Gerard van Erk en Jack Nouws<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-LAA-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Verliefd op een prachtige vrouw, die al dansend zijn gedachten op een dwaalspoor zet.  Hopeloos verliefd, zal zij ooit aan zijn zijde staan?  Hij weet dat ze voor elkaar gemaakt zijn.  Dat alle gebeden, mantraís en popsongs die ooit gezongen, gepreveld of geschreven zijn, voor hun twee bedoeld moeten zijn.
+
+Maar is deze liefde wederzijds?  Hoe onbereikbaar deze liefde ook is, hij brengt voor haar een serenade.  Geschreven, speciaal voor haar.
+
+
+
+Zal zijn droom om ooit naast haar te staan een droom blijven of wordt deze droom werkelijkheid?</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/LAA.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Laarheide</p>
+      <p class="tekst">Laarheide is een Zundertse buitenbuurt, gelegen aan de oostkant van Zundert, aan de overzijde van de Aa of Weerijs. Het heraldisch teken symboliseert het krachtige collectief van de kleine buurtschap en is gebaseerd op het ontwerp 'Krachtmeting' uit 1997.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Laarheide met de wagen "Bubblegum!" een 19e plaats met 472 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-LEN-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>9. Herfstwandeling</h2>
+    <p><i>Buurtschap: </i>De Lent<br>
+<i>Ontwerpers: </i>Koen Aerts en Ruud Voesenek<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-LEN-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen"></p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/LEN.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap De Lent</p>
+      <p class="tekst">Buurtschap De Lent ligt ten zuiden van Zundert onder Wernhout tegen de Belgische grens. Het wapenschildje laat een detail zien van het ontwerp 'Intocht in Troje' uit 1980.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap De Lent met de wagen "LASTMINUTE" een 10e plaats met 521 punten.</p>
+</div><div class="spacer"></div><div class="korps">
+  <div class="foto">
+    <img src="img/korpsen/la_vaillante.jpg" alt=""/>
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>Showband La Vaillante</h2>
+    <p>Saint Quentin, Frankrijk    </p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-LAE-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>10. Haute Cuisine***</h2>
+    <p><i>Buurtschap: </i>Laer-Akkermolen<br>
+<i>Ontwerpers: </i>Ivo Dockx en Oscar Dockx<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-LAE-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen"></p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/LAE.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Laer-Akkermolen</p>
+      <p class="tekst">Buurtschap Laer-Akkermolen is gelegen aan de noordoostkant van de kom van Zundert. Het heraldiekteken toont de Akkermolen, waar de buurtschap naar vernoemd is, met het silhouet van Don Quichotte, een klassieker uit 1976.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Laer-Akkermolen met de wagen "Gekkengoud" een 1e plaats met 665 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-STV-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>11. Rush hour</h2>
+    <p><i>Buurtschap: </i>Stuivezand<br>
+<i>Ontwerpers: </i>Martin Straver, Dave Roelands en Ronald van Loon<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-STV-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Spitsuur op een Amerikaanse highway.</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/STV.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Stuivezand</p>
+      <p class="tekst">Stuivezand is een kleine buitenbuurt, gelegen tussen Zundert en Rijsbergen. Op het wapenschildje is een detail uit 'Oosterse Olifantenparade' uit 1975 afgebeeld, in het stuifzand waaraan de buurtschap haar naam ontleent.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Stuivezand met de wagen "Copycat" een 13e plaats met 492 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-MOL-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>12. 737</h2>
+    <p><i>Buurtschap: </i>Molenstraat<br>
+<i>Ontwerpers: </i>Jesse Verheijen en Gijs Martens<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-MOL-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen"></p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/MOL.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Molenstraat</p>
+      <p class="tekst">Molenstraat (de molen op het wapenschildje verwijst naar de naamgever van de straat) is een van de buurtschappen in de kom van Zundert.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Molenstraat met de wagen "De Venus van Milo" een 18e plaats met 476 punten.</p>
+</div><div class="spacer"></div><div class="korps">
+  <div class="foto">
+    <img src="img/korpsen/irene.jpg" alt=""/>
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>Showband Irene</h2>
+    <p>Ede, Nederland    </p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-KAP-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>13. "Vergane Glorie"</h2>
+    <p><i>Buurtschap: </i>'t Kapelleke<br>
+<i>Ontwerpers: </i>Wesley van Genk<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-KAP-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Een restant uit het verleden.
+
+Bedorven door de zee.
+
+Uitgebeeld met een hedendaagse twist.</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/KAP.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap 't Kapelleke</p>
+      <p class="tekst">Buurtschap 't Kapelleke is een binnenbuurt aan de noordkant van Zundert. Het wapenschild toont een detail uit "Uit Swift's "Gulliver" uit 1998, waarmee 't Kapelleke de vooralsnog hoogste klassering (tweede prijs) uit haar geschiedenis behaalde.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap 't Kapelleke met de wagen "RABBOT" een 14e plaats met 490 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-MAR-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>14. VERDRAAID</h2>
+    <p><i>Buurtschap: </i>Markt<br>
+<i>Ontwerpers: </i>Hans Vriends en Frank van Baal<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-MAR-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Twee corso-ontwerpers in een ontwerpproces.
+
+Vanuit beide gedachten ontstaat ÈÈn ontwerp; VERDRAAID.</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/MAR.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Markt</p>
+      <p class="tekst">Buurtschap Markt is een van de oudste buurtschappen van Zundert en feitelijk de geboortebuurt van Vincent van Gogh. Hij en zijn broer Theo zijn dan ook terug te vinden op het wapenschildje.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Markt met de wagen "Uit de Veren!!" een 5e plaats met 589 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-HEL-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>15. Droogstekke</h2>
+    <p><i>Buurtschap: </i>Helpt Elkander<br>
+<i>Ontwerpers: </i>DrÈ Jacobs<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-HEL-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Wasknijpers, of op z'n Zunderts gezegd droogstekke.
+
+ 
+
+Wat kun je er allemaal wel niet mee?
+
+Ja, de was op hangen zeker, of ze gebruiken om dingen bij elkaar te houden.
+
+Je kunt ze gebruiken om er creatieve figuurtjes van te knutselen, of om er je corso ideeÎn mee bij elkaar te houden.
+
+ 
+
+Maar wat gebeurd er als je ze uitvergroot en ze omvormt tot monumentaal object?
+
+Hoe veranderen deze herkenbare vormen Èn de loze ruimten er tussenin, als je ze benadert als een sculptuur?
+
+ 
+
+Laat je inspireren door deze compositie, zoom in op een detail
+
+en plotseling verandert een alledaags voorwerp in een bijzonder abstract beeld.</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/HEL.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Helpt Elkander</p>
+      <p class="tekst">Helpt Elkander is een van de grotere buurtschappen, gelegen aan de zuidkant van Zundert. Deze buurtschap heeft op haar wapenschild een detail van het baanbrekende en controversiele ontwerp "Torso Contrapposto" uit 1992.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Helpt Elkander met de wagen "De Verffabriek" een 20e plaats met 469 punten.</p>
+</div><div class="spacer"></div><div class="korps">
+  <div class="foto">
+    <img src="img/korpsen/takostu.jpg" alt=""/>
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>Showband Takostu</h2>
+    <p>Stiens, Nederland    </p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-KZH-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>16. Paardenkracht</h2>
+    <p><i>Buurtschap: </i>Klein-Zundertse Heikant<br>
+<i>Ontwerpers: </i>Karel de Hoon en Robin Jochems<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-KZH-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">"Een statement van vermogen en kracht"</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/KZH.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Klein-Zundertse Heikant</p>
+      <p class="tekst">De kleine buitenbuurt Klein-Zundertse Heikant ligt ten noordwesten van Zundert. Het wapenschildje toont de geest van de tijgerin, de eerste prijs uit 2002, die nog steeds over de karakteristieke bouwplaats zweeft.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Klein-Zundertse Heikant met de wagen "Ent" een 2e plaats met 632 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-WER-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>17. Koekoek!</h2>
+    <p><i>Buurtschap: </i>Wernhout<br>
+<i>Ontwerpers: </i>Erwin Leenaerts, Mathieu Rombouts en Ronald Martens<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-WER-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">"De koekoeksklok, een meesterlijk stukje vakwerk uit het Zwarte Woud.
+
+Gaandeweg verworden tot clichÈ, hangend aan de muur van je grootouders, volledig uit de tijd. Het houterige toonbeeld van gezapigheid.
+
+Of toch niet?"</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/WER.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Wernhout</p>
+      <p class="tekst">Ten zuiden van Zundert ligt het kerkdorp Wernhout, een van Zunderts grootste buurtschappen. In het Van Goghjaar 2003 veroverde Wernhout de eerste prijs met "Triade van Gogh" die ook terugkomt op het wapenschildje van de buurt.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Wernhout met de wagen "'Potloodventers!'" een 7e plaats met 538 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-TIG-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>18. Atlas 2.0</h2>
+    <p><i>Buurtschap: </i>Tiggelaar<br>
+<i>Ontwerpers: </i>Johan van Trijp, Marc van Beek en Eefje Wagtmans-Goos<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-TIG-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Atlas 2.0 laat een oude god van de Grieken zien als superheld van nu.
+
+Waar zijn voorganger het gewelf droeg draagt deze superheld de wereld.</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/TIG.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Tiggelaar</p>
+      <p class="tekst">Tiggelaar is een buurtschap aan de zuidoostkant binnen de kom van Zundert. De bij op het wapenschildje is een detail uit de spraakmakende eerste prijswinnaar "Zwerm" uit 1999.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Tiggelaar met de wagen "OPBLAASBAAR" een 6e plaats met 584 punten.</p>
+</div><div class="spacer"></div><div class="korps">
+  <div class="foto">
+    <img src="img/korpsen/adest_musica.jpg" alt=""/>
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>Drum and showband Adest Musica</h2>
+    <p>Sassenheim, Nederland    </p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-SCH-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>19. KRAB</h2>
+    <p><i>Buurtschap: </i>Schijf<br>
+<i>Ontwerpers: </i>Huub van Caam en Maikel van de Korput<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-SCH-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen"></p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/SCH.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Schijf</p>
+      <p class="tekst">De jongste loot aan de stam van het corso is kerkdorp Schijf (dat eigenlijk bij de gemeente Rucphen hoort). Schijf doet mee met het corso sinds 2009. De heraldiek toont het 'Schijvenaertje', de turfsteker.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Schijf met de wagen "Zwart-Goud" een 3e plaats met 628 punten.</p>
+</div><div class="spacer"></div><div class="optochtvolgorde">
+  <div class="foto">
+    <img src="img/wagens/2014-VEL-M00.jpg" alt="" />
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>20. Censuur</h2>
+    <p><i>Buurtschap: </i>Veldstraat<br>
+<i>Ontwerpers: </i>Jos van Aert en Erwin Braspenning<br>
+</p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="wageninfo">
+  <img class="foto" src="img/wagens/2014-VEL-M00.jpg" alt="" />
+  <div class="beschrijving">
+    <p class="tekstwagen">Censuur is het verbergen van dat wat we toch wel zien.</p>
+    <div class="heraldiek">
+      <img src="img/heraldieken/VEL.gif" alt="" />    </div>
+    <div class="buurtschap">
+      <p class="titel">Buurtschap Veldstraat</p>
+      <p class="tekst">Aan de westzijde van Zundert bevindt zich buurtschap Veldstraat, een van Zundertse binnenbuurten. Het wapenschildje toont 'Charlie Chaplin', een Veldstraatse klassieker uit 1982.</p>
+    </div>
+  </div>
+  <div id="clearfloat0"></div>  <p class="prijzen">Vorig jaar behaalde buurtschap Veldstraat met de wagen "Betrapt" een 15e plaats met 481 punten.</p>
+</div><div class="spacer"></div><div class="korps">
+  <div class="foto">
+    <img src="img/korpsen/advendo_jong.jpg" alt=""/>
+  </div> <!-- einde foto -->
+  <div class="text">
+    <h2>Drum en Showfanfare Jong Advendo</h2>
+    <p>Sneek, Nederland    </p>
+  </div> <!-- einde text -->
+</div> <!-- einde item -->
+<div class="spacer"></div>            </div>
+    
+            <div id="waar">
+               <!--<p id="testot">Overthrow support: </p>-->
+               <img id="plattegrond" src="img/plattegrond_2014.jpg"></img>
+            </div>
+
+            <div id="live">
+                  <!--<button type="button" onclick="refreshUitslag()">Uitslag verversen</button>-->
+                  <div id="livexmldoc"></div>  
+            </div>
+            
+            <div id="nieuws">
+                  <div id="livexmlnieuws"></div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<div id="page2" class="overthrow snap"> 
+   <div class="sections">
+      <div id="feestprogramma">
+      </div>
+      <div id="vorigjaar">
+         <div id="uitslag"><div class="uitslagregel">
+  <p class="prijs">1</p>
+  <div class="prijzen">
+    <p class="punten">665 punten</p>
+    <p class="ereprijs">1e publieksprijs</p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Gekkengoud</p>
+    <p class="buurtschap">Buurtschap Laer-Akkermolen</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">2</p>
+  <div class="prijzen">
+    <p class="punten">632 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Ent</p>
+    <p class="buurtschap">Buurtschap Klein-Zundertse Heikant</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">3</p>
+  <div class="prijzen">
+    <p class="punten">628 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Zwart-Goud</p>
+    <p class="buurtschap">Buurtschap Schijf</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">4</p>
+  <div class="prijzen">
+    <p class="punten">602 punten</p>
+    <p class="ereprijs">Pluim</p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Global Warming</p>
+    <p class="buurtschap">Buurtschap 't Stuk</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">5</p>
+  <div class="prijzen">
+    <p class="punten">589 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Uit de Veren!!</p>
+    <p class="buurtschap">Buurtschap Markt</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">6</p>
+  <div class="prijzen">
+    <p class="punten">584 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">OPBLAASBAAR</p>
+    <p class="buurtschap">Buurtschap Tiggelaar</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">7</p>
+  <div class="prijzen">
+    <p class="punten">538 punten</p>
+    <p class="ereprijs">2e publieksprijs</p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">'Potloodventers!'</p>
+    <p class="buurtschap">Buurtschap Wernhout</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">8</p>
+  <div class="prijzen">
+    <p class="punten">534 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Ik was het niet</p>
+    <p class="buurtschap">Buurtschap De Berk</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">9</p>
+  <div class="prijzen">
+    <p class="punten">526 punten</p>
+    <p class="ereprijs">Pluim</p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">MONSTERS</p>
+    <p class="buurtschap">Buurtschap Klein Zundert</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">10</p>
+  <div class="prijzen">
+    <p class="punten">521 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">LASTMINUTE</p>
+    <p class="buurtschap">Buurtschap De Lent</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">11</p>
+  <div class="prijzen">
+    <p class="punten">520 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Illusie?</p>
+    <p class="buurtschap">Buurtschap Achtmaal</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">12</p>
+  <div class="prijzen">
+    <p class="punten">514 punten</p>
+    <p class="ereprijs">3e publieksprijs</p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Altijd prijs</p>
+    <p class="buurtschap">Buurtschap Poteind</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">13</p>
+  <div class="prijzen">
+    <p class="punten">492 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Copycat</p>
+    <p class="buurtschap">Buurtschap Stuivezand</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">14</p>
+  <div class="prijzen">
+    <p class="punten">490 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">RABBOT</p>
+    <p class="buurtschap">Buurtschap 't Kapelleke</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">15</p>
+  <div class="prijzen">
+    <p class="punten">481 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Betrapt</p>
+    <p class="buurtschap">Buurtschap Veldstraat</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">16</p>
+  <div class="prijzen">
+    <p class="punten">480 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Gordel</p>
+    <p class="buurtschap">Buurtschap Raamberg</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">17</p>
+  <div class="prijzen">
+    <p class="punten">478 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Streetview</p>
+    <p class="buurtschap">Buurtschap Rijsbergen</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">18</p>
+  <div class="prijzen">
+    <p class="punten">476 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">De Venus van Milo</p>
+    <p class="buurtschap">Buurtschap Molenstraat</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">19</p>
+  <div class="prijzen">
+    <p class="punten">472 punten</p>
+    <p class="ereprijs">Pluim</p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">Bubblegum!</p>
+    <p class="buurtschap">Buurtschap Laarheide</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+<div class="uitslagregel">
+  <p class="prijs">20</p>
+  <div class="prijzen">
+    <p class="punten">469 punten</p>
+    <p class="ereprijs"></p>
+  </div> <!-- einde prijzen -->
+  <div class="wagen">
+    <p class="titel">De Verffabriek</p>
+    <p class="buurtschap">Buurtschap Helpt Elkander</p>
+  </div> <!-- einde wagen -->
+</div> <!-- einde item -->
+</div>      </div>
+      <!--
+      <div id="voorspelling">
+         <div id="ranking">
+            <p class="prijs">1</p><p class="prijs">2</p><p class="prijs">3</p><p class="prijs">4</p><p class="prijs">5</p>
+            <p class="prijs">6</p><p class="prijs">7</p><p class="prijs">8</p><p class="prijs">9</p><p class="prijs">10</p>
+            <p class="prijs">11</p><p class="prijs">12</p><p class="prijs">13</p><p class="prijs">14</p><p class="prijs">15</p>
+            <p class="prijs">16</p><p class="prijs">17</p><p class="prijs">18</p><p class="prijs">19</p><p class="prijs">20</p>
+         </div>
+         <ul id="sortable">
+            <li>
+   <div class="wagen">
+      <p class="titel">1. Global Warming</p>
+      <p class="buurtschap">'t Stuk</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">2. OPBLAASBAAR</p>
+      <p class="buurtschap">Tiggelaar</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">3. Streetview</p>
+      <p class="buurtschap">Rijsbergen</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">4. Ik was het niet</p>
+      <p class="buurtschap">De Berk</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">5. Betrapt</p>
+      <p class="buurtschap">Veldstraat</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">6. De Venus van Milo</p>
+      <p class="buurtschap">Molenstraat</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">7. Uit de Veren!!</p>
+      <p class="buurtschap">Markt</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">8. MONSTERS</p>
+      <p class="buurtschap">Klein Zundert</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">9. Zwart-Goud</p>
+      <p class="buurtschap">Schijf</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">10. LASTMINUTE</p>
+      <p class="buurtschap">De Lent</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">11. Illusie?</p>
+      <p class="buurtschap">Achtmaal</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">12. Bubblegum!</p>
+      <p class="buurtschap">Laarheide</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">13. RABBOT</p>
+      <p class="buurtschap">'t Kapelleke</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">14. De Verffabriek</p>
+      <p class="buurtschap">Helpt Elkander</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">15. Gordel</p>
+      <p class="buurtschap">Raamberg</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">16. 'Potloodventers!'</p>
+      <p class="buurtschap">Wernhout</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">17. Ent</p>
+      <p class="buurtschap">Klein-Zundertse Heikant</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">18. Altijd prijs</p>
+      <p class="buurtschap">Poteind</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">19. Copycat</p>
+      <p class="buurtschap">Stuivezand</p>
+   </div>
+</li>
+<li>
+   <div class="wagen">
+      <p class="titel">20. Gekkengoud</p>
+      <p class="buurtschap">Laer-Akkermolen</p>
+   </div>
+</li>
+         </ul>
+      </div>
+      -->
+      <div id="instagram">
+         <div id="instagramxml"></div>
+      </div>
+   </div>
+</div>
+
+<div id="page3" class="overthrow snap">
+   <div class="sections">
+      <div id="facebook">
+         <div id="facebookxml"></div>
+      </div>
+   </div>
+</div>
+
+</div>
+
+
+<footer>
+<div id="indicators"> <div id="box"></div> </div>
+<ul id="tab-bar">
+    <li>
+        <a id="button1" href="#wat">programma</a>
+    </li>
+    <li>
+        <a id="button2" href="#wie">optocht</a>
+    </li>
+    <li>
+        <a id="button3" href="#waar">plattegrond</a>
+    </li>
+    <li>
+        <a id="button4" href="#live">uitslag</a>
+    </li>
+    <li>
+        <a id="button5" href="#nieuws">nieuws</a>
+    </li>
+</ul>
+</footer>
+
+
+    
+
+<!--
+<script type="text/javascript">
+  os = document.getElementById("testot");
+  os.innerHTML = os.innerHTML + overthrow.support;
+</script>
+-->
+
+</body>
+</html>
