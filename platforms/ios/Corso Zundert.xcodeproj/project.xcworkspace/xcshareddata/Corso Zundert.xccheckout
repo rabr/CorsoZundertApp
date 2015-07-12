@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CF7D84B5-69A9-4B17-A55A-FEEAEE05DAC0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Corso Zundert</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>43B2C37EA847725DD4CB72257A2EF2B4A580B60E</key>
+		<string>https://github.com/rabr/CorsoZundertApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/Corso Zundert.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>43B2C37EA847725DD4CB72257A2EF2B4A580B60E</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/rabr/CorsoZundertApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>43B2C37EA847725DD4CB72257A2EF2B4A580B60E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>43B2C37EA847725DD4CB72257A2EF2B4A580B60E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CorsoZundert</string>
+		</dict>
+	</array>
+</dict>
+</plist>

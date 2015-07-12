@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="nl.corsozundert.corsozundert" version="2.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>Corso Zundert</name>
+    <description>
+        The App from Corso Zundert.
+    </description>
+    <author email="info@corsozundert.nl" href="http://corsozundert.nl">
+        Stichting Bloemencorso Zundert
+    </author>
+    <content src="index.html" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#ffffff" />
+    <preference name="StatusBarStyle" value="black-opaque" />
+    <preference name="stay-in-webview" value="true" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon src="www/res/icon.png" />
+    <icon height="57" platform="ios" src="www/res/icon_ios57.png" width="57" />
+    <icon height="72" platform="ios" src="www/res/icon_ios72.png" width="72" />
+    <icon height="114" platform="ios" src="www/res/icon_ios114.png" width="114" />
+    <icon height="120" platform="ios" src="www/res/icon_ios120.png" width="120" />
+    <icon height="144" platform="ios" src="www/res/icon_ios144.png" width="144" />
+    <splash height="960" src="www/res/splash.png" width="640" />
+    <splash height="1136" platform="ios" src="www/res/splash-568h@2x.png" width="640" />
+</widget>

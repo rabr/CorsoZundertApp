@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:cdv = "http://cordova.apache.org/ns/1.0"
         id        = "nl.corsozundert.corsozundert"
-        version   = "2.2.1">
+        version   = "2.3.0">
     <name>Corso Zundert</name>
 
     <description>
@@ -22,9 +22,11 @@
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
     <preference name="prerendered-icon" value="true" />
+    <preference name="DisallowOverscroll" value="true" />
     <preference name="webviewbounce" value="false" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#FFFFFF" />
+    <preference name="StatusBarBackgroundColor" value="#ffffff" />
+    <preference name="StatusBarStyle" value="black-opaque" />
     <preference name="stay-in-webview" value="true" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
