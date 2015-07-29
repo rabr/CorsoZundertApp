@@ -8,7 +8,7 @@ $params['test'] = 0;
 
 // wat is de huidige taal?
 $taal = "nederlands";  //$smarty->get_template_vars('page_lang');
-$base_path_img = "img";
+$base_path_img = "http://www.corsozundert.nl/app/img";
 
 
 /*
@@ -50,8 +50,8 @@ function volgorde_item_wagen($jaar,$foto_maquette, $nummer, $titel, $buurtschap,
     $namen_ontwerpers .= " " . $en_lang[$taal] . " " . $ontw_array[$num_ontw-1]["naam"];
   } 
 
-  // checken of de foto van de maquete er al is, anders plaatje voor onbekend nemen
-  if (!file_exists($foto_maquette)) $foto_maquette = $base_path_img . '/wagens/unknown.jpg';
+  // override zolang de maquette foto's er nog niet zijn
+  //$foto_maquette = $base_path_img . '/wagens/unknown.jpg';
 
   echo '<div class="optochtvolgorde">' . PHP_EOL;
   echo '  <div class="foto">' . PHP_EOL;

@@ -90,9 +90,14 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #timetable #tijden img { _width: 1200px; height: 100%; margin: 0px; max-width: none; }
 */
 
-#locaties { position: absolute; top: 0px; left: 0px; z-index: 2; height: 98%; width: auto; visibility: visible;}
+/*
+#locaties { position: absolute; top: 0px; left: 0px; z-index: 2; height: 100%; width: auto; visibility: visible;}
 #wat #tijden { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; }
-
+*/
+#locaties { position: absolute; top: 10.16%; left: 0px; z-index: 2; height: 89.84%; width: auto; visibility: visible;}
+#button-zo, #button-ma { position: absolute; top: 0px; left: 0px; z-index: 2; height: 6.77%; width: auto; visibility: visible; cursor: pointer;}
+#wat #tijden { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; }
+*/
 
 /*** WIE: OPTOCHTVOLGORDE ***************************************************************/
 #wie { width: 100%; }     

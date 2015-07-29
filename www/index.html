@@ -30,7 +30,7 @@
 <div id="app-info">
 <p><b>INFO</b><br>Deze app wordt uitgebracht door <b>Stichting Bloemencorso Zundert</b>. Mail je feedback naar 
   <a href="mailto:app@corsozundert.nl">app@corsozundert.nl</a><br>
-  Versie: 2.3.0</p>
+  Versie: 2.4.0</p>
   <p>
   WEB | <a href="http://www.corsozundert.nl" rel="external" target="_new">CORSOZUNDERT.NL</a><br>
   FACEBOOK | <a href="http://www.facebook.com/corsozundert" rel="external" target="_new">FACEBOOK.COM/CORSOZUNDERT</a><br>
@@ -50,19 +50,23 @@
 
 <div id="canvas" > 
 
-<!-- <img id="locaties" src="img/timetable/timetable-locaties.png"> -->
+<img id="button-zo" src="img/timetable/button-zo.png">
+<img id="button-ma" src="img/timetable/button-ma.png">
+<img id="locaties" src="img/timetable/timetable-locaties.png">
 
 <div id="page1" class="overthrow snap">
     <div id="main-content">
         <div class="sections">
             
             <div id="wat">              
-                  <!-- <img id="tijden" src="img/timetable/timetable-tijden.png"> -->
+                  <img id="tijden" src="img/timetable/timetable-tijden.png">
+                  <!--
                   <p class="big1">Optocht</p> 
                   <p class="big2">Zondag 6 September 2015</p>
                   <p class="big1">Tentoonstelling</p>
                   <p class="big2">Maandag 7 September 2015</p>
                   <p class="big1">Feestprogramma volgt</p>
+                  -->
             </div>
             
             <div id="wie">

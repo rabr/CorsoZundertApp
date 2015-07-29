@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:cdv = "http://cordova.apache.org/ns/1.0"
         id        = "nl.corsozundert.corsozundert"
-        version   = "2.3.0">
+        version   = "2.4.0">
     <name>Corso Zundert</name>
 
     <description>

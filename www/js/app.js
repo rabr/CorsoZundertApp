@@ -196,17 +196,43 @@ var appStatus = {
    initTimeTable: function() {
       var le = jQuery("#locaties");
       var te = jQuery("#tijden");
+      var bze = jQuery("#button-zo");
+      var bme = jQuery("#button-ma");
+      var p1e = jQuery("#page1");
       
+      var teTop = p1e.height()*0.0677;
+      var bzeWidth = bze.width();
+      
+      /* OLD
       le.css('visibility', 'visible');
       te.height( le.height() );
       te.parent().css({position: 'relative'});
       te.css({top: 0, left: le.width(), position:'absolute'});
+      */
+      
+      le.css('visibility', 'visible');
+      bze.css('visibility', 'visible');
+      bme.css('visibility', 'visible');
+      bme.css({left: bzeWidth + 'px'});
+      te.height( p1e.height()*0.9323);
+      te.parent().css({position: 'relative', });
+      te.css({top: teTop + 'px', left: 0, position:'absolute'});
       
       jQuery("#page1").css('background','#ffffff');
+      
+      bze.on('click', function(e){
+         alert('ZONDAG');
+      });
+      
+      bme.on('click', function(e){
+         alert('MAANDAG');
+      });
    },
    
    resetTimeTable: function() {
       jQuery("#locaties").css('visibility', 'hidden');
+      jQuery("#button-zo").css('visibility', 'hidden');
+      jQuery("#button-ma").css('visibility', 'hidden');
       jQuery("#page1").css('background','#ea5514');
    }
 
