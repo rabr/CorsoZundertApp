@@ -22,7 +22,7 @@ var appStatus = {
     plattegrond : {             // plattegrond specific status
         zoomLevel : 0           // 0 = zoomed in, 1 = zoomed out    
     },
-    optochtLive : 1,           // have the optocht_volgorde live or fixed include
+    optochtLive : 1,           // have the optocht_volgorde live or fixed include. Note this var is overruled by a php variable transferred from index.php, see below
     // Define the sections and pages in the app
     sections : {
       'section1' : {
@@ -48,12 +48,13 @@ var appStatus = {
          'page2'  : '#voorspelling'*/
       },
       'section5' : {
-         'title1' : 'tweets #corsozundert',
-         'page1'  : '#nieuws',
+         'title1' : 'facebook CorsoZundert',
+         'page1'  : '#facebook',
          'title2' : 'instagram #corsozundert',
          'page2'  : '#instagram',
-         'title3' : 'facebook CorsoZundert',
-         'page3'  : '#facebook'
+         'title3' : 'tweets #corsozundert',
+         'page3'  : '#nieuws',
+         
       },
       maxPages : 3
     },
@@ -61,7 +62,7 @@ var appStatus = {
     extContent : {
       optocht : {
          id  : 'optocht',
-         url : 'http://www.corsozundert.nl/app/php/optocht_volgorde.php'
+         url : 'http://www.corsozundert.nl/app/php/optocht_volgorde_live.php'
       },
       uitslag : {
          id  : 'livexmldoc',
@@ -73,7 +74,7 @@ var appStatus = {
       },
       facebook : {
          id  : 'facebookxml',
-         url : 'http://www.corsozundert.nl/app/php/facebook.php'
+         url : 'http://www.corsozundert.nl/app/php/facebook.html'
       },
       instagram : {
          id  : 'instagramxml',
@@ -177,7 +178,7 @@ var appStatus = {
             // execute scripts if there are embedded in the page
             var arr = divElem.getElementsByTagName('script');
             for (var n=0; n<arr.length; n++) {
-               if (arr[n].innerHTML != "") eval(arr[n].innerHTML); //run script inside div
+               if (arr[n].innerHTML != "" && arr[n].type!="text/x-jquery-tmpl") eval(arr[n].innerHTML); //run script inside div
                if (arr[n].src != "") jQuery.getScript(arr[n].src); // load and execute the external script
             }
             // open urls in an in-app browser
@@ -195,7 +196,8 @@ var appStatus = {
    
    initTimeTable: function() {
       var le = jQuery("#locaties");
-      var te = jQuery("#tijden");
+      var tze = jQuery("#tijden-zo");
+      var tme = jQuery("#tijden-ma");
       var bze = jQuery("#button-zo");
       var bme = jQuery("#button-ma");
       var p1e = jQuery("#page1");
@@ -210,22 +212,38 @@ var appStatus = {
       te.css({top: 0, left: le.width(), position:'absolute'});
       */
       
+      // set all static elements of the timetable to visible
       le.css('visibility', 'visible');
       bze.css('visibility', 'visible');
       bme.css('visibility', 'visible');
       bme.css({left: bzeWidth + 'px'});
-      te.height( p1e.height()*0.9323);
-      te.parent().css({position: 'relative', });
-      te.css({top: teTop + 'px', left: 0, position:'absolute'});
+      
+      // scale and position the times on zondag
+      tze.height( p1e.height()*0.9323);
+      tze.parent().css({position: 'relative', });
+      tze.css({top: teTop + 'px', left: 0, position:'absolute'});
+      
+      // scale and position the times on maandag
+      tme.height( p1e.height()*0.9323);
+      tme.parent().css({position: 'relative', });
+      tme.css({top: teTop + 'px', left: 0, position:'absolute'});
       
       jQuery("#page1").css('background','#ffffff');
       
       bze.on('click', function(e){
-         alert('ZONDAG');
+         //alert('ZONDAG');
+         jQuery("#wat #tijden-ma").css('visibility', 'hidden');
+         jQuery("#wat #tijden-zo").css('visibility', 'visible');
+         jQuery("#button-zo").attr("src","img/timetable/button-zo-active.png");
+         jQuery("#button-ma").attr("src","img/timetable/button-ma.png");
       });
       
       bme.on('click', function(e){
-         alert('MAANDAG');
+         //alert('MAANDAG');
+         jQuery("#wat #tijden-zo").css('visibility', 'hidden');
+         jQuery("#wat #tijden-ma").css('visibility', 'visible');
+         jQuery("#button-zo").attr("src","img/timetable/button-zo.png");
+         jQuery("#button-ma").attr("src","img/timetable/button-ma-active.png");
       });
    },
    
@@ -256,6 +274,9 @@ function onDeviceReady() {
    // Init
    //
    
+   // fix bug in cordova that doesn't fix orientation on iPad, so do it manually via a special plugin
+   if (typeof screen.lockOrientation != "undefined") screen.lockOrientation('portrait');
+   
    // Activate the first pages (assume section1 is the default)
    $("#button1").addClass("current");
    var i=0;
@@ -272,6 +293,7 @@ function onDeviceReady() {
    
    // use pull-to-refresh on iOS devices
    appStatus.enablePTR = (device.platform == 'iOS');
+   appStatus.optochtLive = ( jQuery('#phpOVLiveVar').val() != '0' ); // read the php variable set in index.php (note: the php var is returned as string!)
    
    appStatus.initTimeTable();
 
@@ -365,14 +387,14 @@ function onDeviceReady() {
             // attach AJAX function
             $('#refresh-button').on('click', function(){ 
               $('#livexmlnieuws').empty();  // clear the div, purely for visual feedback
-              appStatus.refreshContent(appStatus.extContent.twitter); 
-              appStatus.refreshContent(appStatus.extContent.instagram);
               appStatus.refreshContent(appStatus.extContent.facebook);
+              appStatus.refreshContent(appStatus.extContent.instagram);
+              appStatus.refreshContent(appStatus.extContent.twitter); 
             });
             
-            appStatus.refreshContent(appStatus.extContent.twitter);
-            appStatus.refreshContent(appStatus.extContent.instagram);
             appStatus.refreshContent(appStatus.extContent.facebook);
+            appStatus.refreshContent(appStatus.extContent.instagram);
+            appStatus.refreshContent(appStatus.extContent.twitter);
         }
         //
     }
@@ -398,6 +420,7 @@ function onDeviceReady() {
   // Collapse (toggle) div layer
   //
   jQuery(".wageninfo").hide();
+  jQuery(".korpsinfo").hide();
   jQuery(".proginfo").hide();
   jQuery("#app-info").hide();
   jQuery("#overlay").hide();
@@ -409,7 +432,7 @@ function onDeviceReady() {
   });
   jQuery("#zoom-button").click(function()
   {
-      var default_width = 1280; // the default width of the plattegrond
+      var default_width = 1218; // the default width of the plattegrond
       
       if (appStatus.plattegrond.zoomLevel == 0) {
           jQuery("#plattegrond").width(window.innerWidth);
@@ -431,12 +454,19 @@ function onDeviceReady() {
       else newBGImg = "url(img/layout/open.png)";
       jQuery(this).css("background-image",newBGImg);
   });
+  jQuery(".korps").click(function()
+  {
+      jQuery(this).next(".korpsinfo").slideToggle(200);
+      if (jQuery(this).css("background-image").search('open') != -1) newBGImg = "url(img/layout/close.png)";
+      else newBGImg = "url(img/layout/open.png)";
+      jQuery(this).css("background-image",newBGImg);
+  });
   /*
-  jQuery(".optochtvolgorde .foto img").click(function()
+  jQuery(".wageninfo .foto").click(function()
   {
       jQuery("#overlay").fadeIn(400);
       jQuery(this).css("z-index",3);
-      jQuery(this).animate({ width: "320px", top: "200px" }, 200);
+      jQuery(this).animate({ width: "1000px", top: "200px" }, 200);
   });
   */
   jQuery(".progitem").click(function()
@@ -450,11 +480,12 @@ function onDeviceReady() {
   // 
   // open urls in an in-app browser
   //
-  jQuery('#app-info a').on('click', function(e){
+  jQuery('#app-info a, #wie a').on('click', function(e){
 		e.preventDefault();
       var url = e.currentTarget.href;
       window.open(encodeURI(url), '_blank', 'location=yes');
   });
+  
 
   //
   // Pull to refresh code
@@ -494,10 +525,10 @@ function onDeviceReady() {
                     return def.promise();
                 }
             });
-      // attach pull-to-refresh to twitter page
+      // attach pull-to-refresh to facebook page            
       jQuery('#page1').pullToRefresh({
-              tabDiv: "#nieuws",
-              ajaxDiv: "#livexmlnieuws",
+              tabDiv: "#facebook",
+              ajaxDiv: "#facebookxml",
               callback: function() {
                     var def = $.Deferred();
                     
@@ -505,7 +536,7 @@ function onDeviceReady() {
                         def.resolve();      
                     }, 2000); 
                     // since on highest level attached to 'page1' only 1 callback function, so refresh depending on active tab
-                    if (appStatus.activeTab == 5) appStatus.refreshContent(appStatus.extContent.twitter);
+                    if (appStatus.activeTab == 5) appStatus.refreshContent(appStatus.extContent.facebook);
 
                     return def.promise();
                 }
@@ -526,10 +557,10 @@ function onDeviceReady() {
                     return def.promise();
                 }
             });
-      // attach pull-to-refresh to facebook page            
+      // attach pull-to-refresh to twitter page
       jQuery('#page3').pullToRefresh({
-              tabDiv: "#facebook",
-              ajaxDiv: "#facebookxml",
+              tabDiv: "#nieuws",
+              ajaxDiv: "#livexmlnieuws",
               callback: function() {
                     var def = $.Deferred();
                     
@@ -537,7 +568,7 @@ function onDeviceReady() {
                         def.resolve();      
                     }, 2000); 
                     // since on highest level attached to 'page1' only 1 callback function, so refresh depending on active tab
-                    if (appStatus.activeTab == 5) appStatus.refreshContent(appStatus.extContent.facebook);
+                    if (appStatus.activeTab == 5) appStatus.refreshContent(appStatus.extContent.twitter);
 
                     return def.promise();
                 }

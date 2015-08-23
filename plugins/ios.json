@@ -31,6 +31,10 @@
                         {
                             "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"YoikScreenOrientation\"><param name=\"ios-package\" value=\"YoikScreenOrientation\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -61,6 +65,9 @@
             "PACKAGE_NAME": "nl.corsozundert.corsozundert"
         },
         "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "nl.corsozundert.corsozundert"
+        },
+        "cordova-plugin-screen-orientation": {
             "PACKAGE_NAME": "nl.corsozundert.corsozundert"
         }
     },

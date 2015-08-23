@@ -94,15 +94,16 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #locaties { position: absolute; top: 0px; left: 0px; z-index: 2; height: 100%; width: auto; visibility: visible;}
 #wat #tijden { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; }
 */
-#locaties { position: absolute; top: 10.16%; left: 0px; z-index: 2; height: 89.84%; width: auto; visibility: visible;}
-#button-zo, #button-ma { position: absolute; top: 0px; left: 0px; z-index: 2; height: 6.77%; width: auto; visibility: visible; cursor: pointer;}
-#wat #tijden { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; }
+#locaties { position: absolute; top: 10.16%; left: 0px; z-index: 2; height: 88.71%; width: auto; visibility: visible;}
+#button-zo, #button-ma { position: absolute; top: 0px; left: 0px; z-index: 2; height: 6.5%; width: auto; visibility: visible; cursor: pointer;}
+#wat #tijden-zo { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; visibility: visible;}
+#wat #tijden-ma { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; visibility: hidden;}
 */
 
 /*** WIE: OPTOCHTVOLGORDE ***************************************************************/
 #wie { width: 100%; }     
 .optochtvolgorde { background: #f7941e url('img/layout/open.png') no-repeat right bottom; width: device-width; padding: 5px; margin: 0px; cursor: pointer; position: relative; }
-.korps { background: #f7a51e; width: device-width; padding: 5px; margin: 0px; cursor: pointer; position: relative; }
+.korps { background: #f7a51e url('img/layout/open.png') no-repeat right bottom; width: device-width; padding: 5px; margin: 0px; cursor: pointer; position: relative; }
 .optochtvolgorde .foto, .korps .foto { float: left; height: 72px; margin-right: 5px; overflow: hidden; }
 .optochtvolgorde .foto img, .korps .foto img { width: 144px; height: 72px; }                                                                                           
 .optochtvolgorde .text, .korps .text { height: 72px; overflow: hidden; }
@@ -122,10 +123,16 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 .wageninfo .buurtschap .tekst { margin-bottom: 10px; }
 .wageninfo .prijzen { _width: 100%; }    
 
+.korpsinfo { background: #ffffff; padding: 5px; margin: 0px; display: none; }
+.korpsinfo .foto { margin: 0px; float: left; }
+.korpsinfo .beschrijving { margin: 0px; float: left; }
+.korpsinfo p { color: #000000; font-size: 12px; _10px; margin: 0px; }
+.korpsinfo .omschrijving { margin-bottom: 10px; }
+
 #feestprogramma { width: 100%; float: left; _background: #222222; _color: #ffffff; }                
 
 /*** WAAR: PLATTEGROND ******************************************************************/
-#waar { width: 1120px; }    
+#waar { width: 1218px; }    
 #plategrond { width: 100%; margin: 0px; }
 
 /*** LIVE: UITSLAG **********************************************************************/
@@ -163,7 +170,23 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 .instagram-desc { width: 90%; margin: 0px auto; padding: 10px 0px; font-size: 12px; color: #000000; }
 
 
-#facebook { width: 100%; float: left; _background: #222222; _color: #ffffff; }
+#facebook { width: 100%; float: left; }
+#facebookxml { background: #e9eaed; }
+#wall { padding: 5%; padding-top: 10px; padding-bottom: 10px; }
+#wall ul { list-style-type: none; margin: 0px; padding: 0px; display: block; } 
+#wall li { background: #fff; margin-bottom: 20px; border: 1px solid #ced0d6; }
+#wall .header { height: 70px;}
+#wall .status h2 { margin: 0px; font-size: 12px; width: 90%; margin: 0px auto; padding-top: 10px; }
+#wall .meta { color: rgb(169, 169, 169); font-size: 12px; margin: 0px; float: left; }
+#wall .status .profile { height: 50px; float: left; margin: 10px; }
+#wall .message { color: #000000; font-size: 12px; margin: 0px; width: 90%; margin: 0px auto; padding: 10px 0px; } 
+#wall .picture { margin: 0px; width: 90%; margin: 0px auto; padding: 10px; }
+#wall .attachment { margin: 0px; width: 90%; margin: 0px auto; padding-bottom: 10px; }
+#wall .attachment img { padding: 10px; height: 40px; float: left; }
+#wall .attachment .attachmentdata {float: left;}
+#wall .attachment .name { color: #000000; font-size: 12px; font-weight: bold; margin: 0px; }
+#wall .attachment .caption { color: #000000; font-size: 12px; margin: 0px; }
+#wall .attachment .description { color: #000000; font-size: 10px; margin:0px; }
 
 /*** PULL TO REFRESH ********************************************************************/ 
 .pull-to-refresh { line-height: 40px; height: 40px; padding: 10px 0px; width: 100%; position: absolute; left: 0; top: -60px; font-size: 16px; z-index: -1; _background: #ea5514; }

@@ -33,6 +33,20 @@ module.exports = [
         "clobbers": [
             "window.StatusBar"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
+        "id": "cordova-plugin-screen-orientation.screenorientation",
+        "clobbers": [
+            "cordova.plugins.screenorientation"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.android.js",
+        "id": "cordova-plugin-screen-orientation.screenorientation.android",
+        "merges": [
+            "cordova.plugins.screenorientation"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -42,7 +56,8 @@ module.exports.metadata =
     "cordova-plugin-device": "1.0.1-dev",
     "cordova-plugin-inappbrowser": "1.0.1-dev",
     "cordova-plugin-splashscreen": "2.0.1-dev",
-    "cordova-plugin-statusbar": "1.0.0"
+    "cordova-plugin-statusbar": "1.0.0",
+    "cordova-plugin-screen-orientation": "1.4.0"
 }
 // BOTTOM OF METADATA
 });

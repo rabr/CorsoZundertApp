@@ -12,6 +12,8 @@
   <script src="js/jquery.plugin.pullToRefresh.modified.js"></script>
   <script src="js/jquery.easing.min.js"></script>
   <script src="js/jquery.paging.js"></script>
+  <script src="js/jquery.tmpl.min.js"></script>
+  <script src="js/jquery.facebookWall.js"></script>
   <script src="js/overthrow.js"></script>
   <script src="js/app.js"></script>
     
@@ -50,7 +52,7 @@
 
 <div id="canvas" > 
 
-<img id="button-zo" src="img/timetable/button-zo.png">
+<img id="button-zo" src="img/timetable/button-zo-active.png">
 <img id="button-ma" src="img/timetable/button-ma.png">
 <img id="locaties" src="img/timetable/timetable-locaties.png">
 
@@ -59,7 +61,8 @@
         <div class="sections">
             
             <div id="wat">              
-                  <img id="tijden" src="img/timetable/timetable-tijden.png">
+                  <img id="tijden-zo" src="img/timetable/timetable-tijden-zo.png">
+                  <img id="tijden-ma" src="img/timetable/timetable-tijden-ma.png">
                   <!--
                   <p class="big1">Optocht</p> 
                   <p class="big2">Zondag 6 September 2015</p>
@@ -71,13 +74,14 @@
             
             <div id="wie">
                <div id="optocht">
-                  <?php $LIVE=1; if (!$LIVE) include 'php/optocht_volgorde.php'; ?>
+                  <?php $OVLIVE=0; if (!$OVLIVE) include 'php/optocht_volgorde_embedded.php'; ?>
+                  <input type="hidden" id="phpOVLiveVar" value="<?php echo $OVLIVE; ?>">
                </div>
             </div>
     
             <div id="waar">
                <!--<p id="testot">Overthrow support: </p>-->
-               <img id="plattegrond" src="img/plattegrond_2014.jpg"></img>
+               <img id="plattegrond" src="img/plattegrond_2015.png"></img>
             </div>
 
             <div id="live">
@@ -85,10 +89,10 @@
                   <div id="livexmldoc"></div>  
             </div>
             
-            <div id="nieuws">
-                  <div id="livexmlnieuws"></div>
-            </div>
-            
+            <div id="facebook">
+               <div id="facebookxml"></div>
+		      </div>
+    
         </div>
     </div>
 </div>
@@ -122,8 +126,8 @@
 
 <div id="page3" class="overthrow snap">
    <div class="sections">
-      <div id="facebook">
-         <div id="facebookxml"></div>
+      <div id="nieuws">
+         <div id="livexmlnieuws"></div>
       </div>
    </div>
 </div>
@@ -153,6 +157,34 @@
 </footer>
 
 
+<script id="feedTpl" type="text/x-jquery-tmpl">
+<li>
+	<div class="status">
+	   <div class="header">
+	     <img class="profile" src="${from.picture}">
+		  <h2><a href="http://www.facebook.com/profile.php?id=${from.id}" target="_blank">${from.name}</a></h2>
+		  <p class="meta">${created_time}</p>
+		</div>
+		<p class="message">{{html message}}</p>
+		{{if type == "photo"}}
+		<img class="picture" src="${pictureurl}" />
+		{{/if}}
+		{{if type == "link" }}
+			<div class="attachment">
+				{{if picture}}
+					<img src="${picture}" />
+				{{/if}}
+				<div class="attachment-data">
+					<p class="name"><a href="${link}" target="_blank">${name}</a></p>
+					<p class="caption">${caption}</p>
+					<p class="description">${description}</p>
+				</div>
+			</div>
+		{{/if}}
+	</div>
+	
+</li>
+</script>
     
 
 <!--
