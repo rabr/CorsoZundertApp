@@ -28,6 +28,7 @@
 		30B4F30219D5E07200D9F7D8 /* Default-Landscape-736h.png in Resources */ = {isa = PBXBuildFile; fileRef = 30B4F2FF19D5E07200D9F7D8 /* Default-Landscape-736h.png */; };
 		30C1856619D5FC0A00212699 /* icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30C1856519D5FC0A00212699 /* icon-60@3x.png */; };
 		30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 30FC414816E50CA1004E6F35 /* icon-72@2x.png */; };
+		58310CD601794BCCB10A6EC1 /* YoikScreenOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EDF534DA35462C8EDB5065 /* YoikScreenOrientation.m */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		6955BD5062014EDFAF654DFE /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E6DFE75F2B534B03A2F2C6C3 /* CDVDevice.m */; };
 		6ABB165565764CAA9A66B2C2 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 164922B5F20540CA99D636F7 /* CDVViewController+SplashScreen.m */; };
@@ -44,7 +45,7 @@
 		BF957FF6A2D549EB8592B8B2 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C26C47E2978D46569FC4A090 /* CDVStatusBar.m */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		D9420D15FD234CE2BA084FD0 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D5F8752F245FB9B37F867 /* CDVSplashScreen.m */; };
-		58310CD601794BCCB10A6EC1 /* YoikScreenOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EDF534DA35462C8EDB5065 /* YoikScreenOrientation.m */; };
+		0B75B0155D4446AEA69ECBA4 /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B074F62B5F34A7DA65ED0C7 /* CDVGlobalization.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +111,9 @@
 		849347F0BC6D4BB4BC95A775 /* CDVSplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVSplashScreen.h; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Corso Zundert-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Corso Zundert-Info.plist"; path = "../Corso Zundert-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		940C80E6CBC74A14BABCFBA1 /* CDVStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVStatusBar.h; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; };
+		94EDF534DA35462C8EDB5065 /* YoikScreenOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YoikScreenOrientation.m; path = "cordova-plugin-screen-orientation/YoikScreenOrientation.m"; sourceTree = "<group>"; };
 		C26C47E2978D46569FC4A090 /* CDVStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVStatusBar.m; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; };
+		C683DAED72D94A6EB4F840CA /* YoikScreenOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YoikScreenOrientation.h; path = "cordova-plugin-screen-orientation/YoikScreenOrientation.h"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		E6DFE75F2B534B03A2F2C6C3 /* CDVDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; };
 		EB87FDF21871DA7A0020F90C /* merges */ = {isa = PBXFileReference; lastKnownFileType = folder; name = merges; path = ../../merges; sourceTree = "<group>"; };
@@ -118,8 +121,8 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F65D6B815C654A968D2937FF /* CDVDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVDevice.h; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Corso Zundert/config.xml"; sourceTree = "<group>"; };
-		94EDF534DA35462C8EDB5065 /* YoikScreenOrientation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "YoikScreenOrientation.m"; path = "cordova-plugin-screen-orientation/YoikScreenOrientation.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		C683DAED72D94A6EB4F840CA /* YoikScreenOrientation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "YoikScreenOrientation.h"; path = "cordova-plugin-screen-orientation/YoikScreenOrientation.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		5B074F62B5F34A7DA65ED0C7 /* CDVGlobalization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVGlobalization.m"; path = "cordova-plugin-globalization/CDVGlobalization.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		1504553A323E4293A9CB253B /* CDVGlobalization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVGlobalization.h"; path = "cordova-plugin-globalization/CDVGlobalization.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +233,8 @@
 				940C80E6CBC74A14BABCFBA1 /* CDVStatusBar.h */,
 				94EDF534DA35462C8EDB5065 /* YoikScreenOrientation.m */,
 				C683DAED72D94A6EB4F840CA /* YoikScreenOrientation.h */,
+				5B074F62B5F34A7DA65ED0C7 /* CDVGlobalization.m */,
+				1504553A323E4293A9CB253B /* CDVGlobalization.h */,
 			);
 			name = Plugins;
 			path = "Corso Zundert/Plugins";
@@ -425,6 +430,7 @@
 				6ABB165565764CAA9A66B2C2 /* CDVViewController+SplashScreen.m in Sources */,
 				BF957FF6A2D549EB8592B8B2 /* CDVStatusBar.m in Sources */,
 				58310CD601794BCCB10A6EC1 /* YoikScreenOrientation.m in Sources */,
+				0B75B0155D4446AEA69ECBA4 /* CDVGlobalization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

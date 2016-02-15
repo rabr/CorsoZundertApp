@@ -1,0 +1,28 @@
+{
+   sections : {
+      'section1' : {
+         'button' : 'programma',
+         'title1' : 'programma en tijden'
+      },  
+      'section2' : {
+         'button' : 'optocht',
+         'title1' : 'deelnemers optocht 2015'
+      }, 
+      'section3' : {
+         'button' : 'plattegrond',
+         'title1' : 'plattegrond'
+      },
+      'section4' : {
+         'button' : 'uitslag',
+         'title1' : 'uitslag 2015',
+         'title2' : 'uitslag 2014'
+      },
+      'section5' : {
+         'button' : 'nieuws',
+         'title1' : 'facebook CorsoZundert',
+         'title2' : 'instagram #corsozundert',
+         'title3' : 'tweets #corsozundert',         
+      }
+    },
+    'info' : 'bla bla'
+}

@@ -137,7 +137,7 @@ if (1) {
   }
   
   // en vul de resterende lege plekken
-  while ($i<=20) {
+  while ($i<=19) {
       uitslag_item_onbekend($i);
       $i++;
   }

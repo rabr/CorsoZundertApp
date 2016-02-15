@@ -33,6 +33,9 @@
     <feature name="YoikScreenOrientation">
         <param name="ios-package" value="YoikScreenOrientation" />
     </feature>
+    <feature name="Globalization">
+        <param name="ios-package" value="CDVGlobalization" />
+    </feature>
     <name>Corso Zundert</name>
     <description>
         The App from Corso Zundert.

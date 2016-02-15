@@ -17,6 +17,8 @@ var appStatus = {
     //
     // VARIABLES
     //
+    lang : 'nl',                // language: 'nl', 'en', 'fr'
+    text : '',                  // the json text object containing the texts in the specific language
     activeTab : 1,              // the number of the active tab
     enablePTR : 0,              // enable pull-to-refresh (default off)
     plattegrond : {             // plattegrond specific status
@@ -276,6 +278,13 @@ function onDeviceReady() {
    
    // fix bug in cordova that doesn't fix orientation on iPad, so do it manually via a special plugin
    if (typeof screen.lockOrientation != "undefined") screen.lockOrientation('portrait');
+   
+   // Load the specific language texts
+   var texturl = 'res/text-' + appStatus.lang + '.json';
+   jQuery.getJSON(texturl, function(data) {
+      alert('loading text');
+      appStatus.text = data;
+   });
    
    // Activate the first pages (assume section1 is the default)
    $("#button1").addClass("current");

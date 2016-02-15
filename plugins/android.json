@@ -31,6 +31,10 @@
                         {
                             "xml": "<feature name=\"YoikScreenOrientation\"><param name=\"android-package\" value=\"net.yoik.cordova.plugins.screenorientation.YoikScreenOrientation\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Globalization\"><param name=\"android-package\" value=\"org.apache.cordova.globalization.Globalization\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -54,6 +58,9 @@
             "PACKAGE_NAME": "nl.corsozundert.corsozundert"
         },
         "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "nl.corsozundert.corsozundert"
+        },
+        "cordova-plugin-globalization": {
             "PACKAGE_NAME": "nl.corsozundert.corsozundert"
         }
     },

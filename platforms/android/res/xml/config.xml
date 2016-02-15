@@ -63,4 +63,7 @@
     <splash height="480" platform="android" src="www/res/splash-mdpi.png" width="320" />
     <splash height="800" platform="android" src="www/res/splash-hdpi.png" width="480" />
     <splash height="1280" platform="android" src="www/res/splash-xhdpi.png" width="720" />
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
 </widget>

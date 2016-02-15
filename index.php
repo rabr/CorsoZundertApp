@@ -74,8 +74,10 @@
             
             <div id="wie">
                <div id="optocht">
+               <!--
                   <?php $OVLIVE=0; if (!$OVLIVE) include 'php/optocht_volgorde_embedded.php'; ?>
                   <input type="hidden" id="phpOVLiveVar" value="<?php echo $OVLIVE; ?>">
+               -->
                </div>
             </div>
     
@@ -103,7 +105,7 @@
       <div id="feestprogramma">
       </div>
       <div id="vorigjaar">
-         <?php include 'php/uitslag_vorig.php'; ?>
+         <!-- <?php include 'php/uitslag_vorig.php'; ?> -->
       </div>
       <!--
       <div id="voorspelling">

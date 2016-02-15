@@ -42,6 +42,20 @@ module.exports = [
         "merges": [
             "cordova.plugins.screenorientation"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-globalization/www/GlobalizationError.js",
+        "id": "cordova-plugin-globalization.GlobalizationError",
+        "clobbers": [
+            "window.GlobalizationError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-globalization/www/globalization.js",
+        "id": "cordova-plugin-globalization.globalization",
+        "clobbers": [
+            "navigator.globalization"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -52,7 +66,8 @@ module.exports.metadata =
     "cordova-plugin-inappbrowser": "1.0.1-dev",
     "cordova-plugin-splashscreen": "2.0.1-dev",
     "cordova-plugin-statusbar": "1.0.0",
-    "cordova-plugin-screen-orientation": "1.4.0"
+    "cordova-plugin-screen-orientation": "1.4.0",
+    "cordova-plugin-globalization": "1.0.2"
 }
 // BOTTOM OF METADATA
 });

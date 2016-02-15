@@ -35,6 +35,10 @@
                         {
                             "xml": "<feature name=\"YoikScreenOrientation\"><param name=\"ios-package\" value=\"YoikScreenOrientation\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Globalization\"><param name=\"ios-package\" value=\"CDVGlobalization\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -68,6 +72,9 @@
             "PACKAGE_NAME": "nl.corsozundert.corsozundert"
         },
         "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "nl.corsozundert.corsozundert"
+        },
+        "cordova-plugin-globalization": {
             "PACKAGE_NAME": "nl.corsozundert.corsozundert"
         }
     },

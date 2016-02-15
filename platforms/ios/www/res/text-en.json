@@ -1,0 +1,42 @@
+{
+   "words" : {
+      "buurtschap" : "Hamlet",
+      "ontwerpers" : "Designers",
+      "en" : "and"
+   },
+   "sentences" : {
+      "lastyear" : {
+         "part1" : "Last year hamlet",
+         "part2" : "with its float",
+         "part3" : "finished",
+         "part4" : "with",
+         "part5" : "points"
+      }
+   },
+   "sections" : {
+      "section1" : {
+         "button" : "program",
+         "title1" : "program and schedule"
+      },  
+      "section2" : {
+         "button" : "parade",
+         "title1" : "parade contenders 2015"
+      }, 
+      "section3" : {
+         "button" : "map",
+         "title1" : "map"
+      },
+      "section4" : {
+         "button" : "score",
+         "title1" : "score 2015",
+         "title2" : "score 2014"
+      },
+      "section5" : {
+         "button" : "news",
+         "title1" : "facebook CorsoZundert",
+         "title2" : "instagram #corsozundert",
+         "title3" : "tweets #corsozundert"         
+      }
+    },
+    "info" : "<p><b>INFO</b><br>This app is released by <b>Stichting Bloemencorso Zundert</b>.Mail your feedback to <a href=\"mailto:app@corsozundert.nl\">app@corsozundert.nl</a><br>Versie: 2.4.0</p><p id=\"lang\">CHOOSE A DIFFERENT LANGUAGE</p>"
+}

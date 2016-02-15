@@ -14,9 +14,41 @@ window.addEventListener('orientationchange', onOrientationChange);
 // Define global variable to keep track of the status of affaires
 //
 var appStatus = {
+    // 
+    // CONSTANTS
+    //
+    supportedLangs : [ 'nl', 'en', 'fr' ],      // supported languages
+    defaultLang : 'en',                         // default language in case phone language is not supported
+    extContent : {                              // External content
+      optocht : {
+         id  : 'optocht',
+         url : 'http://www.corsozundert.nl/app/php/optocht_volgorde_live.php'
+      },
+      uitslag : {
+         id  : 'livexmldoc',
+         url : 'http://www.corsozundert.nl/app/php/uitslag_live.php'
+      },
+      twitter : {
+         id  : 'livexmlnieuws',
+         url : 'http://www.corsozundert.nl/app/php/twitterdb_live.php'
+      },
+      facebook : {
+         id  : 'facebookxml',
+         url : 'http://www.corsozundert.nl/app/php/facebook.html'
+      },
+      instagram : {
+         id  : 'instagramxml',
+         url : 'http://www.corsozundert.nl/app/php/instagram.php'
+      }
+    },
+    
     //
     // VARIABLES
     //
+    langSetting : 'auto',       // user setting of the language: default 'auto' (same as phone, or 'en' in case not supported), or override (stored in local storage) to supported languages
+    lang : null,                // the actual language used
+    text : null,                // the json text object containing the texts in the specific language
+    ovdata : null,              // the json object containing the optocht volgorde data
     activeTab : 1,              // the number of the active tab
     enablePTR : 0,              // enable pull-to-refresh (default off)
     plattegrond : {             // plattegrond specific status
@@ -58,30 +90,7 @@ var appStatus = {
       },
       maxPages : 3
     },
-    // External content
-    extContent : {
-      optocht : {
-         id  : 'optocht',
-         url : 'http://www.corsozundert.nl/app/php/optocht_volgorde_live.php'
-      },
-      uitslag : {
-         id  : 'livexmldoc',
-         url : 'http://www.corsozundert.nl/app/php/uitslag_live.php'
-      },
-      twitter : {
-         id  : 'livexmlnieuws',
-         url : 'http://www.corsozundert.nl/app/php/twitterdb_live.php'
-      },
-      facebook : {
-         id  : 'facebookxml',
-         url : 'http://www.corsozundert.nl/app/php/facebook.html'
-      },
-      instagram : {
-         id  : 'instagramxml',
-         url : 'http://www.corsozundert.nl/app/php/instagram.php'
-      }
-    },
-    
+
     
    //
    // FUNCTIONS
@@ -154,6 +163,185 @@ var appStatus = {
          $('#titel').text(this.sections[sec].title1);
          jQuery('#box').empty();
       }  
+   },
+   
+   // set the language based on user choice
+   // if forceChoice is true the selection screen is activated otherwise the function just process the language settings in the object
+   // the callback will be called when all information has been gathered
+   setLanguage : function(forceChoice, callback) {
+      var self = this;  //closure for use inside callback function
+      
+      var langHelper = function(lang,cb) {
+         self.lang = lang;
+         window.localStorage.setItem("lang", lang);   // store as override in local storage
+         if (typeof cb === "function") cb();
+      };
+      
+      var autoHelper = function(cb) {
+         window.localStorage.removeItem("lang");     // make sure the override is cleared
+         // get preferred language from phone settings
+         navigator.globalization.getPreferredLanguage(
+            function (language) {
+               console.log('language: ' + language.value + '\n'); 
+               // check if this language is supported 
+               var l = language.value.substring(0,2);
+               var i = jQuery.inArray(l,self.supportedLangs);
+               
+               if (i > -1) self.lang = l;             // found in array so it is supported so use it
+               else self.lang = self.defaultLang;     // not found so use the default language in case phone lang not supported
+               
+               if (typeof cb === "function") cb();
+            },
+            function () {alert('Error getting language\n');}
+         );
+      };
+      
+      if (forceChoice) {
+         // user wants to choose again, so let the user choose...and store as override in local storage in case not auto
+         // make sure to only bind once, otherwise strange things happen
+         jQuery("#flag-nl").off('click').on('click', function() { langHelper("nl", callback); });
+         jQuery("#flag-en").off('click').on('click', function() { langHelper("en", callback); });
+         jQuery("#flag-fr").off('click').on('click', function() { langHelper("fr", callback); });
+         jQuery("#flag-auto").off('click').on('click', function() { autoHelper(callback); });
+         
+      } else {
+         
+         if (this.langSetting == 'auto') autoHelper(callback);
+         else {
+            // no need to store override since we are running this from the (default) object settings
+            if (typeof callback === "function") callback();
+         }
+      }
+   },
+   
+   // set all texts as defined in the language file
+   setTexts : function() {
+      // first load the language file
+      var texturl = 'res/text-' + this.lang + '.json';
+      var self = this;  //closure for use inside callback function
+      
+      console.log('Attempting to load ' + texturl);
+      jQuery.getJSON(texturl, function(data) {
+         self.text = data;
+         console.log('loading text : ' + JSON.stringify(self.text, null, 4));
+      }).fail(function(jqXHR, status, error){
+         alert('error loading language file: ' + status + ', ' + error);
+      }).complete(function() { 
+         //alert("complete"); 
+         
+         // merge all section related text into the section object
+         $.extend( true, self.sections, self.text.sections );
+         // now set the texts of the different items
+         // the 5 buttons
+         $('#button1').text(self.sections.section1.button);
+         $('#button2').text(self.sections.section2.button);
+         $('#button3').text(self.sections.section3.button);
+         $('#button4').text(self.sections.section4.button);
+         $('#button5').text(self.sections.section5.button);
+         
+         // update the titel (of the active page within the tab), easiest to use drawPagingIndicators for that
+         self.drawPagingIndicators();
+         
+         // the app-info
+         $('#app-info').html(self.text.info);
+         $('#app-info #lang').off('click').on('click', function() {  // make sure to only bind once, otherwise strange things happen
+            jQuery("#choose-lang").fadeToggle(400);
+            appStatus.setLanguage(true, function() {
+               appStatus.setTexts();
+               appStatus.readOptochtVolgorde();
+               jQuery("#choose-lang").fadeToggle(400);
+               jQuery("#info-button").trigger('click');  // close the app-info
+            });
+         });
+      });
+      /*
+      .success(function() { alert("second success"); })
+      .error(function() { alert("error"); })
+      */
+   },
+   
+   // Load optochtvolgorde, either static from file or live from server
+   readOptochtVolgorde: function() {
+      // !!! MAKE PATHS DEPENDENT ON LIVE OR STATIC
+      var ovurl = 'res/optochtvolgorde-' + this.lang +'.json';
+      var imgPath = 'img';
+      var self = this; //closure for use inside callback function
+      
+      console.log('Attempting to load ' + ovurl);
+      jQuery.getJSON(ovurl, function(data) {
+         self.ovdata = data;
+         console.log('loading text : ' + JSON.stringify(self.text, null, 4));
+      }).fail(function(jqXHR, status, error){
+         alert('error loading optocht file: ' + status + ', ' + error);
+      }).complete(function() { 
+         var debug = "";
+      
+         // clear all existing content from optocht div
+         jQuery("#optocht").empty();
+         
+         // loop through all data items
+         for (var key in self.ovdata["data"]) {
+            var item = self.ovdata["data"][key];
+            
+            if (item["type"] == "wagen") {
+               var w = item["wagen"];
+               var b = item["buurtschap"];
+               var v = b["vorigjaar"];
+               var foto_maquette1 = imgPath + '/wagens/' + self.ovdata["jaar"] + '-' + b["afkorting"] + '-M00.jpg';
+               var foto_maquette2 = imgPath + '/wagens/' + self.ovdata["jaar"] + '-' + b["afkorting"] + '-M01.jpg';
+               var foto_heraldiek = imgPath + '/heraldieken/' + b["afkorting"] + '.gif';
+               var ly = self.text.sentences["lastyear"];
+               var lastyear = ly["part1"] + ' ' + b["naam"] + ' ' + ly["part2"] + ' "' + v["titel"] + '" ' + ly["part3"] + ' ' + v["prijs"] + ly["part4"] + ' ' + v["punten"] + ' ' + ly["part5"];
+               
+               var html = $('<div class="optochtvolgorde">')
+                  .append($('<div class="foto">').append('<img src="' + foto_maquette1 + '" alt="" />'))
+                  .append($('<div class="text">') 
+                     .append($('<h2>').append(w["startnummer"] + '. ' + w["titel"]))
+                     .append($('<p>').append('<i>' + self.text.words["buurtschap"] + ': </i>' + b["naam"] + '<br>' + '<i>' + self.text.words["ontwerpers"] + ': </i>' + w["ontwerpers"] + '<br>'))
+                  );
+               
+               $('#optocht').append(html);
+               
+               html = $('<div class="wageninfo">')
+                  .append($('<div class="foto">').append('<img src="' + foto_maquette1 + '" alt="" />'))
+                  .append($('<div class="foto">').append('<img src="' + foto_maquette2 + '" alt="" />'))
+                  .append($('<div class="beschrijving">')
+                     .append($('<p class="tekstwagen">').append(w["omschrijving"]))
+                     .append($('<div class="heraldiek">').append('<img src="' + foto_heraldiek + '" alt="" />'))
+                     .append($('<div class="buurtschap">')
+                        .append('<p class="titel">Buurtschap ' + b["naam"] + '</p>')
+                        .append('<p class="tekst">' + b["omschrijving"] + '</p>')
+                     )
+                  )
+                  .append($('<div id="clearfloat0"></div>'))
+                  .append('<p class="prijzen">' + lastyear + '</p>');
+                  //.append('<p class="prijzen">Vorig jaar behaalde buurtschap ' + b["naam"] + ' met de wagen "' + v["titel"] + '" een ' + v["prijs"] + 'e plaats met ' + v["punten"] + ' punten.</p>');
+               // !!! MAKE TRANSLATION OF ABOVE
+               
+               $('#optocht').append(html);   
+               $('#optocht').append($('<div class="spacer">'));
+               
+               
+               
+            } else if (item["type"] == "korps") {
+            
+            }
+            
+            debug = debug + item["type"] + ", ";
+         }
+         
+         // attach on click behavior to the newly added items
+         jQuery(".optochtvolgorde").click(function()
+         {
+            jQuery(this).next(".wageninfo").slideToggle(200);
+            if (jQuery(this).css("background-image").search("open") != -1) newBGImg = "url(img/layout/close.png)";
+            else newBGImg = "url(img/layout/open.png)";
+            jQuery(this).css("background-image",newBGImg);
+         });
+         
+         //alert(debug); 
+      });
+   
    },
    
    // Reload external content
@@ -276,6 +464,13 @@ function onDeviceReady() {
    
    // fix bug in cordova that doesn't fix orientation on iPad, so do it manually via a special plugin
    if (typeof screen.lockOrientation != "undefined") screen.lockOrientation('portrait');
+   
+   appStatus.setLanguage(false, function() {
+      appStatus.setTexts();
+      appStatus.readOptochtVolgorde();
+   });
+   
+   
    
    // Activate the first pages (assume section1 is the default)
    $("#button1").addClass("current");

@@ -39,6 +39,15 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 /*** APP INFO ***************************************************************************/
 #app-info { position: absolute; top: 32px; right: 5px; width: 250px; background: #ffffff; border: #000000 1px solid; z-index: 3; display: none; }
 #app-info p { color: #000000; margin: 5px 4px 0px 4px; font-size: 10px; }
+#app-info #lang { color: #ed6a29; }
+
+/*** LANGUAGE CHOICE ********************************************************************/
+#choose-lang { position: absolute; top: 32px; left: 0px; bottom: 0px; width: 100%; background: #ffffff; z-index: 3; display: none; }
+#choose-lang #text {width: 100%; margin-top:100px;}
+#choose-lang #text p { color: #000000; margin: 5px 4px 0px 4px; font-weight:bold; font-size: 20px; text-align: center}
+#choose-lang #flags { margin:0; margin-top: 50px; padding:0; }   
+#choose-lang li { display: block; float:left; width: 25%; text-align: center;}   
+#choose-lang img { max-width: 80%; height: auto; margin: 0px; }
 
 /*** SECTIONS & PAGES *******************************************************************/
 /* Overthrow CSS: Enable overflow: auto on elements with overthrow class when html element has overthrow class too */
