@@ -2,7 +2,8 @@
    "words" : {
       "buurtschap" : "Hamlet",
       "ontwerpers" : "Designers",
-      "en" : "and"
+      "en" : "and",
+      "punten" : "points"
    },
    "sentences" : {
       "lastyear" : {
@@ -20,7 +21,7 @@
       },  
       "section2" : {
          "button" : "parade",
-         "title1" : "parade contenders 2015"
+         "title1" : "parade contenders 2016"
       }, 
       "section3" : {
          "button" : "map",
@@ -38,5 +39,9 @@
          "title3" : "tweets #corsozundert"         
       }
     },
-    "info" : "<p><b>INFO</b><br>This app is released by <b>Stichting Bloemencorso Zundert</b>.Mail your feedback to <a href=\"mailto:app@corsozundert.nl\">app@corsozundert.nl</a><br>Versie: 2.4.0</p><p id=\"lang\">CHOOSE A DIFFERENT LANGUAGE</p>"
+    "buttons" : {
+      "zondag" : "Sunday",
+      "maandag" : "Monday"
+    },
+    "info" : "<p><b>INFO</b><br>This app is released by <b>Stichting Bloemencorso Zundert</b>.Mail your feedback to <a href=\"mailto:app@corsozundert.nl\">app@corsozundert.nl</a><br>Version: 3.0.0</p><p>WEB | <a href=\"http://www.corsozundert.nl\" rel=\"external\" target=\"_new\">CORSOZUNDERT.NL</a><br>FACEBOOK | <a href=\"http://www.facebook.com/corsozundert\" rel=\"external\" target=\"_new\">FACEBOOK.COM/CORSOZUNDERT</a><br>TWITTER | #CORSOZUNDERT<br>INSTAGRAM | #CORSOZUNDERT</p><p><b>HELP</b><br>Swipe left and right to switch between subpages. Click on item bar at <i>parade</i> to fold out for more information. Use the zoom button (+/-) to zoom in or out of the <i>map</i>. For <i>score & news</i> live internet access is needed. You can refresh these pages by pulling down for iOS or pressing the refresh button for Android.</p></p><p id=\"lang\">CHOOSE A DIFFERENT LANGUAGE</p>"
 }

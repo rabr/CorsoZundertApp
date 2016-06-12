@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="nl.corsozundert.corsozundert" version="2.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="nl.corsozundert.corsozundert" version="3.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
@@ -21,6 +21,9 @@
     </feature>
     <feature name="YoikScreenOrientation">
         <param name="android-package" value="net.yoik.cordova.plugins.screenorientation.YoikScreenOrientation" />
+    </feature>
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
     </feature>
     <name>Corso Zundert</name>
     <description>
@@ -63,7 +66,4 @@
     <splash height="480" platform="android" src="www/res/splash-mdpi.png" width="320" />
     <splash height="800" platform="android" src="www/res/splash-hdpi.png" width="480" />
     <splash height="1280" platform="android" src="www/res/splash-xhdpi.png" width="720" />
-    <feature name="Globalization">
-        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
-    </feature>
 </widget>

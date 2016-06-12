@@ -11,8 +11,8 @@ a { color: #ed6a29; text-decoration: none; }
 /***  HEADER & FOOTER *******************************************************************/
 header, footer{ padding:0; position:absolute; z-index:2; width:100%; }
 header{ top:0; left:0; background: #ffffff; text-align:center; }
-header h1{ font-size:20px; font-weight:bold; margin: -3px 0px 0px 0px; color: #f7921e; font-size: 1.5em; line-height:45px; }
-header #titel { font-size: 16px; text-align: left; background: #ea5514; color: #ffffff; padding-left: 5px; margin: -4px 0px 0px 0px; border-bottom: 2px solid #222222; border-top: 2px solid #222222; text-transform: uppercase; }
+header h1{ font-size:20px; font-weight:bold; margin: -3px 0px 0px 0px; color: #f7921e; font-size: 1.5em; line-height:45px; height: 45px;}
+header #titel { font-size: 16px; text-align: left; background: #ea5514; color: #ffffff; padding-left: 5px; margin: -4px 0px 0px 0px; _border-bottom: 2px solid #222222; _border-top: 2px solid #222222; text-transform: uppercase; visibility: hidden;}
 footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }    
 #indicators { width: 100%; height: 12px; }
 #indicators #box { width: 36px; height: 12px; margin-left:auto; margin-right:auto; }
@@ -20,16 +20,25 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #tab-bar { margin:0; padding:0; }   
 #tab-bar li { display: inline; float:left; width: 20%; /*25%;*/ }   
 #tab-bar a { display: block; margin: 3px 0px; height: 42px; font-weight: normal; overflow: hidden; position: relative; font-size: 11px; /*12px;*/ text-align: center; text-decoration: none; line-height: 66px;   /* 25 (img) + 2 (marge) + 12 (fontsize) + 2 (symetrisch 25 (symetrisch) */ vertical-align: bottom; -webkit-touch-callout:none; }                           
-#tab-bar #button1 { background: #ffffff url("img/layout/icon_optocht_gray.png") no-repeat center 3px; color: #747474; }        
-#tab-bar #button1.current { background: #f4f4f4 url("img/layout/icon_optocht.png") no-repeat center 3px; color: #ea5615; }                                                 
-#tab-bar #button2 { background: #ffffff url("img/layout/icon_programma_gray.png") no-repeat center 3px; color: #747474; }        
-#tab-bar #button2.current { background: #f4f4f4 url("img/layout/icon_programma.png") no-repeat center 3px; color: #ea5615; }                                   
+#tab-bar #button1 { background: #ffffff url("img/layout/icon_programma_gray.png") no-repeat center 3px; color: #747474; }  
+#tab-bar #button1.current { background: #f4f4f4 url("img/layout/icon_programma.png") no-repeat center 3px; color: #ea5615; }                                                 
+#tab-bar #button1.disable { background: #ffffff url("img/layout/icon_programma_disable.png") no-repeat center 3px; color: #d9d9d9; } 
+
+#tab-bar #button2 { background: #ffffff url("img/layout/icon_optocht_gray.png") no-repeat center 3px; color: #747474; }        
+#tab-bar #button2.current { background: #f4f4f4 url("img/layout/icon_optocht.png") no-repeat center 3px; color: #ea5615; } 
+#tab-bar #button2.disable { background: #ffffff url("img/layout/icon_optocht_disable.png") no-repeat center 3px; color: #d9d9d9; } 
+                                  
 #tab-bar #button3 { background: #ffffff url("img/layout/icon_plattegrond_gray.png") no-repeat center 3px; color: #747474; }        
-#tab-bar #button3.current { background: #f4f4f4 url("img/layout/icon_plattegrond.png") no-repeat center 3px; color: #ea5615;}                                                                                 
+#tab-bar #button3.current { background: #f4f4f4 url("img/layout/icon_plattegrond.png") no-repeat center 3px; color: #ea5615;}  
+#tab-bar #button3.disable { background: #ffffff url("img/layout/icon_plattegrond_disable.png") no-repeat center 3px; color: #d9d9d9; } 
+                                                                               
 #tab-bar #button4 { background: #ffffff url("img/layout/icon_uitslag2_gray.png") no-repeat center 3px; color: #747474; }        
-#tab-bar #button4.current { background: #f4f4f4 url("img/layout/icon_uitslag2.png") no-repeat center 3px; color: #ea5615; }                                   
+#tab-bar #button4.current { background: #f4f4f4 url("img/layout/icon_uitslag2.png") no-repeat center 3px; color: #ea5615; }  
+#tab-bar #button4.disable { background: #ffffff url("img/layout/icon_uitslag2_disable.png") no-repeat center 3px; color: #d9d9d9; } 
+                                 
 #tab-bar #button5 { background: #ffffff url("img/layout/icon_nieuws_gray.png") no-repeat center 3px; color: #747474; }        
-#tab-bar #button5.current { background: #f4f4f4 url("img/layout/icon_nieuws.png") no-repeat center 3px; color: #ea5615; }         
+#tab-bar #button5.current { background: #f4f4f4 url("img/layout/icon_nieuws.png") no-repeat center 3px; color: #ea5615; }  
+#tab-bar #button5.disable { background: #ffffff url("img/layout/icon_nieuws_disable.png") no-repeat center 3px; color: #d9d9d9; }        
 
 /*** BUTTONS ****************************************************************************/
 #info-button { position: absolute; top: 7px; right: 5px; width: 25px; height: 25px; background: url("img/layout/icon_info.png") no-repeat top center; z-index: 2; }
@@ -37,20 +46,30 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #refresh-button { position: absolute; top: 40px; right: 5px; width: 24px; height: 24px; background: url("img/layout/icon_refresh.png") no-repeat top center; z-index: 2; visibility: hidden; }
 
 /*** APP INFO ***************************************************************************/
-#app-info { position: absolute; top: 32px; right: 5px; width: 250px; background: #ffffff; border: #000000 1px solid; z-index: 3; display: none; }
+#app-info { position: absolute; top: 30px; right: 5px; width: 250px; background: #ffffff; border: #000000 1px solid; z-index: 3; display: none; }
 #app-info p { color: #000000; margin: 5px 4px 0px 4px; font-size: 10px; }
+#app-info #lang { color: #ed6a29; }
+
+/*** LANGUAGE CHOICE ********************************************************************/
+#choose-lang { position: absolute; top: 32px; left: 0px; bottom: 0px; width: 100%; background: #ffffff; z-index: 3; display: none; }
+#choose-lang #text {width: 100%; margin-top:100px;}
+#choose-lang #text p { color: #000000; margin: 5px 4px 0px 4px; font-weight:bold; font-size: 20px; text-align: center}
+#choose-lang #flags { margin:0; margin-top: 50px; padding:0; }   
+#choose-lang li { display: block; float:left; width: 25%; text-align: center;}   
+#choose-lang img { max-width: 80%; height: auto; margin: 0px; }
 
 /*** SECTIONS & PAGES *******************************************************************/
 /* Overthrow CSS: Enable overflow: auto on elements with overthrow class when html element has overthrow class too */
 .overthrow-enabled .overthrow { overflow: auto; -webkit-overflow-scrolling: touch; }
-#canvas { position:absolute; z-index:1; top:66px; bottom:60px; left:0px; width: 100%; background: #ea5514; overflow: auto; }
+#canvas { position:absolute; z-index:1; top:62px; bottom:60px; left:0px; width: 100%; background: #ea5514; overflow: auto; }
 .sections > div { display: none; position: absolute; top:0;left:0; _width:100%;}
 .sections > div.current { display: block; }
 .sections { position:relative; }
 .sections h1 { font-size: 16px; background: #ea5514; color: #ffffff; padding-left: 5px; margin: 0px; border-bottom: 2px solid #222222; }           
 #page1, #page2, #page3 { position:absolute; float: left; z-index:1; top:0px; bottom:0px; left:0px; width:100%; background: #ea5514; }  
-#page2 { left:100%; }  
-#page3 { left:200%; }  
+#page1 { background-image: url('img/opening.png'); background-size: 100% auto; }
+#page2 { left:100%; visibility: hidden; }  
+#page3 { left:200%; visibility: hidden; }  
 
 #main-content { position:absolute; z-index:1; width:100%; padding:0; }
 #overlay { background: url("img/layout/overlay40.png") repeat; z-index:2; position:absolute; top:40px; bottom:48px; left:0; width:100%; display: none; }
@@ -94,8 +113,11 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #locaties { position: absolute; top: 0px; left: 0px; z-index: 2; height: 100%; width: auto; visibility: visible;}
 #wat #tijden { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; }
 */
-#locaties { position: absolute; top: 10.16%; left: 0px; z-index: 2; height: 88.71%; width: auto; visibility: visible;}
-#button-zo, #button-ma { position: absolute; top: 0px; left: 0px; z-index: 2; height: 6.5%; width: auto; visibility: visible; cursor: pointer;}
+#locaties { position: absolute; top: 10.16%; left: 0px; z-index: 2; height: 88.71%; width: auto; visibility: hidden;}
+/*#button-zo, #button-ma { position: absolute; top: 0px; left: 0px; z-index: 2; height: 6.5%; width: auto; visibility: visible; cursor: pointer;}*/
+#button-zo, #button-ma { position: absolute; top: 0px; left: 0px; z-index: 2; height: 6.5%; width: 50%; visibility: hidden; cursor: pointer; color: #ffffff; font-weight: bold; text-align: center; }
+#button-zo { background-color: #ea5514; }
+#button-ma { background-color: #3c3c3c; }
 #wat #tijden-zo { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; visibility: visible;}
 #wat #tijden-ma { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; visibility: hidden;}
 */
@@ -139,11 +161,13 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #live { width: 100%; -webkit-overflow-scrolling: touch; position: relative; }   
 #livexmldoc { width: 100%; float: left; _padding-bottom: 1px; background: #222222; color: #ffffff; }
 .uitslagregel { width: device-width; height: 60px; _margin: 2px 0px; margin-bottom: 2px; cursor: pointer; position: relative; }                                         
-.uitslagregel .prijs { float: left; line-height: 60px; width: 60px; margin: 0px; font-size: 30px; text-align: center; background: #ffffff; color: #ea5514; border-right: 2px solid #222222; }                                   
+.uitslagregel .prijs { float: left; line-height: 60px; height: 60px; width: 60px; margin: 0px; font-size: 30px; text-align: center; background: #ffffff; color: #ea5514; border-right: 2px solid #222222; }                                   
 .uitslagregel .onbekend { line-height: 60px; background: #565656; margin: 0px; font-size: 30px; text-align: center; }
 .uitslagregel .wagen { height: 60px; background: #f7941e; overflow: hidden; }   
-.uitslagregel .wagen .titel { font-size: 12px; font-weight: bold; line-height: 30px; margin: 0px 0px 0px 10px; }
-.uitslagregel .wagen .buurtschap { font-size: 10px; line-height: 30px; margin: 0px 0px 0px 10px; }
+.uitslagregel .wagen .titel { font-size: 12px; font-weight: bold; height: 20px; line-height: 20px; margin: 0px 0px 0px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.uitslagregel .wagen .buurtschap { font-size: 10px; height: 20px; line-height: 20px; margin: 0px 0px 0px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.uitslagregel .wagen .punten { font-size: 10px; font-style: italic; height: 20px; line-height: 20px; margin: 0px 0px 0px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.uitslagregel .wagen img { height: 60px; float: left; margin-right: 4px;} 
 .uitslagregel .prijzen { float: right; height: 60px; background: #f7941e; text-align: right; } 
 .uitslagregel .prijzen .punten { font-size: 12px; font-weight: bold; line-height: 30px; margin: 0px 10px 0px 0px; }    
 .uitslagregel .prijzen .ereprijs { font-size: 10px; line-height: 30px; margin: 0px 10px 0px 0px; }
