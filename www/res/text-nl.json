@@ -8,16 +8,17 @@
    "sentences" : {
       "lastyear" : {
          "part1" : "Vorig jaar behaalde buurtschap",
-         "part2" : "met de wagen",
-         "part3" : "een",
-         "part4" : "e plaats met",
+         "part2" : "een",
+         "part3" : "e plaats met de wagen",
+         "part4" : "met",
          "part5" : "punten"
       }
    },
    "sections" : {
       "section1" : {
          "button" : "programma",
-         "title1" : "programma en tijden"
+         "title1" : "programma en tijden zondag",
+         "title2" : "programma en tijden maandag"
       },  
       "section2" : {
          "button" : "optocht",
@@ -29,8 +30,8 @@
       },
       "section4" : {
          "button" : "uitslag",
-         "title1" : "uitslag 2015",
-         "title2" : "uitslag 2014"
+         "title1" : "uitslag 2016",
+         "title2" : "uitslag 2015"
       },
       "section5" : {
          "button" : "nieuws",
@@ -43,5 +44,5 @@
       "zondag" : "Zondag",
       "maandag" : "Maandag"
     },
-    "info" : "<p><b>INFO</b><br>Deze app wordt uitgebracht door <b>Stichting Bloemencorso Zundert</b>. Mail je feedback naar <a href=\"mailto:app@corsozundert.nl\">app@corsozundert.nl</a><br>Versie: 3.0.0</p><p>WEB | <a href=\"http://www.corsozundert.nl\" rel=\"external\" target=\"_new\">CORSOZUNDERT.NL</a><br>FACEBOOK | <a href=\"http://www.facebook.com/corsozundert\" rel=\"external\" target=\"_new\">FACEBOOK.COM/CORSOZUNDERT</a><br>TWITTER | #CORSOZUNDERT<br>INSTAGRAM | #CORSOZUNDERT</p><p><b>HELP</b><br>Swipe naar links en rechts om tussen sub-pagina's te wisselen. Klik op een balk bij <i>optocht</i> om hem uit te klappen voor meer informatie. Gebruik de zoom button (+/-) om de <i>plattegrond</i> in of uit te zoomen. Voor <i>uitslag & nieuws</i> is een internet verbinding nodig. Je kunt deze pagina's verversen door ze naar beneden te slepen bij iOS en bij Android door te klikken op de refresh button.</p>"
+    "info" : "<p><b>INFO</b><br>Deze app wordt uitgebracht door <b>Stichting Bloemencorso Zundert</b>. Mail je feedback naar <a href=\"mailto:app@corsozundert.nl\">app@corsozundert.nl</a><br>Versie: 3.1.0</p><p>WEB | <a href=\"http://www.corsozundert.nl\" rel=\"external\" target=\"_new\">CORSOZUNDERT.NL</a><br>FACEBOOK | <a href=\"http://www.facebook.com/corsozundert\" rel=\"external\" target=\"_new\">FACEBOOK.COM/CORSOZUNDERT</a><br>TWITTER | #CORSOZUNDERT<br>INSTAGRAM | #CORSOZUNDERT</p><p><b>HELP</b><br>Swipe naar links en rechts om tussen sub-pagina's te wisselen. Klik op een balk bij <i>optocht</i> om hem uit te klappen voor meer informatie. Gebruik de zoom button (+/-) om de <i>plattegrond</i> in of uit te zoomen. Voor <i>uitslag & nieuws</i> is een internet verbinding nodig. Je kunt deze pagina's verversen door ze naar beneden te slepen bij iOS en bij Android door te klikken op de refresh button.</p><p id=\"lang\">KIES EEN ANDERE TAAL</p>"
 }
