@@ -4,7 +4,7 @@ body { font-family: trebuchet MS, Arial,  sans-serif; line-height:1.5; font-size
 h1, h2, h3, h4, h5, h6 { font-weight: normal; }
 p img { float: left; margin: 0 10px 5px 0; padding: 0; }
 p { color: #ffffff; margin-left: 20px; }
-img { border: 0; max-width: 100%; }
+img { border: 0; /*max-width: 100%;*/ }
 a { color: #ed6a29; text-decoration: none; }
 #clearfloat0 { clear: both; display: block; height: 0px; width: 10px; }     
 
@@ -43,10 +43,10 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 /*** BUTTONS ****************************************************************************/
 #info-button { position: absolute; top: 7px; right: 5px; width: 25px; height: 25px; background: url("img/layout/icon_info.png") no-repeat top center; z-index: 2; }
 #zoom-button { position: absolute; top: 66px; right: 5px; width: 25px; height: 25px; background: url("img/layout/icon_zoom_out.png") no-repeat top center; z-index: 2; visibility: hidden; }
-#refresh-button { position: absolute; top: 40px; right: 5px; width: 24px; height: 24px; background: url("img/layout/icon_refresh.png") no-repeat top center; z-index: 2; visibility: hidden; }
+#refresh-button { position: absolute; top: 38px; right: 5px; width: 24px; height: 24px; background: url("img/layout/icon_refresh.png") no-repeat top center; z-index: 2; visibility: hidden; }
 
 /*** APP INFO ***************************************************************************/
-#app-info { position: absolute; top: 30px; right: 5px; width: 250px; background: #ffffff; border: #000000 1px solid; z-index: 3; display: none; }
+#app-info { position: absolute; top: 32px; right: 5px; width: 250px; background: #ffffff; border: #000000 1px solid; z-index: 3; display: none; }
 #app-info p { color: #000000; margin: 5px 4px 0px 4px; font-size: 10px; }
 #app-info #lang { color: #ed6a29; }
 
@@ -72,7 +72,18 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #page3 { left:200%; visibility: hidden; }  
 
 #main-content { position:absolute; z-index:1; width:100%; padding:0; }
-#overlay { background: url("img/layout/overlay40.png") repeat; z-index:2; position:absolute; top:40px; bottom:48px; left:0; width:100%; display: none; }
+#overlay { background: url("img/layout/overlay40.png") repeat; z-index:2; position:absolute; top:38px; bottom:48px; left:0; width:100%; display: none; }
+#photoview { background: #fff; z-index:3; position:absolute; top:0px; bottom:0px; left:0; width:100%; display: none; }
+#photoview img {width: 100%; position: absolute; top: -9999px; bottom: -9999px; left: -9999px; right: -9999px; margin: auto;} /* CSS Trick to center a large image inside a smaller div */
+#closeview { width: 20px; position: absolute; top: 10px; right: 10px; z-index:4; display: none; }
+
+.rotated { 
+   transform: rotate(90deg);
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -moz-transform: rotate(90deg); /* Firefox */
+  -webkit-transform: rotate(90deg); /* Safari and Chrome */
+  -o-transform: rotate(90deg); /* Opera */
+}
 
 /* Animation: fade between the pages */
 .in, .out { -webkit-animation-timing-function: ease-in-out; -webkit-animation-duration: 500ms; }
@@ -118,9 +129,15 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #button-zo, #button-ma { position: absolute; top: 0px; left: 0px; z-index: 2; height: 6.5%; width: 50%; visibility: hidden; cursor: pointer; color: #ffffff; font-weight: bold; text-align: center; }
 #button-zo { background-color: #ea5514; }
 #button-ma { background-color: #3c3c3c; }
+/*
 #wat #tijden-zo { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; visibility: visible;}
 #wat #tijden-ma { position: relative; top: 0px; left: 0px; height: 100%;  width: auto; max-width: none; visibility: hidden;}
 */
+
+#locaties-zo, #locaties-ma { position: absolute; top: 0px; left: 0px; z-index: 3; width: 100%; display: none;}
+#locaties-ma {left: 100%; }
+#wat #zo { width: 100%; }
+#maandag #ma { width: 100%; }
 
 /*** WIE: OPTOCHTVOLGORDE ***************************************************************/
 #wie { width: 100%; }     
@@ -154,8 +171,10 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #feestprogramma { width: 100%; float: left; _background: #222222; _color: #ffffff; }                
 
 /*** WAAR: PLATTEGROND ******************************************************************/
-#waar { width: 1218px; }    
-#plategrond { width: 100%; margin: 0px; }
+#waar { width: 800px; _3805px; }    
+#plattegrond { width: 800px; margin: 0px; }
+#zoomwrap { width: 300px; height: 500px; -webkit-transition: 250ms ease-in; }
+#route {width: 100%; font-size: 14px; font-weight: bold; padding-left: 5px; color: #ffffff; }
 
 /*** LIVE: UITSLAG **********************************************************************/
 #live { width: 100%; -webkit-overflow-scrolling: touch; position: relative; }   
@@ -213,7 +232,7 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #wall .attachment .description { color: #000000; font-size: 10px; margin:0px; }
 
 /*** PULL TO REFRESH ********************************************************************/ 
-.pull-to-refresh { line-height: 40px; height: 40px; padding: 10px 0px; width: 100%; position: absolute; left: 0; top: -60px; font-size: 16px; z-index: -1; _background: #ea5514; }
+.pull-to-refresh { line-height: 40px; height: 40px; padding: 10px 0px; width: 100%; position: absolute; left: 0; top: -60px; font-size: 16px; z-index: -1; background: #ea5514; }
 .pull-to-refresh >.message { height: 40px; width: 100%; overflow-y: auto; position: relative;   }           
 .pull-to-refresh >.message >i.arrow, 
 .pull-to-refresh >.message >i.spinner { -webkit-background-size: 100% 100%; -moz-background-size: 100% 100%; background-size: 100% 100%; display: inline-block; margin-left: 10px; background-position: center center; }

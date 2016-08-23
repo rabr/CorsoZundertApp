@@ -409,7 +409,8 @@ if ($verbose) echo '<hr>';
   while ($tweet = mysql_fetch_array($res)) {
      echo '<div class="tweet">';
      if ($max_tweets_to_display>1) {
-       echo '  <a href="http://twitter.com/' . $tweet["user_name"] . '" rel="external" target="_new"><div class="picture"><img src="' . $tweet["user_image"] . '" alt="' . $tweet[user_name] . '" width="48px"/></div></a>';
+       $imgurl = str_replace('http','https',$tweet["user_image"]); // Nodig omdat iOS Apps geen http links meer renderen, alleen https
+       echo '  <a href="http://twitter.com/' . $tweet["user_name"] . '" rel="external" target="_new"><div class="picture"><img src="' . $imgurl . '" alt="' . $tweet[user_name] . '" width="48px"/></div></a>';
      }
 // NBRA: converteer http:// in tweets in a hrefs (target = _new)
 //           (ereg_replace code gevonden op http://www.liamdelahunty.com/tips/php_convert_url_to_link.php)

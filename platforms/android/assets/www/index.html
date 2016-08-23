@@ -15,6 +15,8 @@
   <script src="js/jquery.tmpl.min.js"></script>
   <script src="js/jquery.facebookWall.js"></script>
   <script src="js/sprintf.js"></script>
+  <script src="js/hammer.min.js"></script>
+  <script src="js/jquery.hammer.js"></script>
   <script src="js/overthrow.js"></script>
   <script src="js/app.js"></script>
     
@@ -65,44 +67,44 @@
 
 <div id="overlay"></div>
 
+<div id="photoview"><img class="rotated" src=""></div>
+<img id="closeview" src="img/layout/close2.png">
+
 <div id="canvas" > 
 
 <!--
 <img id="button-zo" src="img/timetable/button-zo-active.png">
 <img id="button-ma" src="img/timetable/button-ma.png">
 -->
+<!--
 <span id="button-zo">Zondag</span>
 <span id="button-ma">Maandag</span>
 <img id="locaties" src="img/timetable/timetable-locaties.png">
+-->
+<img id="locaties-zo" src="img/timetable/timetable-locaties-zo.png">
+<img id="locaties-ma" src="img/timetable/timetable-locaties-ma.png">
 
 <div id="page1" class="overthrow snap">
     <div id="main-content">
         <div class="sections">
             
             <div id="wat">              
+                  <!--
                   <img id="tijden-zo" src="img/timetable/timetable-tijden-zo.png">
                   <img id="tijden-ma" src="img/timetable/timetable-tijden-ma.png">
-                  <!--
-                  <p class="big1">Optocht</p> 
-                  <p class="big2">Zondag 6 September 2015</p>
-                  <p class="big1">Tentoonstelling</p>
-                  <p class="big2">Maandag 7 September 2015</p>
-                  <p class="big1">Feestprogramma volgt</p>
                   -->
+                  <img id="zo" src="img/timetable/timetable-tijden-zo.png">
             </div>
             
             <div id="wie">
                <div id="optocht">
-               <!--
-                  <?php $OVLIVE=0; if (!$OVLIVE) include 'php/optocht_volgorde_embedded.php'; ?>
-                  <input type="hidden" id="phpOVLiveVar" value="<?php echo $OVLIVE; ?>">
-               -->
                </div>
             </div>
     
             <div id="waar">
                <!--<p id="testot">Overthrow support: </p>-->
-               <img id="plattegrond" src="img/plattegrond_2015.png"></img>
+               <span id="route">LET OP! NIEUWE ROUTE</span>
+               <img id="plattegrond" src="img/plattegrond-2016.png"></img>
             </div>
 
             <div id="live">
@@ -121,10 +123,11 @@
 
 <div id="page2" class="overthrow snap"> 
    <div class="sections">
-      <div id="feestprogramma">
+      <div id="maandag">
+         <img id="ma" src="img/timetable/timetable-tijden-ma.png">
       </div>
       <div id="vorigjaar">
-         <!-- <?php include 'php/uitslag_vorig.php'; ?> -->
+         <div id="vorigjaarxml"></div>
       </div>
       <!--
       <div id="voorspelling">

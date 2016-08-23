@@ -8,16 +8,18 @@
    "sentences" : {
       "lastyear" : {
          "part1" : "Last year hamlet",
-         "part2" : "with its float",
-         "part3" : "finished",
+         "part2" : "finished",
+         "part3" : "with its float",
          "part4" : "with",
          "part5" : "points"
-      }
+      },
+   "route" : "PAY ATTENTION! NEW ROUTE"
    },
    "sections" : {
       "section1" : {
          "button" : "program",
-         "title1" : "program and schedule"
+         "title1" : "program and schedule sunday",
+         "title2" : "program and schedule monday"
       },  
       "section2" : {
          "button" : "parade",
@@ -29,8 +31,8 @@
       },
       "section4" : {
          "button" : "score",
-         "title1" : "score 2015",
-         "title2" : "score 2014"
+         "title1" : "score 2016",
+         "title2" : "score 2015"
       },
       "section5" : {
          "button" : "news",
@@ -43,5 +45,10 @@
       "zondag" : "Sunday",
       "maandag" : "Monday"
     },
-    "info" : "<p><b>INFO</b><br>This app is released by <b>Stichting Bloemencorso Zundert</b>.Mail your feedback to <a href=\"mailto:app@corsozundert.nl\">app@corsozundert.nl</a><br>Version: 3.0.0</p><p>WEB | <a href=\"http://www.corsozundert.nl\" rel=\"external\" target=\"_new\">CORSOZUNDERT.NL</a><br>FACEBOOK | <a href=\"http://www.facebook.com/corsozundert\" rel=\"external\" target=\"_new\">FACEBOOK.COM/CORSOZUNDERT</a><br>TWITTER | #CORSOZUNDERT<br>INSTAGRAM | #CORSOZUNDERT</p><p><b>HELP</b><br>Swipe left and right to switch between subpages. Click on item bar at <i>parade</i> to fold out for more information. Use the zoom button (+/-) to zoom in or out of the <i>map</i>. For <i>score & news</i> live internet access is needed. You can refresh these pages by pulling down for iOS or pressing the refresh button for Android.</p></p><p id=\"lang\">CHOOSE A DIFFERENT LANGUAGE</p>"
+    "ptr" : {
+      "pull" : "Pull",
+      "release" : "Release",
+      "loading" : "Loading"
+    },
+    "info" : "<p><b>INFO</b><br>This app is released by <b>Stichting Bloemencorso Zundert</b>.Mail your feedback to <a href=\"mailto:app@corsozundert.nl\">app@corsozundert.nl</a><br>Version: 3.1.0</p><p>WEB | <a href=\"http://www.corsozundert.nl\" rel=\"external\" target=\"_new\">CORSOZUNDERT.NL</a><br>FACEBOOK | <a href=\"http://www.facebook.com/corsozundert\" rel=\"external\" target=\"_new\">FACEBOOK.COM/CORSOZUNDERT</a><br>TWITTER | #CORSOZUNDERT<br>INSTAGRAM | #CORSOZUNDERT</p><p><b>HELP</b><br>Swipe left and right to switch between subpages. Click on item bar at <i>parade</i> to fold out for more information. Use the zoom button (+/-) to zoom in or out of the <i>map</i>. For <i>score & news</i> live internet access is needed. You can refresh these pages by pulling down for iOS or pressing the refresh button for Android.</p></p><p id=\"lang\">CHOOSE A DIFFERENT LANGUAGE</p>"
 }

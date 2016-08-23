@@ -43,7 +43,7 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 /*** BUTTONS ****************************************************************************/
 #info-button { position: absolute; top: 7px; right: 5px; width: 25px; height: 25px; background: url("img/layout/icon_info.png") no-repeat top center; z-index: 2; }
 #zoom-button { position: absolute; top: 66px; right: 5px; width: 25px; height: 25px; background: url("img/layout/icon_zoom_out.png") no-repeat top center; z-index: 2; visibility: hidden; }
-#refresh-button { position: absolute; top: 40px; right: 5px; width: 24px; height: 24px; background: url("img/layout/icon_refresh.png") no-repeat top center; z-index: 2; visibility: hidden; }
+#refresh-button { position: absolute; top: 38px; right: 5px; width: 24px; height: 24px; background: url("img/layout/icon_refresh.png") no-repeat top center; z-index: 2; visibility: hidden; }
 
 /*** APP INFO ***************************************************************************/
 #app-info { position: absolute; top: 32px; right: 5px; width: 250px; background: #ffffff; border: #000000 1px solid; z-index: 3; display: none; }
@@ -171,8 +171,10 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #feestprogramma { width: 100%; float: left; _background: #222222; _color: #ffffff; }                
 
 /*** WAAR: PLATTEGROND ******************************************************************/
-#waar { width: 1218px; }    
-#plategrond { width: 100%; margin: 0px; }
+#waar { width: 800px; _3805px; }    
+#plattegrond { width: 800px; margin: 0px; }
+#zoomwrap { width: 300px; height: 500px; -webkit-transition: 250ms ease-in; }
+#route {width: 100%; font-size: 14px; font-weight: bold; padding-left: 5px; color: #ffffff; }
 
 /*** LIVE: UITSLAG **********************************************************************/
 #live { width: 100%; -webkit-overflow-scrolling: touch; position: relative; }   

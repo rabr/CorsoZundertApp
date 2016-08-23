@@ -12,7 +12,8 @@
          "part3" : "place, avec le chariot",
          "part4" : "avec",
          "part5" : "points"
-      }
+      },
+   "route" : "ATTENTION! NOUVEL ITINÉRAIRE"
    },
    "sections" : {
       "section1" : {
@@ -43,6 +44,11 @@
     "buttons" : {
       "zondag" : "Dimanche",
       "maandag" : "Lundi"
+    },
+    "ptr" : {
+      "pull" : "Tirer vers le bas",
+      "release" : "Laisser partir",
+      "loading" : "Charge"
     },
     "info" : "<p><b>INFO</b><br>Cet app est lancé par la <b>Fondation Bloemencorso Zundert</b>. Mailez votre feedback a <a href=\"mailto:app@corsozundert.nl\">app@corsozundert.nl</a><br>Version: 3.1.0</p><p>WEB | <a href=\"http://www.corsozundert.nl\" rel=\"external\" target=\"_new\">CORSOZUNDERT.NL</a><br>FACEBOOK | <a href=\"http://www.facebook.com/corsozundert\" rel=\"external\" target=\"_new\">FACEBOOK.COM/CORSOZUNDERT</a><br>TWITTER | #CORSOZUNDERT<br>INSTAGRAM | #CORSOZUNDERT</p><p><b>HELP</b><br>Swipez de gauche a droite pour changer entre les subpages. Cliquez sur une bande <i>cortège</i> pour avour plus d'info. Utilisez le zoom button (+/-) pour zoomer sur le <i>plan</i> Pour <i>résultat et info</i>: liaison d'ínternet nécessaire   Vous pouvez renouveler cettes pages en les trainant a iOS et a Android, en cliquant le button refresh.</p><p id=\"lang\">CHOISSISEZ UNE AUTRE LANGUE</p>"
 }

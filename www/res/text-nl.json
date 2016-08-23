@@ -12,7 +12,8 @@
          "part3" : "e plaats met de wagen",
          "part4" : "met",
          "part5" : "punten"
-      }
+      },
+   "route" : "LET OP! NIEUWE ROUTE"
    },
    "sections" : {
       "section1" : {
@@ -43,6 +44,11 @@
     "buttons" : {
       "zondag" : "Zondag",
       "maandag" : "Maandag"
+    },
+    "ptr" : {
+      "pull" : "Sleep naar beneden",
+      "release" : "Laat los",
+      "loading" : "Laden"
     },
     "info" : "<p><b>INFO</b><br>Deze app wordt uitgebracht door <b>Stichting Bloemencorso Zundert</b>. Mail je feedback naar <a href=\"mailto:app@corsozundert.nl\">app@corsozundert.nl</a><br>Versie: 3.1.0</p><p>WEB | <a href=\"http://www.corsozundert.nl\" rel=\"external\" target=\"_new\">CORSOZUNDERT.NL</a><br>FACEBOOK | <a href=\"http://www.facebook.com/corsozundert\" rel=\"external\" target=\"_new\">FACEBOOK.COM/CORSOZUNDERT</a><br>TWITTER | #CORSOZUNDERT<br>INSTAGRAM | #CORSOZUNDERT</p><p><b>HELP</b><br>Swipe naar links en rechts om tussen sub-pagina's te wisselen. Klik op een balk bij <i>optocht</i> om hem uit te klappen voor meer informatie. Gebruik de zoom button (+/-) om de <i>plattegrond</i> in of uit te zoomen. Voor <i>uitslag & nieuws</i> is een internet verbinding nodig. Je kunt deze pagina's verversen door ze naar beneden te slepen bij iOS en bij Android door te klikken op de refresh button.</p><p id=\"lang\">KIES EEN ANDERE TAAL</p>"
 }

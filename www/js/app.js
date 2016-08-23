@@ -9,6 +9,184 @@ document.addEventListener("deviceready", onDeviceReady, false);
 //
 window.addEventListener('orientationchange', onOrientationChange);
 
+/*
+function attachPinch(wrapperID,imgID)
+{
+    var image = $(imgID);
+    var wrap = $(wrapperID);
+
+    var  width = image.width();
+    var  height = image.height();
+    var  newX = 0;
+    var  newY = 0;
+    var  offset = wrap.offset();
+    
+    $(imgID).hammer().on("pinch", function(event) {
+        var photo = $(this);
+
+        newWidth = photo.width() * event.gesture.scale;
+        newHeight = photo.height() * event.gesture.scale;
+
+        // Convert from screen to image coordinates
+        var x = event.gesture.center.x;
+        var y = event.gesture.center.y;
+        x -= offset.left + newX;
+        y -= offset.top + newY;
+
+        newX += -x * (newWidth - width) / newWidth;
+        newY += -y * (newHeight - height) / newHeight;
+
+        photo.css('-webkit-transform', "scale3d("+event.gesture.scale+", "+event.gesture.scale+", 1)");      
+        wrap.css('-webkit-transform', "translate3d("+newX+"px, "+newY+"px, 0)");
+
+        width = newWidth;
+        height = newHeight;
+       
+    });
+   
+   $(imgID).data("hammer").get("pinch").set({ enable: true });
+}
+
+
+function attachPinch(wrapperID,imgID)
+{
+
+   var MIN_SCALE = 1;
+   var MAX_SCALE = 5;
+   var scale = MIN_SCALE;
+
+   var offsetX = 0;
+   var offsetY = 0;
+
+   var $image     = $(imgID);
+   var $container = $(wrapperID);
+
+   var areaWidth  = $container.width();
+   var areaHeight = $container.height();
+   
+   $container.hammer().on("pinch", function(event) {
+
+      var clientX = event.gesture.center.x - $container.offset().left;
+      var clientY = event.gesture.center.y - $container.offset().top;
+
+      var nextScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * event.gesture.scale));
+
+      var percentXInCurrentBox = clientX / areaWidth;
+      var percentYInCurrentBox = clientY / areaHeight;
+
+      var currentBoxWidth  = areaWidth / scale;
+      var currentBoxHeight = areaHeight / scale;
+
+      var nextBoxWidth  = areaWidth / nextScale;
+      var nextBoxHeight = areaHeight / nextScale;
+
+      var deltaX = (nextBoxWidth - currentBoxWidth) * (percentXInCurrentBox - 0.5);
+      var deltaY = (nextBoxHeight - currentBoxHeight) * (percentYInCurrentBox - 0.5);
+
+      var nextOffsetX = offsetX - deltaX;
+      var nextOffsetY = offsetY - deltaY;
+
+      $image.css({
+         transform : 'scale(' + nextScale + ')',
+         left      : -1 * nextOffsetX * nextScale,
+         right     : nextOffsetX * nextScale,
+         top       : -1 * nextOffsetY * nextScale,
+         bottom    : nextOffsetY * nextScale
+      });
+
+      offsetX = nextOffsetX;
+      offsetY = nextOffsetY;
+      scale   = nextScale;
+   });
+   
+   $container.data("hammer").get("pinch").set({ enable: true });
+
+}
+*/
+/*
+function attachPinch(imgID)
+{
+   var wrap = $('#waar');
+
+   $(imgID).hammer().on("pinch", function(event) {
+      var minWidth = window.innerWidth;
+      var maxWidth = 3805;
+      
+      var photo = $(this);
+      var width  = photo.width();
+      var newWidth = width*event.gesture.scale
+      
+      if (newWidth>=minWidth && newWidth<=maxWidth) {
+         photo.css('max-width','');
+         photo.css('height','auto');
+         photo.width(newWidth);
+         wrap.width(newWidth);
+         //photo.css('-webkit-transform', "scale3d("+event.gesture.scale+", "+event.gesture.scale+", 1)"); 
+      }    
+   });
+   
+   $(imgID).data("hammer").get("pinch").set({ enable: true });
+}
+*/
+
+function attachPinch(imgID)
+{
+   var wrap = $('#waar');
+   var pinching = false;
+   var dist = 0;
+   var prevDist = 0;
+   
+   $(imgID).on('touchstart', function(event) {
+      if (event.originalEvent.touches.length == 2) {
+         pinching = true;
+         prevDist = 0;
+      }
+   });
+   
+   $(imgID).on('touchmove', function(event) {
+   
+      if (pinching) {
+         var photo = $(this);
+         var t = event.originalEvent.touches;
+         var scale;
+         var scrollT = $('#page1').scrollTop();
+		   var scrollL = $('#page1').scrollLeft();
+      
+         dist = Math.sqrt(
+            (t[0].pageX-t[1].pageX) * (t[0].pageX-t[1].pageX) +
+            (t[0].pageY-t[1].pageY) * (t[0].pageY-t[1].pageY));
+            
+         if (prevDist!=0 && dist>50) scale = dist/prevDist;
+         else scale = 1;
+            
+         var minWidth = window.innerWidth;
+         var maxWidth = 3805;
+      
+         
+         var width  = photo.width();
+         var newWidth = width*scale;
+         
+         if (newWidth>=minWidth && newWidth<=maxWidth) {
+            photo.css('max-width','');
+            photo.css('height','auto');
+            photo.width(newWidth);
+            wrap.width(newWidth);
+            
+            $('#page1').scrollTop(scrollT*scale);
+            $('#page1').scrollLeft(scrollL*scale);
+            //photo.css('-webkit-transform', "scale3d("+event.gesture.scale+", "+event.gesture.scale+", 1)"); 
+         }
+         
+         prevDist = dist;
+      }
+   });
+
+   $(imgID).on("touchend", function(event) {
+      if (pinching) pinching = false;
+   });
+   
+}
+
 
 //
 // Define global variable to keep track of the status of affaires
@@ -25,7 +203,7 @@ var appStatus = {
     extContent : {                                          // External content, either from own server via CZ-API or from social media
       optocht : {
          id   : 'optocht',
-         live : true,
+         live : false,
       },
       uitslag : {
          page1 : {
@@ -36,7 +214,7 @@ var appStatus = {
          page2 : {
             id   : 'vorigjaarxml',
             year : 2015,
-            live : true
+            live : false
          }
       },
       twitter : {
@@ -116,6 +294,7 @@ var appStatus = {
     plattegrond : {             // plattegrond specific status
         zoomLevel : 0           // 0 = zoomed in, 1 = zoomed out    
     },
+    photoViewActive : false,
     //optochtLive : 1,           // have the optocht_volgorde live or fixed include. Note this var is overruled by a php variable transferred from index.php, see below
 
    //
@@ -287,6 +466,9 @@ var appStatus = {
          $('#button-zo').text(self.text.buttons.zondag);
          $('#button-ma').text(self.text.buttons.maandag);
          
+         // warning @ map
+         $('#route').text(self.text.sentences.route);
+         
          // update the titel (of the active page within the tab), easiest to use drawPagingIndicators for that
          self.drawPagingIndicators();
          
@@ -437,13 +619,20 @@ var appStatus = {
       var fileurl = 'res/uitslag-' + year + '-' + this.lang +'.json';
       var apiurl = this.apiBaseUrl + '?uitslag&jaar=' + year + '&taal=' + this.lang;
       var self = this; //closure for use inside callback function
-      var imgPath = 'http://www.corsozundert.nl/uploads/images/archief/wagens/' + year + '/';
+      var imgPathOnline = 'http://www.corsozundert.nl/uploads/images/archief/wagens/' + year + '/';
+      var imgPathLocal = 'img/wagens/';
+      var imgPath = null;
       var elem = '#' + content.id;
       var now = Date.now()/1000;  // convert back to secs instead of msecs
       var refresh = true;
       
-      if (content.live) usurl = apiurl;
-      else usurl = fileurl;
+      if (content.live) {
+         usurl = apiurl;
+         imgPath = imgPathOnline;
+      } else {
+         usurl = fileurl;
+         imgPath = imgPathLocal;
+      }
       
       if (this.uitslag != null && content.live) {
          // there has been a previous API call to retrieve the uitslag
@@ -454,8 +643,9 @@ var appStatus = {
          if (d < this.maxRefreshRate) refresh = false; //no need to refresh
       }
       
-      if (!refresh) alert('wait a sec, hold your horses | ' + d);
-      else {
+      if (!refresh) {
+         //alert('wait a sec, hold your horses | ' + d);
+      } else {
       
       console.log('Attempting to load ' + usurl);
       jQuery.getJSON(usurl, function(data) {
@@ -623,7 +813,7 @@ var appStatus = {
     
             if (to == 3) {
                //enable the zoom button
-               $('#zoom-button').css('visibility', 'visible');
+               //$('#zoom-button').css('visibility', 'visible');
             }
             // each time button4 is clicked, refresh the live content
             if (to == 4) {
@@ -767,18 +957,22 @@ var appStatus = {
    
    viewPhoto : function(e) {
       //alert(e.src);
-      jQuery("#photoview").fadeToggle(200);
-      // set width of _rotated_ image to then height of the parent div (#photoview)
-      jQuery("#photoview img").width(jQuery("#photoview").height());
-      jQuery("#photoview img").attr("src",e.src);
-      
-      // show the close icon
-      jQuery("#closeview").fadeToggle(200);
-      // attach (only) once the closing functionality
-      jQuery("#closeview").one("click", function() {
+      if (!appStatus.photoViewActive) {
          jQuery("#photoview").fadeToggle(200);
+         // set width of _rotated_ image to then height of the parent div (#photoview)
+         jQuery("#photoview img").width(jQuery("#photoview").height());
+         jQuery("#photoview img").attr("src",e.src);
+         appStatus.photoViewActive = true;
+      
+         // show the close icon
          jQuery("#closeview").fadeToggle(200);
-      });
+         // attach (only) once the closing functionality
+         jQuery("#closeview").one("click", function() {
+            jQuery("#photoview").fadeToggle(200);
+            jQuery("#closeview").fadeToggle(200);
+            appStatus.photoViewActive = false;
+         });
+      }
    }
 
 };
@@ -815,6 +1009,8 @@ function onDeviceReady() {
    //Open the App with indicated section
    appStatus.disableSections();
    appStatus.switchSection(appStatus.sections.opensWith);
+   
+   attachPinch('#plattegrond');
 
    //
    // Menu
@@ -957,6 +1153,7 @@ function onDeviceReady() {
       jQuery("#overlay").fadeToggle(400);
       jQuery("#app-info").slideToggle(200);
   });
+  /*
   jQuery("#zoom-button").click(function()
   {
       var default_width = 1218; // the default width of the plattegrond
@@ -974,6 +1171,7 @@ function onDeviceReady() {
       }
       jQuery(this).css("background-image",newBGImg);
   });
+  */
   jQuery(".optochtvolgorde").click(function()
   {
       jQuery(this).next(".wageninfo").slideToggle(200);
@@ -1017,6 +1215,7 @@ function onDeviceReady() {
   //
   // Pull to refresh code
   //
+  
   if (appStatus.enablePTR) {
       // attach pull-to-refresh to optocht tab
       if (appStatus.extContent.optocht.live) {

@@ -14,7 +14,7 @@
       }
    }
 
-   $result = fetchData("https://api.instagram.com/v1/users/41490154/media/recent/?client_id=aca30b5a2275414aa38510c40e79ebab");
+   $result = fetchData("https://api.instagram.com/v1/users/41490154/media/recent/?access_token=41490154.aca30b5.d2f155e4fef6476d8d19b8b2f962a34e");
 
    $result = json_decode($result);
    foreach ($result->data as $post) {

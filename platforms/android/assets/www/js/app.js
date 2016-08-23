@@ -9,6 +9,184 @@ document.addEventListener("deviceready", onDeviceReady, false);
 //
 window.addEventListener('orientationchange', onOrientationChange);
 
+/*
+function attachPinch(wrapperID,imgID)
+{
+    var image = $(imgID);
+    var wrap = $(wrapperID);
+
+    var  width = image.width();
+    var  height = image.height();
+    var  newX = 0;
+    var  newY = 0;
+    var  offset = wrap.offset();
+    
+    $(imgID).hammer().on("pinch", function(event) {
+        var photo = $(this);
+
+        newWidth = photo.width() * event.gesture.scale;
+        newHeight = photo.height() * event.gesture.scale;
+
+        // Convert from screen to image coordinates
+        var x = event.gesture.center.x;
+        var y = event.gesture.center.y;
+        x -= offset.left + newX;
+        y -= offset.top + newY;
+
+        newX += -x * (newWidth - width) / newWidth;
+        newY += -y * (newHeight - height) / newHeight;
+
+        photo.css('-webkit-transform', "scale3d("+event.gesture.scale+", "+event.gesture.scale+", 1)");      
+        wrap.css('-webkit-transform', "translate3d("+newX+"px, "+newY+"px, 0)");
+
+        width = newWidth;
+        height = newHeight;
+       
+    });
+   
+   $(imgID).data("hammer").get("pinch").set({ enable: true });
+}
+
+
+function attachPinch(wrapperID,imgID)
+{
+
+   var MIN_SCALE = 1;
+   var MAX_SCALE = 5;
+   var scale = MIN_SCALE;
+
+   var offsetX = 0;
+   var offsetY = 0;
+
+   var $image     = $(imgID);
+   var $container = $(wrapperID);
+
+   var areaWidth  = $container.width();
+   var areaHeight = $container.height();
+   
+   $container.hammer().on("pinch", function(event) {
+
+      var clientX = event.gesture.center.x - $container.offset().left;
+      var clientY = event.gesture.center.y - $container.offset().top;
+
+      var nextScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * event.gesture.scale));
+
+      var percentXInCurrentBox = clientX / areaWidth;
+      var percentYInCurrentBox = clientY / areaHeight;
+
+      var currentBoxWidth  = areaWidth / scale;
+      var currentBoxHeight = areaHeight / scale;
+
+      var nextBoxWidth  = areaWidth / nextScale;
+      var nextBoxHeight = areaHeight / nextScale;
+
+      var deltaX = (nextBoxWidth - currentBoxWidth) * (percentXInCurrentBox - 0.5);
+      var deltaY = (nextBoxHeight - currentBoxHeight) * (percentYInCurrentBox - 0.5);
+
+      var nextOffsetX = offsetX - deltaX;
+      var nextOffsetY = offsetY - deltaY;
+
+      $image.css({
+         transform : 'scale(' + nextScale + ')',
+         left      : -1 * nextOffsetX * nextScale,
+         right     : nextOffsetX * nextScale,
+         top       : -1 * nextOffsetY * nextScale,
+         bottom    : nextOffsetY * nextScale
+      });
+
+      offsetX = nextOffsetX;
+      offsetY = nextOffsetY;
+      scale   = nextScale;
+   });
+   
+   $container.data("hammer").get("pinch").set({ enable: true });
+
+}
+*/
+/*
+function attachPinch(imgID)
+{
+   var wrap = $('#waar');
+
+   $(imgID).hammer().on("pinch", function(event) {
+      var minWidth = window.innerWidth;
+      var maxWidth = 3805;
+      
+      var photo = $(this);
+      var width  = photo.width();
+      var newWidth = width*event.gesture.scale
+      
+      if (newWidth>=minWidth && newWidth<=maxWidth) {
+         photo.css('max-width','');
+         photo.css('height','auto');
+         photo.width(newWidth);
+         wrap.width(newWidth);
+         //photo.css('-webkit-transform', "scale3d("+event.gesture.scale+", "+event.gesture.scale+", 1)"); 
+      }    
+   });
+   
+   $(imgID).data("hammer").get("pinch").set({ enable: true });
+}
+*/
+
+function attachPinch(imgID)
+{
+   var wrap = $('#waar');
+   var pinching = false;
+   var dist = 0;
+   var prevDist = 0;
+   
+   $(imgID).on('touchstart', function(event) {
+      if (event.originalEvent.touches.length == 2) {
+         pinching = true;
+         prevDist = 0;
+      }
+   });
+   
+   $(imgID).on('touchmove', function(event) {
+   
+      if (pinching) {
+         var photo = $(this);
+         var t = event.originalEvent.touches;
+         var scale;
+         var scrollT = $('#page1').scrollTop();
+		   var scrollL = $('#page1').scrollLeft();
+      
+         dist = Math.sqrt(
+            (t[0].pageX-t[1].pageX) * (t[0].pageX-t[1].pageX) +
+            (t[0].pageY-t[1].pageY) * (t[0].pageY-t[1].pageY));
+            
+         if (prevDist!=0 && dist>50) scale = dist/prevDist;
+         else scale = 1;
+            
+         var minWidth = window.innerWidth;
+         var maxWidth = 3805;
+      
+         
+         var width  = photo.width();
+         var newWidth = width*scale;
+         
+         if (newWidth>=minWidth && newWidth<=maxWidth) {
+            photo.css('max-width','');
+            photo.css('height','auto');
+            photo.width(newWidth);
+            wrap.width(newWidth);
+            
+            $('#page1').scrollTop(scrollT*scale);
+            $('#page1').scrollLeft(scrollL*scale);
+            //photo.css('-webkit-transform', "scale3d("+event.gesture.scale+", "+event.gesture.scale+", 1)"); 
+         }
+         
+         prevDist = dist;
+      }
+   });
+
+   $(imgID).on("touchend", function(event) {
+      if (pinching) pinching = false;
+   });
+   
+}
+
 
 //
 // Define global variable to keep track of the status of affaires
@@ -17,19 +195,27 @@ var appStatus = {
     // 
     // CONSTANTS
     //
-    //supportedLangs : [ 'nl', 'en', 'fr' ],      // supported languages
-    //defaultLang : 'en',                         // default language in case phone language is not supported
-    supportedLangs : [ 'nl' ],      
-    defaultLang : 'nl',                         
-    jaar : 2016,                                // the current year
-    extContent : {                              // External content
+    supportedLangs : [ 'nl', 'en', 'fr' ],                  // supported languages
+    defaultLang : 'en',                                     // default language in case phone language is not supported                     
+    jaar : 2016,                                            // the current year
+    apiBaseUrl : 'http://www.corsozundert.nl/api/1.0/',     // the url of the api to the database, incl version number
+    maxRefreshRate : 20,                                     // maximum refresh rate in secs of API call (for uitslag), to limit server load
+    extContent : {                                          // External content, either from own server via CZ-API or from social media
       optocht : {
-         id  : 'optocht',
-         url : 'http://www.corsozundert.nl/api/?optocht&jaar=2016&taal=nl'
+         id   : 'optocht',
+         live : false,
       },
       uitslag : {
-         id  : 'livexmldoc',
-         url : 'http://www.corsozundert.nl/api/?uitslag&jaar=2015&taal=nl'
+         page1 : {
+            id   : 'livexmldoc',
+            year : 2016,
+            live : true
+         },
+         page2 : {
+            id   : 'vorigjaarxml',
+            year : 2015,
+            live : false
+         }
       },
       twitter : {
          id  : 'livexmlnieuws',
@@ -48,12 +234,19 @@ var appStatus = {
     sections : {
       section0 : {
          enabled : true,
-         title1  : ''
+         title1  : '',
+         page1   : '',
+         title2  : 'App Info',
+         page2   : '',
+         title3  : 'Settings',
+         page3   : ''
       },
       section1 : {
-         enabled : false,
+         enabled : true,
          title1  : 'programma en tijden',
-         page1   : '#wat'
+         page1   : '#wat',
+         title2  : 'maandag',
+         page2   : '#maandag'
       },  
       section2 : {
          enabled : true,
@@ -68,21 +261,20 @@ var appStatus = {
       section4 : {
          enabled : true,
          title1  : 'uitslag 2015',
-         page1   : '#live' /*,
-         title2  : 'uitslag 2014',
-         page2   : '#vorigjaar',
+         page1   : '#live',
+         title2  : 'uitslag 2015',
+         page2   : '#vorigjaar' /*,
          title2  : 'jouw voorspelling 2014',
          page2   : '#voorspelling'*/
       },
       section5 : {
          enabled : true,
          title1  : 'facebook CorsoZundert',
-         page1   : '#facebook' /*,
+         page1   : '#facebook',
          title2  : 'instagram #corsozundert',
          page2   : '#instagram', 
-         title2  : 'tweets #corsozundert',
-         page2   : '#nieuws'*/
-         
+         title3  : 'tweets #corsozundert',
+         page3   : '#nieuws'
       },
       maxPages  : 3,
       opensWith : 0             // indicates with which section should the App open, 0 means none-> bg image shown
@@ -96,12 +288,14 @@ var appStatus = {
     text : null,                // the json text object containing the texts in the specific language
     ovdata : null,              // the json object containing the optocht volgorde data
     uitslag : null,             // the json object containing the uitslag data
+    updateFunction: null,       
     activeTab : 1,              // the number of the active tab
     enablePTR : 0,              // enable pull-to-refresh (default off)
     plattegrond : {             // plattegrond specific status
         zoomLevel : 0           // 0 = zoomed in, 1 = zoomed out    
     },
-    optochtLive : 1,           // have the optocht_volgorde live or fixed include. Note this var is overruled by a php variable transferred from index.php, see below
+    photoViewActive : false,
+    //optochtLive : 1,           // have the optocht_volgorde live or fixed include. Note this var is overruled by a php variable transferred from index.php, see below
 
    //
    // FUNCTIONS
@@ -235,6 +429,14 @@ var appStatus = {
       }
    },
    
+   // function to call to update all texts in case of a language change
+   updateTexts : function() {
+      this.setTexts();
+      this.readOptochtVolgorde();
+      this.readUitslag(appStatus.extContent.uitslag.page1);
+      this.readUitslag(appStatus.extContent.uitslag.page2);
+   },
+   
    // set all texts as defined in the language file
    setTexts : function() {
       // first load the language file
@@ -264,6 +466,9 @@ var appStatus = {
          $('#button-zo').text(self.text.buttons.zondag);
          $('#button-ma').text(self.text.buttons.maandag);
          
+         // warning @ map
+         $('#route').text(self.text.sentences.route);
+         
          // update the titel (of the active page within the tab), easiest to use drawPagingIndicators for that
          self.drawPagingIndicators();
          
@@ -272,8 +477,7 @@ var appStatus = {
          $('#app-info #lang').off('click').on('click', function() {  // make sure to only bind once, otherwise strange things happen
             jQuery("#choose-lang").fadeToggle(400);
             appStatus.setLanguage(true, function() {
-               appStatus.setTexts();
-               appStatus.readOptochtVolgorde();
+               appStatus.updateTexts();
                jQuery("#choose-lang").fadeToggle(400);
                jQuery("#info-button").trigger('click');  // close the app-info
             });
@@ -289,11 +493,12 @@ var appStatus = {
    readOptochtVolgorde: function() {
       var ovurl = null;
       var fileurl = 'res/optochtvolgorde-' + this.lang +'.json';
-      var apiurl = 'http://www.corsozundert.nl/api/?optocht&jaar=' + this.jaar + '&taal=' + this.lang;
+      var apiurl = this.apiBaseUrl + '?optocht&jaar=' + this.jaar + '&taal=' + this.lang;
       var imgPath = 'img';   // !!! MAKE PATH DEPENDENT ON LIVE OR STATIC, NOW ONLY STATIC -> MAYBE OK AS DOES SAVE BANDWIDTH AND IMAGES DON'T CHANGE USUALLY
+      var elem = '#' + this.extContent.optocht.id;
       var self = this; //closure for use inside callback function
       
-      if (this.optochtLive) ovurl = apiurl;
+      if (this.extContent.optocht.live) ovurl = apiurl;
       else ovurl = fileurl;
       
       console.log('Attempting to load ' + ovurl);
@@ -306,7 +511,7 @@ var appStatus = {
          var debug = "";
       
          // clear all existing content from optocht div
-         jQuery("#optocht").empty();
+         jQuery(elem).empty();
          
          // loop through all data items
          for (var key in self.ovdata["data"]) {
@@ -320,7 +525,7 @@ var appStatus = {
                var foto_maquette2 = imgPath + '/wagens/' + self.ovdata["jaar"] + '-' + b["afkorting"] + '-M01.jpg';
                var foto_heraldiek = imgPath + '/heraldieken/' + b["afkorting"] + '.gif';
                var ly = self.text.sentences["lastyear"];
-               var lastyear = ly["part1"] + ' ' + b["naam"] + ' ' + ly["part2"] + ' "' + v["titel"] + '" ' + ly["part3"] + ' ' + v["prijs"] + ly["part4"] + ' ' + v["punten"] + ' ' + ly["part5"];
+               var lastyear = ly["part1"] + ' ' + b["naam"] + ' ' + ly["part2"] + ' ' + v["prijs"] + ' ' + ly["part3"] + ' "' + v["titel"] + '" ' + ly["part4"] + ' ' + v["punten"] + ' ' + ly["part5"] + '.';
                var titel;
                
                if (w["startnummer"]!=null) titel = w["startnummer"] + '. ' + w["titel"];
@@ -333,7 +538,7 @@ var appStatus = {
                      .append($('<p>').append('<i>' + self.text.words["buurtschap"] + ': </i>' + b["naam"] + '<br>' + '<i>' + self.text.words["ontwerpers"] + ': </i>' + w["ontwerpers"] + '<br>'))
                   );
                
-               $('#optocht').append(html);
+               $(elem).append(html);
                
                html = $('<div class="wageninfo">')
                   .append($('<div class="foto">').append('<img src="' + foto_maquette1 + '" alt="" />'))
@@ -342,7 +547,7 @@ var appStatus = {
                      .append($('<p class="tekstwagen">').append(w["omschrijving"]))
                      .append($('<div class="heraldiek">').append('<img src="' + foto_heraldiek + '" alt="" />'))
                      .append($('<div class="buurtschap">')
-                        .append('<p class="titel">Buurtschap ' + b["naam"] + '</p>')
+                        .append('<p class="titel">' + self.text.words["buurtschap"] + ' ' + b["naam"] + '</p>')
                         .append('<p class="tekst">' + b["omschrijving"] + '</p>')
                      )
                   )
@@ -352,8 +557,8 @@ var appStatus = {
                   //.append('<p class="prijzen">Vorig jaar behaalde buurtschap ' + b["naam"] + ' met de wagen "' + v["titel"] + '" een ' + v["prijs"] + 'e plaats met ' + v["punten"] + ' punten.</p>');
                // !!! MAKE TRANSLATION OF ABOVE
                
-               $('#optocht').append(html);   
-               $('#optocht').append($('<div class="spacer">'));
+               $(elem).append(html);   
+               $(elem).append($('<div class="spacer">'));
                
                
                
@@ -367,7 +572,7 @@ var appStatus = {
                      .append($('<p>').append(item["plaats"] + ', ' + item["land"]))
                   );
                
-               $('#optocht').append(html);
+               $(elem).append(html);
                
                html = $('<div class="korpsinfo">')
                   .append($('<div class="foto">').append('<img src="' + foto_korps + '" alt="" />'))
@@ -377,8 +582,8 @@ var appStatus = {
                   )
                   .append($('<div id="clearfloat0"></div>'));
                
-               $('#optocht').append(html);   
-               $('#optocht').append($('<div class="spacer">'));
+               $(elem).append(html);   
+               $(elem).append($('<div class="spacer">'));
             }
             
             debug = debug + item["type"] + ", ";
@@ -399,20 +604,51 @@ var appStatus = {
             else newBGImg = "url(img/layout/open.png)";
             jQuery(this).css("background-image",newBGImg);
          });
+         jQuery(".wageninfo .foto img").click(function() {
+            appStatus.viewPhoto(this);
+         });
          
          //alert(debug); 
       });
    
    },
    
-   readUitslag : function() {
-      var year = 2015; // this.jaar;
-      var apiurl = 'http://www.corsozundert.nl/api/?uitslag&jaar=' + year + '&taal=' + this.lang;
+   readUitslag : function(content) {
+      var year = content.year; // this.jaar;
+      var usurl = null;
+      var fileurl = 'res/uitslag-' + year + '-' + this.lang +'.json';
+      var apiurl = this.apiBaseUrl + '?uitslag&jaar=' + year + '&taal=' + this.lang;
       var self = this; //closure for use inside callback function
-      var imgPath = 'http://www.corsozundert.nl/uploads/images/archief/wagens/' + year + '/';
+      var imgPathOnline = 'http://www.corsozundert.nl/uploads/images/archief/wagens/' + year + '/';
+      var imgPathLocal = 'img/wagens/';
+      var imgPath = null;
+      var elem = '#' + content.id;
+      var now = Date.now()/1000;  // convert back to secs instead of msecs
+      var refresh = true;
       
-      console.log('Attempting to load ' + apiurl);
-      jQuery.getJSON(apiurl, function(data) {
+      if (content.live) {
+         usurl = apiurl;
+         imgPath = imgPathOnline;
+      } else {
+         usurl = fileurl;
+         imgPath = imgPathLocal;
+      }
+      
+      if (this.uitslag != null && content.live) {
+         // there has been a previous API call to retrieve the uitslag
+         // so check the time difference
+         // NOTE: the local client clock and server clock can be (and are) out-of-sync, so there will always be a diff
+         // need to think through further how to deal with that, for now just put d>client-server delta and test!!!
+         var d = Math.abs(now - this.uitslag.timestamp)
+         if (d < this.maxRefreshRate) refresh = false; //no need to refresh
+      }
+      
+      if (!refresh) {
+         //alert('wait a sec, hold your horses | ' + d);
+      } else {
+      
+      console.log('Attempting to load ' + usurl);
+      jQuery.getJSON(usurl, function(data) {
          self.uitslag = data;
          console.log('loading text : ' + JSON.stringify(self.uitslag, null, 4));
       }).fail(function(jqXHR, status, error){
@@ -421,29 +657,47 @@ var appStatus = {
          var debug = "";
          
          // clear all existing content from optocht div
-         jQuery("#livexmldoc").empty();
+         jQuery(elem).empty();
          
          // loop through all data items
          for (var key in self.uitslag["data"]) {
             var item = self.uitslag["data"][key];
             
-            var html = $('<div class="uitslagregel">')
-               .append($('<p class="prijs">').append(item["prijs"]))
-               /*
-               .append($('<div class="prijzen">')
-                  .append($('<p class="punten">').append(item["punten"] + ' ' + self.text.words["punten"]))
-                  .append($('<p class="ereprijs">').append(item["ereprijs"]))
-               )*/
-               .append($('<div class="wagen">')
-                  .append($('<img src="' + imgPath + item["foto"] + '">'))
-                  .append($('<p class="titel">').append(item["titel"]))
-                  .append($('<p class="buurtschap">').append(item["buurtschap"])) // self.text.words["buurtschap"] + ' ' + 
-                  .append($('<p class="punten">').append(item["punten"] + ' ' + self.text.words["punten"]))
-               );
+            if (item["titel"]!="") {
+               var html = $('<div class="uitslagregel">')
+                  .append($('<p class="prijs">').append(item["prijs"]));
+                  /*
+                  .append($('<div class="prijzen">')
+                     .append($('<p class="punten">').append(item["punten"] + ' ' + self.text.words["punten"]))
+                     .append($('<p class="ereprijs">').append(item["ereprijs"]))
+                  )*/
+               var wagen = $('<div class="wagen">');    
                
-            $('#livexmldoc').append(html);
+               if (item["foto"]!="") $(wagen).append($('<img src="' + imgPath + item["foto"] + '">'));
+               
+               $(wagen).append($('<p class="titel">').append(item["titel"]))
+                       .append($('<p class="buurtschap">').append(item["buurtschap"])); // self.text.words["buurtschap"] + ' ' + 
+               
+               if (item["punten"]!=null && item["punten"]!="") $(wagen).append($('<p class="punten">').append(item["punten"] + ' ' + self.text.words["punten"]));
+               
+               $(html).append(wagen);
+               $(elem).append(html);
+               
+            } else {
+               var html = $('<div class="uitslagregel">')
+                  .append($('<p class="prijs">').append(item["prijs"]))
+                  .append($('<p class="onbekend">?</p>'));
+               
+               $(elem).append(html);
+            }
          }
+         
+         jQuery(".wagen img").click(function() {
+            appStatus.viewPhoto(this);
+         });
       });
+      
+      }
    },
    
    // Reload external content
@@ -536,10 +790,11 @@ var appStatus = {
             $('#refresh-button').css('visibility', 'hidden');
             $('#zoom-button').css('visibility', 'hidden');
     
+            
             if (to == 1) this.initTimeTable();
             else this.resetTimeTable();
     
-            if (this.optochtLive) {
+            if (this.extContent.optocht.live) {
                if (to == 2) {
                   if (this.enablePTR) $('#page1').trigger('refresh');
                   else {
@@ -547,7 +802,7 @@ var appStatus = {
                      $('#refresh-button').css('visibility', 'visible');
                      // attach AJAX function
                      $('#refresh-button').on('click', function(){ 
-                        $('#optocht').empty();  // clear the div, purely for visual feedback
+                        $('#'+this.extContent.optocht.id).empty();  // clear the div, purely for visual feedback
                         self.readOptochtVolgorde(); 
                      });
             
@@ -558,23 +813,37 @@ var appStatus = {
     
             if (to == 3) {
                //enable the zoom button
-               $('#zoom-button').css('visibility', 'visible');
+               //$('#zoom-button').css('visibility', 'visible');
             }
             // each time button4 is clicked, refresh the live content
             if (to == 4) {
-               if (this.enablePTR) $('#page1').trigger('refresh');
-               else {
-                  // enable the refresh button 
-                  $('#refresh-button').css('visibility', 'visible');
-                  // attach AJAX function
-                  $('#refresh-button').on('click', function(){ 
-                     $('#livexmldoc').empty();  // clear the div, purely for visual feedback
-                     //appStatus.refreshContent(appStatus.extContent.uitslag); 
-                     self.readUitslag();
-                  });
-            
-                  //appStatus.refreshContent(appStatus.extContent.uitslag);
-                  this.readUitslag();
+               if (this.extContent.uitslag.page1.live) {
+                  if (this.enablePTR) $('#page1').trigger('refresh');
+                  else {
+                     // enable the refresh button 
+                     $('#refresh-button').css('visibility', 'visible');
+                     // attach AJAX function
+                     $('#refresh-button').on('click', function(){ 
+                        $('#'+this.extContent.uitslag.page1.id).empty();  // clear the div, purely for visual feedback
+                        //appStatus.refreshContent(appStatus.extContent.uitslag); 
+                        self.readUitslag(this.extContent.uitslag.page1);
+                     });
+                     this.readUitslag(this.extContent.uitslag.page1);
+                  }
+               }
+               if (this.extContent.uitslag.page2.live) {
+                  if (this.enablePTR) $('#page2').trigger('refresh');
+                  else {
+                     // enable the refresh button 
+                     $('#refresh-button').css('visibility', 'visible');
+                     // attach AJAX function
+                     $('#refresh-button').on('click', function(){ 
+                        $('#'+this.extContent.uitslag.page2).empty();  // clear the div, purely for visual feedback
+                        //appStatus.refreshContent(appStatus.extContent.uitslag); 
+                        self.readUitslag(this.extContent.uitslag.page2);
+                     });
+                     this.readUitslag(this.extContent.uitslag.page2);
+                  }
                }
             }
     
@@ -609,59 +878,14 @@ var appStatus = {
          
          // reset all pages but the first
          for (var p=2; p<=this.sections.maxPages; p++) $("#page"+p).css( { 'visibility' : 'hidden', 'z-index' : '-1', 'left' : '0%' } );
-            
+                        
          this.drawPagingIndicators();
       }
       
    },
-   /*
+
    initTimeTable: function() {
-      var le = jQuery("#locaties");
-      var tze = jQuery("#tijden-zo");
-      var tme = jQuery("#tijden-ma");
-      var bze = jQuery("#button-zo");
-      var bme = jQuery("#button-ma");
-      var p1e = jQuery("#page1");
-      
-      var teTop = p1e.height()*0.0677;
-      var bzeWidth = bze.width();
-            
-      // set all static elements of the timetable to visible
-      le.css('visibility', 'visible');
-      bze.css('visibility', 'visible');
-      bme.css('visibility', 'visible');
-      bme.css({left: bzeWidth + 'px'});
-      
-      // scale and position the times on zondag
-      tze.height( p1e.height()*0.9323);
-      tze.parent().css({position: 'relative', });
-      tze.css({top: teTop + 'px', left: 0, position:'absolute'});
-      
-      // scale and position the times on maandag
-      tme.height( p1e.height()*0.9323);
-      tme.parent().css({position: 'relative', });
-      tme.css({top: teTop + 'px', left: 0, position:'absolute'});
-      
-      jQuery("#page1").css('background','#ffffff');
-      
-      bze.on('click', function(e){
-         //alert('ZONDAG');
-         jQuery("#wat #tijden-ma").css('visibility', 'hidden');
-         jQuery("#wat #tijden-zo").css('visibility', 'visible');
-         jQuery("#button-zo").attr("src","img/timetable/button-zo-active.png");
-         jQuery("#button-ma").attr("src","img/timetable/button-ma.png");
-      });
-      
-      bme.on('click', function(e){
-         //alert('MAANDAG');
-         jQuery("#wat #tijden-zo").css('visibility', 'hidden');
-         jQuery("#wat #tijden-ma").css('visibility', 'visible');
-         jQuery("#button-zo").attr("src","img/timetable/button-zo.png");
-         jQuery("#button-ma").attr("src","img/timetable/button-ma-active.png");
-      });
-   },*/
-   
-   initTimeTable: function() {
+      /*
       var le = jQuery("#locaties");
       var tze = jQuery("#tijden-zo");
       var tme = jQuery("#tijden-ma");
@@ -710,13 +934,45 @@ var appStatus = {
          jQuery("#button-zo").css('background-color','#3c3c3c');
          jQuery("#button-ma").css('background-color','#ea5514');
       });
+      */
+      
+      jQuery("#locaties-zo").fadeIn(200);
+      jQuery("#locaties-ma").fadeIn(200);
+      jQuery("#page1").css('background','#ffffff');
+      jQuery("#page2").css('background','#ffffff');
    },
    
    resetTimeTable: function() {
+      /*
       jQuery("#locaties").css('visibility', 'hidden');
       jQuery("#button-zo").css('visibility', 'hidden');
       jQuery("#button-ma").css('visibility', 'hidden');
       jQuery("#page1").css('background','#ea5514');
+      */
+      jQuery("#locaties-zo").fadeOut(200);
+      jQuery("#locaties-ma").fadeOut(200);
+      jQuery("#page1").css('background','#ea5514');
+      jQuery("#page2").css('background','#ea5514');
+   },
+   
+   viewPhoto : function(e) {
+      //alert(e.src);
+      if (!appStatus.photoViewActive) {
+         jQuery("#photoview").fadeToggle(200);
+         // set width of _rotated_ image to then height of the parent div (#photoview)
+         jQuery("#photoview img").width(jQuery("#photoview").height());
+         jQuery("#photoview img").attr("src",e.src);
+         appStatus.photoViewActive = true;
+      
+         // show the close icon
+         jQuery("#closeview").fadeToggle(200);
+         // attach (only) once the closing functionality
+         jQuery("#closeview").one("click", function() {
+            jQuery("#photoview").fadeToggle(200);
+            jQuery("#closeview").fadeToggle(200);
+            appStatus.photoViewActive = false;
+         });
+      }
    }
 
 };
@@ -743,9 +999,7 @@ function onDeviceReady() {
    if (typeof screen.lockOrientation != "undefined") screen.lockOrientation('portrait');
    
    appStatus.setLanguage(false, function() {
-      appStatus.setTexts();
-      appStatus.readOptochtVolgorde();
-      appStatus.readUitslag();
+      appStatus.updateTexts();
    });
    
    // use pull-to-refresh on iOS devices
@@ -755,6 +1009,8 @@ function onDeviceReady() {
    //Open the App with indicated section
    appStatus.disableSections();
    appStatus.switchSection(appStatus.sections.opensWith);
+   
+   attachPinch('#plattegrond');
 
    //
    // Menu
@@ -897,6 +1153,7 @@ function onDeviceReady() {
       jQuery("#overlay").fadeToggle(400);
       jQuery("#app-info").slideToggle(200);
   });
+  /*
   jQuery("#zoom-button").click(function()
   {
       var default_width = 1218; // the default width of the plattegrond
@@ -914,6 +1171,7 @@ function onDeviceReady() {
       }
       jQuery(this).css("background-image",newBGImg);
   });
+  */
   jQuery(".optochtvolgorde").click(function()
   {
       jQuery(this).next(".wageninfo").slideToggle(200);
@@ -957,10 +1215,11 @@ function onDeviceReady() {
   //
   // Pull to refresh code
   //
+  
   if (appStatus.enablePTR) {
       // attach pull-to-refresh to optocht tab
-      if (appStatus.optochtLive) {
-      jQuery('#page1').pullToRefresh({
+      if (appStatus.extContent.optocht.live) {
+         jQuery('#page1').pullToRefresh({
               tabDiv: "#wie",
               ajaxDiv: "#optocht",
               callback: function() {
@@ -977,7 +1236,8 @@ function onDeviceReady() {
             });
       }
       // attach pull-to-refresh to uitslag tab
-      jQuery('#page1').pullToRefresh({
+      if (appStatus.extContent.uitslag.page1.live) {
+         jQuery('#page1').pullToRefresh({
               tabDiv: "#live",
               ajaxDiv: "#livexmldoc",
               callback: function() {
@@ -987,11 +1247,30 @@ function onDeviceReady() {
                         def.resolve();      
                     }, 2000); 
                     // since on highest level attached to 'page1' only 1 callback function, so refresh depending on active tab
-                    if (appStatus.activeTab == 4) appStatus.readUitslag(); //appStatus.refreshContent(appStatus.extContent.uitslag);
+                    if (appStatus.activeTab == 4) appStatus.readUitslag(appStatus.extContent.uitslag.page1); 
 
                     return def.promise();
                 }
             });
+      }
+      // attach pull-to-refresh to uitslag tab
+      if (appStatus.extContent.uitslag.page2.live) {
+         jQuery('#page2').pullToRefresh({
+              tabDiv: "#vorigjaar",
+              ajaxDiv: "#vorigjaar",
+              callback: function() {
+                    var def = $.Deferred();
+                    
+                    setTimeout(function() {
+                        def.resolve();      
+                    }, 2000); 
+                    // since on highest level attached to 'page1' only 1 callback function, so refresh depending on active tab
+                    if (appStatus.activeTab == 4) appStatus.readUitslag(appStatus.extContent.uitslag.page2); 
+
+                    return def.promise();
+                }
+            });
+      }
       // attach pull-to-refresh to facebook page            
       jQuery('#page1').pullToRefresh({
               tabDiv: "#facebook",
