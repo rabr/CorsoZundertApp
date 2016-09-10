@@ -383,7 +383,69 @@ if ($params["type"]=="optocht") {
     
       //uitslag_item_wagen($params['jaar'], $row["prijs"], $row["id"], $titel, $row["naam"], $row["afkorting"], $row["startnummer"], $row["punten"],$ereprijzen, $row["bijzonderheden"], $taal);
       $i++;
-  }
+   }
+  
+   // Check of er nog wagens zijn die uitgevallen zijn (punten < 0)
+   $sqlwrk = "Select wagens.*,
+   wagens.jaar,
+   wagens.punten,
+   buurtschappen.naam,
+   buurtschappen.afkorting
+   From wagens Inner Join buurtschappen On buurtschappen.id = wagens.`buurtschap-id`
+   Where wagens.punten < 0";
+  
+   // display de wagens
+   $res = mysql_query($sqlwrk) or die (mysql_error().$sqlwrk);
+   
+   while($row = mysql_fetch_array($res)) 
+   {
+      // de juiste titel op basis van de huidige taal bepalen
+      switch($params["taal"]) {
+         case 'nl' : $titel =$row["titel_nl"]; break;
+         case 'en' : $titel =$row["titel_en"]; break;    
+         case 'du' : $titel =$row["titel_du"]; break;    
+         case 'fr' : $titel =$row["titel_fr"]; break;
+         default   : $titel =$row["titel_nl"]; break;
+      }
+    
+      // check of deze wagen nog ereprijzen gewonnen heeft
+      // een inner join op de oorspronkelijk query werkt niet omdat dat alleen de wagens met ereprijzen
+      // teruggeeft en niet alle wagens...dus we zullen het apart op moeten zoeken
+      // LET OP: er kunnen meerdere ereprijzen voor 1 wagen zijn.
+      $sqlwrk2 = "Select `wagen-ereprijzen`.*
+      From `wagen-ereprijzen`
+      Where `wagen-ereprijzen`.`wagen-id` = " . $row["id"];
+      $res2 = mysql_query($sqlwrk2) or die (mysql_error().$sqlwrk2);
+      $ereprijzen = "";
+      while($row2 = mysql_fetch_array($res2)) $ereprijzen = $ereprijzen . $row2["ereprijs"] . ", ";
+      if ($ereprijzen != "") $ereprijzen = substr($ereprijzen, 0, -2);
+    
+      //foto_url is only filename as the path is constant so no need to return that for each object
+      //the base path will be provided as a separate item in the returned json object
+      $foto_wagen = sprintf("%d-%s-W%02d", $params['jaar'], $row["afkorting"], $row["startnummer"]);
+      $search = '../../uploads/images/archief/wagens/' . $params['jaar'] . '/' . $foto_wagen . '-' . "*" . '.jpg';
+      $thumbs = glob($search);
+      $foto_url = basename($thumbs[0]);
+    
+      $obj["prijs"] = "";
+      $obj["ereprijs"] = $ereprijzen;
+      $obj["titel"] = $titel;
+      $obj["buurtschap"] = $row["naam"];
+      $obj["foto"] = $foto_url;
+      
+      switch($params["taal"]) {
+         case 'nl' : $obj["punten"] = "geen"; break;
+         case 'en' : $obj["punten"] = "no";  break;    
+         case 'du' : $obj["punten"] = "kein";  break;    
+         case 'fr' : $obj["punten"] = "aucun";  break;
+         default   : $obj["punten"] = "geen";  break;
+      }
+      
+      $ovdata["data"][] = $obj;
+    
+      //uitslag_item_wagen($params['jaar'], $row["prijs"], $row["id"], $titel, $row["naam"], $row["afkorting"], $row["startnummer"], $row["punten"],$ereprijzen, $row["bijzonderheden"], $taal);
+      $i++;   
+   }
   
   // en vul de resterende lege plekken
   while ($i<=$ovdata["deelnemers"]) {
