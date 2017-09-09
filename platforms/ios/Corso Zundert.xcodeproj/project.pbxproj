@@ -46,6 +46,8 @@
 		E20937678CB441ABAAC43A7D /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6A719883CC4E7BBACACED1 /* CDVStatusBar.m */; };
 		0721FDE56B264EBE98595B71 /* YoikScreenOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0BF8918E2F49C695CC6CD8 /* YoikScreenOrientation.m */; };
 		B94D9782C20447B5BB49A95F /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A8FBDA1AD74C96ACB01EF5 /* CDVGlobalization.m */; };
+		CCC4DD395C29496EA6D6659F /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 30340BCAA23A41E28E2436BD /* CDVLocation.m */; };
+		A206731AA8E644FD9324EEF5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3588FEFC66964AB98452D098 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,9 @@
 		AC8797879332489A92065756 /* YoikScreenOrientation.h */ = {isa = PBXFileReference; name = "YoikScreenOrientation.h"; path = "cordova-plugin-screen-orientation/YoikScreenOrientation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		B7A8FBDA1AD74C96ACB01EF5 /* CDVGlobalization.m */ = {isa = PBXFileReference; name = "CDVGlobalization.m"; path = "cordova-plugin-globalization/CDVGlobalization.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		D91E196525934369BDF2C7DB /* CDVGlobalization.h */ = {isa = PBXFileReference; name = "CDVGlobalization.h"; path = "cordova-plugin-globalization/CDVGlobalization.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		30340BCAA23A41E28E2436BD /* CDVLocation.m */ = {isa = PBXFileReference; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		83EB10BE0973497EB0FFDB02 /* CDVLocation.h */ = {isa = PBXFileReference; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		3588FEFC66964AB98452D098 /* CoreLocation.framework */ = {isa = PBXFileReference; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +139,7 @@
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
+				A206731AA8E644FD9324EEF5 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +212,7 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
+				3588FEFC66964AB98452D098 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -235,6 +242,8 @@
 				AC8797879332489A92065756 /* YoikScreenOrientation.h */,
 				B7A8FBDA1AD74C96ACB01EF5 /* CDVGlobalization.m */,
 				D91E196525934369BDF2C7DB /* CDVGlobalization.h */,
+				30340BCAA23A41E28E2436BD /* CDVLocation.m */,
+				83EB10BE0973497EB0FFDB02 /* CDVLocation.h */,
 			);
 			name = Plugins;
 			path = "Corso Zundert/Plugins";
@@ -431,6 +440,7 @@
 				E20937678CB441ABAAC43A7D /* CDVStatusBar.m in Sources */,
 				0721FDE56B264EBE98595B71 /* YoikScreenOrientation.m in Sources */,
 				B94D9782C20447B5BB49A95F /* CDVGlobalization.m in Sources */,
+				CCC4DD395C29496EA6D6659F /* CDVLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

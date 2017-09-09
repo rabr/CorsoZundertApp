@@ -179,7 +179,7 @@ if ($params["type"]=="optocht") {
       buurtschappen.omschrijving,
       wagens.startnummer
       From wagens Inner Join buurtschappen On buurtschappen.id = wagens.`buurtschap-id`
-      Where wagens.jaar = " . $params['jaar'] . "
+      Where wagens.jaar = " . $params['jaar'] . " AND wagens.zichtbaar = 1
       Order By COALESCE(wagens.startnummer, ~0)";
 
 
@@ -264,14 +264,14 @@ if ($params["type"]=="optocht") {
   
       // de juiste titel op basis van de huidige taal bepalen
       switch($params["taal"]) {
-         case 'nl' : $titel =$row["titel_nl"]; $omschrijving =$row["omschrijving_nl"]; $omschr_buurt =$rowwww["omschrijving"]; break;
-         case 'en' : $titel =$row["titel_en"]; $omschrijving =$row["omschrijving_en"]; $omschr_buurt =$rowwww["omschrijving_en"]; break;    
-         case 'du' : $titel =$row["titel_du"]; $omschrijving =$row["omschrijving_du"]; //$omschr_buurt =$rowwww["omschrijving_du"]; break;    
-         case 'fr' : $titel =$row["titel_fr"]; $omschrijving =$row["omschrijving_fr"]; $omschr_buurt =$rowwww["omschrijving_fr"]; break;
-         default: $titel =$row["titel_nl"]; $omschrijving =$row["omschrijving_nl"]; $omschr_buurt =$rowwww["omschrijving"]; break;
+         case 'nl' : $titel =$row["titel_nl"]; $omschrijving =$row["omschrijving_nl"]; $omschr_buurt =$rowwww["omschrijving"]; $titel_vj =$rowww["titel_nl"]; break;
+         case 'en' : $titel =$row["titel_en"]; $omschrijving =$row["omschrijving_en"]; $omschr_buurt =$rowwww["omschrijving_en"]; $titel_vj =$rowww["titel_en"]; break;    
+         case 'du' : $titel =$row["titel_du"]; $omschrijving =$row["omschrijving_du"]; //$omschr_buurt =$rowwww["omschrijving_du"]; $titel_vj =$rowww["titel_du"]; break;    
+         case 'fr' : $titel =$row["titel_fr"]; $omschrijving =$row["omschrijving_fr"]; $omschr_buurt =$rowwww["omschrijving_fr"]; $titel_vj =$rowww["titel_fr"]; break;
+         default: $titel =$row["titel_nl"]; $omschrijving =$row["omschrijving_nl"]; $omschr_buurt =$rowwww["omschrijving"]; $titel_vj =$rowww["titel_nl"]; break;
       }
   
-      $ovdata["data"][] = volgorde_item_wagen($params['jaar'],$foto_maq_volledig, $row["startnummer"], $titel, $row["naam"], $row["afkorting"], $omschr_buurt, $ontw_ar, $params["taal"], $omschrijving, $rowww["titel_nl"], $rowww["punten"], $rowww["prijs"]);
+      $ovdata["data"][] = volgorde_item_wagen($params['jaar'],$foto_maq_volledig, $row["startnummer"], $titel, $row["naam"], $row["afkorting"], $omschr_buurt, $ontw_ar, $params["taal"], $omschrijving, $titel_vj, $rowww["punten"], $rowww["prijs"]);
    }
 
    // Er kan een korps het corso afsluiten. In dat geval is 'voor-wagen_id' null.
@@ -392,7 +392,7 @@ if ($params["type"]=="optocht") {
    buurtschappen.naam,
    buurtschappen.afkorting
    From wagens Inner Join buurtschappen On buurtschappen.id = wagens.`buurtschap-id`
-   Where wagens.punten < 0";
+   Where wagens.jaar = " . $params['jaar'] . " AND wagens.punten < 0";
   
    // display de wagens
    $res = mysql_query($sqlwrk) or die (mysql_error().$sqlwrk);
@@ -464,5 +464,8 @@ if ($params["type"]=="optocht") {
 
 //now return the json object
 echo json_encode($ovdata);
+
+//and finally close the connection
+mysql_close($conn);
 
 ?>

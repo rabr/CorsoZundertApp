@@ -35,6 +35,28 @@
                         {
                             "xml": "<feature name=\"Globalization\"><param name=\"android-package\" value=\"org.apache.cordova.globalization.Globalization\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -61,6 +83,12 @@
             "PACKAGE_NAME": "nl.corsozundert.corsozundert"
         },
         "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "nl.corsozundert.corsozundert"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "nl.corsozundert.corsozundert"
+        },
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "nl.corsozundert.corsozundert"
         }
     },
@@ -136,6 +164,20 @@
             "clobbers": [
                 "navigator.globalization"
             ]
+        },
+        {
+            "id": "cordova-plugin-geolocation.geolocation",
+            "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+            "pluginId": "cordova-plugin-geolocation",
+            "clobbers": [
+                "navigator.geolocation"
+            ]
+        },
+        {
+            "id": "cordova-plugin-geolocation.PositionError",
+            "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+            "pluginId": "cordova-plugin-geolocation",
+            "runs": true
         }
     ],
     "plugin_metadata": {
@@ -145,6 +187,8 @@
         "cordova-plugin-splashscreen": "2.0.1-dev",
         "cordova-plugin-statusbar": "1.0.0",
         "cordova-plugin-screen-orientation": "1.4.0",
-        "cordova-plugin-globalization": "1.0.2"
+        "cordova-plugin-globalization": "1.0.2",
+        "cordova-plugin-compat": "1.1.0",
+        "cordova-plugin-geolocation": "2.4.3"
     }
 }

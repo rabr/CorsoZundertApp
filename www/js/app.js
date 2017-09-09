@@ -197,23 +197,24 @@ var appStatus = {
     //
     supportedLangs : [ 'nl', 'en', 'fr' ],                  // supported languages
     defaultLang : 'en',                                     // default language in case phone language is not supported                     
-    jaar : 2016,                                            // the current year
+    jaar : 2017,                                            // the current year
     apiBaseUrl : 'http://www.corsozundert.nl/api/1.0/',     // the url of the api to the database, incl version number
     maxRefreshRate : 20,                                     // maximum refresh rate in secs of API call (for uitslag), to limit server load
     extContent : {                                          // External content, either from own server via CZ-API or from social media
       optocht : {
          id   : 'optocht',
          live : false,
+         imgOnline : false
       },
       uitslag : {
          page1 : {
             id   : 'livexmldoc',
-            year : 2016,
+            year : 2017,
             live : true
          },
          page2 : {
             id   : 'vorigjaarxml',
-            year : 2015,
+            year : 2016,
             live : false
          }
       },
@@ -246,7 +247,9 @@ var appStatus = {
          title1  : 'programma en tijden',
          page1   : '#wat',
          title2  : 'maandag',
-         page2   : '#maandag'
+         page2   : '#maandag',
+         title3  : 'TV Uitzendingen',
+         page3   : '#uitzending'
       },  
       section2 : {
          enabled : true,
@@ -260,9 +263,9 @@ var appStatus = {
       },
       section4 : {
          enabled : true,
-         title1  : 'uitslag 2015',
+         title1  : 'uitslag 2017',
          page1   : '#live',
-         title2  : 'uitslag 2015',
+         title2  : 'uitslag 2016',
          page2   : '#vorigjaar' /*,
          title2  : 'jouw voorspelling 2014',
          page2   : '#voorspelling'*/
@@ -272,30 +275,39 @@ var appStatus = {
          title1  : 'facebook CorsoZundert',
          page1   : '#facebook',
          title2  : 'instagram #corsozundert',
-         page2   : '#instagram', 
+         page2   : '#instagram' /*, 
          title3  : 'tweets #corsozundert',
-         page3   : '#nieuws'
+         page3   : '#nieuws' */
       },
       maxPages  : 3,
       opensWith : 0             // indicates with which section should the App open, 0 means none-> bg image shown
-    },
+   },
     
-    //
-    // VARIABLES
-    //
-    langSetting : 'auto',       // user setting of the language: default 'auto' (same as phone, or 'en' in case not supported), or override (stored in local storage) to supported languages
-    lang : null,                // the actual language used
-    text : null,                // the json text object containing the texts in the specific language
-    ovdata : null,              // the json object containing the optocht volgorde data
-    uitslag : null,             // the json object containing the uitslag data
-    updateFunction: null,       
-    activeTab : 1,              // the number of the active tab
-    enablePTR : 0,              // enable pull-to-refresh (default off)
-    plattegrond : {             // plattegrond specific status
-        zoomLevel : 0           // 0 = zoomed in, 1 = zoomed out    
-    },
-    photoViewActive : false,
-    //optochtLive : 1,           // have the optocht_volgorde live or fixed include. Note this var is overruled by a php variable transferred from index.php, see below
+   //
+   // VARIABLES
+   //
+   langSetting : 'auto',       // user setting of the language: default 'auto' (same as phone, or 'en' in case not supported), or override (stored in local storage) to supported languages
+   lang : null,                // the actual language used
+   text : null,                // the json text object containing the texts in the specific language
+   ovdata : null,              // the json object containing the optocht volgorde data
+   uitslag : null,             // the json object containing the uitslag data
+   updateFunction: null,       
+   activeTab : 1,              // the number of the active tab
+   enablePTR : 0,              // enable pull-to-refresh (default off)
+   plattegrond : {             // plattegrond specific status
+      zoomLevel : 0            // 0 = zoomed in, 1 = zoomed out    
+   },
+   photoViewActive : false,
+   location : {
+      serverSideConfig  : null,
+      reportingInterval : 10,          // constant, in seconds
+      enabled           : false,
+      latitude          : null,
+      longitude         : null,
+      lastTime          : 0,
+      watchID           : null
+   },
+   //optochtLive : 1,           // have the optocht_volgorde live or fixed include. Note this var is overruled by a php variable transferred from index.php, see below
 
    //
    // FUNCTIONS
@@ -469,6 +481,11 @@ var appStatus = {
          // warning @ map
          $('#route').text(self.text.sentences.route);
          
+         // tv broadcast schedule
+         $('#oblive').text(self.text.sentences.oblive);
+         $('#obsum').text(self.text.sentences.obsum);
+         //$('#maxsum').text(self.text.sentences.maxsum);
+         
          // update the titel (of the active page within the tab), easiest to use drawPagingIndicators for that
          self.drawPagingIndicators();
          
@@ -494,12 +511,17 @@ var appStatus = {
       var ovurl = null;
       var fileurl = 'res/optochtvolgorde-' + this.lang +'.json';
       var apiurl = this.apiBaseUrl + '?optocht&jaar=' + this.jaar + '&taal=' + this.lang;
-      var imgPath = 'img';   // !!! MAKE PATH DEPENDENT ON LIVE OR STATIC, NOW ONLY STATIC -> MAYBE OK AS DOES SAVE BANDWIDTH AND IMAGES DON'T CHANGE USUALLY
+      var imgPathOnline = 'http://www.corsozundert.nl/uploads/images/archief/';
+      var imgPathLocal = 'img/';   
+      var imgPath = 'null';    
       var elem = '#' + this.extContent.optocht.id;
       var self = this; //closure for use inside callback function
       
       if (this.extContent.optocht.live) ovurl = apiurl;
       else ovurl = fileurl;
+      
+      if (this.extContent.optocht.imgOnline) imgPath = imgPathOnline;
+      else imgPath = imgPathLocal;
       
       console.log('Attempting to load ' + ovurl);
       jQuery.getJSON(ovurl, function(data) {
@@ -513,6 +535,19 @@ var appStatus = {
          // clear all existing content from optocht div
          jQuery(elem).empty();
          
+         if (self.ovdata["data"].length == 0) {
+            // data is empty so no optocht volgorde yet, we can do a count down
+            var today = new Date();
+            var bm = new Date(2017,5,10,20); // months count from 0!
+            var timeDiff = Math.abs(bm.getTime() - today.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+            
+            var html = $('<p id="countdown">').append('Nog <span id="days">' + diffDays + '</span> dagen tot de optocht volgorde 2017 bekend is');
+            
+            $(elem).append(html);
+            
+         } else {
+         
          // loop through all data items
          for (var key in self.ovdata["data"]) {
             var item = self.ovdata["data"][key];
@@ -521,12 +556,21 @@ var appStatus = {
                var w = item["wagen"];
                var b = item["buurtschap"];
                var v = b["vorigjaar"];
-               var foto_maquette1 = imgPath + '/wagens/' + self.ovdata["jaar"] + '-' + b["afkorting"] + '-M00.jpg';
-               var foto_maquette2 = imgPath + '/wagens/' + self.ovdata["jaar"] + '-' + b["afkorting"] + '-M01.jpg';
-               var foto_heraldiek = imgPath + '/heraldieken/' + b["afkorting"] + '.gif';
+               var jaar = self.ovdata["jaar"];
+               var foto_maquette1 = imgPath + 'wagens/' + jaar + '/' + jaar + '-' + b["afkorting"] + '-M00.jpg';
+               var foto_maquette2 = imgPath + 'wagens/' + jaar + '/' + jaar + '-' + b["afkorting"] + '-M01.jpg';
+               var foto_heraldiek = imgPathLocal + 'heraldieken/' + b["afkorting"] + '.gif';
                var ly = self.text.sentences["lastyear"];
-               var lastyear = ly["part1"] + ' ' + b["naam"] + ' ' + ly["part2"] + ' ' + v["prijs"] + ' ' + ly["part3"] + ' "' + v["titel"] + '" ' + ly["part4"] + ' ' + v["punten"] + ' ' + ly["part5"] + '.';
+               var lastyear;
                var titel;
+               var wom = w["omschrijving"];
+               
+               // apparently there is a difference in interpretation of /r /n chars between reading directly form api versus from file. For the latter they need to actively be replaced by <br>. Do not understand why, but this works for now.
+               if (!self.extContent.optocht.live) wom = wom.replace(/\r\n|\n|\r/g, '<br />');
+               
+               // if points of last year are negative we need another sentence
+               if (v["punten"] > 0) lastyear = ly["part1"] + ' ' + b["naam"] + ' ' + ly["part2"] + ' ' + v["prijs"] + ' ' + ly["part3"] + ' "' + v["titel"] + '" ' + ly["part4"] + ' ' + v["punten"] + ' ' + ly["part5"] + '.';
+               else lastyear = ly["part1-np"] + ' ' + b["naam"] + ' ' + ly["part2-np"] + ' "' + v["titel"] + '" ' + ly["part3-np"] + '.';
                
                if (w["startnummer"]!=null) titel = w["startnummer"] + '. ' + w["titel"];
                else titel = w["titel"];
@@ -544,7 +588,7 @@ var appStatus = {
                   .append($('<div class="foto">').append('<img src="' + foto_maquette1 + '" alt="" />'))
                   /*.append($('<div class="foto">').append('<img src="' + foto_maquette2 + '" alt="" />'))*/
                   .append($('<div class="beschrijving">')
-                     .append($('<p class="tekstwagen">').append(w["omschrijving"]))
+                     .append($('<p class="tekstwagen">').append(wom))
                      .append($('<div class="heraldiek">').append('<img src="' + foto_heraldiek + '" alt="" />'))
                      .append($('<div class="buurtschap">')
                         .append('<p class="titel">' + self.text.words["buurtschap"] + ' ' + b["naam"] + '</p>')
@@ -563,7 +607,7 @@ var appStatus = {
                
                
             } else if (item["type"] == "korps") {
-               var foto_korps = imgPath + '/korpsen/' + item["foto"];
+               var foto_korps = imgPath + 'korpsen/' + item["foto"];
                
                var html = $('<div class="korps">')
                   .append($('<div class="foto">').append('<img src="' + foto_korps + '" alt="" />'))
@@ -608,6 +652,8 @@ var appStatus = {
             appStatus.viewPhoto(this);
          });
          
+         }
+         
          //alert(debug); 
       });
    
@@ -620,7 +666,7 @@ var appStatus = {
       var apiurl = this.apiBaseUrl + '?uitslag&jaar=' + year + '&taal=' + this.lang;
       var self = this; //closure for use inside callback function
       var imgPathOnline = 'http://www.corsozundert.nl/uploads/images/archief/wagens/' + year + '/';
-      var imgPathLocal = 'img/wagens/';
+      var imgPathLocal = 'img/wagens/' + year + '/';
       var imgPath = null;
       var elem = '#' + content.id;
       var now = Date.now()/1000;  // convert back to secs instead of msecs
@@ -883,6 +929,97 @@ var appStatus = {
       }
       
    },
+   
+   setupLocationServices: function() {
+      var self = this; //closure for use inside callback functions
+      
+      // onSetupSuccess Callback
+      var onSetupSuccess = function(position) {
+         self.location.enabled   = true;
+         self.location.latitude  = position.coords.latitude;
+         self.location.longitude = position.coords.longitude;
+         self.updateLocation(position);
+      };
+      // onWatchSuccess Callback 
+      var onWatchSuccess = function(position) {
+         if (self.location.enabled) {
+            var updatedLatitude  = position.coords.latitude;
+            var updatedLongitude = position.coords.longitude;
+ 
+            if (updatedLatitude != self.location.latitude && updatedLongitude != self.location.longitude) {
+               self.location.latitude  = updatedLatitude;
+               self.location.longitude = updatedLongitude;
+               self.updateLocation(position);
+            }
+         }
+      };
+      // onError Callback receives a PositionError object
+      function onError(error) {
+         self.location.enabled = false;
+         /*
+         alert('code: '    + error.code    + '\n' +
+               'message: ' + error.message + '\n');
+         */
+      }
+      
+      navigator.geolocation.getCurrentPosition(onSetupSuccess, onError, { enableHighAccuracy: true });
+      
+      this.watchID = navigator.geolocation.watchPosition(onWatchSuccess, onError, { enableHighAccuracy: true });
+      
+   },
+   
+   updateLocation : function(position) {
+      var self = this; //closure for use inside callback functions
+      var timeDiff = Math.abs(this.location.lastTime - position.timestamp);
+      
+      if ( this.location.enabled && (timeDiff > this.location.reportingInterval*1000) ) {
+         var getApiUrl = this.apiBaseUrl + 'location/?config';
+         var postApiUrl = this.apiBaseUrl + 'location/';
+         
+         // first check whether tracking is requested
+         jQuery.getJSON(getApiUrl, function(data) {
+            self.serverSideConfig = data;
+            console.log('loading: ' + JSON.stringify(self.serverSideConfig, null, 4));
+         }).fail(function(jqXHR, status, error){
+            alert('error loading location config: ' + status + ', ' + error);
+         }).complete(function() { 
+            
+            //alert(JSON.stringify(self.serverSideConfig));  
+            if (self.serverSideConfig.trackPhones == true) {
+               // yes, tracking is requested, now post the location data
+               //alert("track it!")     
+         
+               var obj = {
+                  phoneid   : device.uuid,
+                  coords    : position.coords,
+                  timestamp : position.timestamp
+               };
+               //alert(JSON.stringify(obj));
+         
+               // save this timestamp
+               self.location.lastTime = position.timestamp;
+         
+               jQuery.ajax({
+                  type: "POST",
+                  url: postApiUrl,
+                  contentType: "application/json",
+                  dataType: "json",
+                  data: JSON.stringify(obj)
+               });
+               /*
+               alert('Device  : '          + device.uuid                       + '\n' +
+                     'Latitude: '          + position.coords.latitude          + '\n' +
+                     'Longitude: '         + position.coords.longitude         + '\n' +
+                     'Altitude: '          + position.coords.altitude          + '\n' +
+                     'Accuracy: '          + position.coords.accuracy          + '\n' +
+                     'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+                     'Heading: '           + position.coords.heading           + '\n' +
+                     'Speed: '             + position.coords.speed             + '\n' +
+                     'Timestamp: '         + position.timestamp                + '\n');  */
+            }
+         });
+      }
+   },
 
    initTimeTable: function() {
       /*
@@ -1009,6 +1146,9 @@ function onDeviceReady() {
    //Open the App with indicated section
    appStatus.disableSections();
    appStatus.switchSection(appStatus.sections.opensWith);
+   
+   //Setup location services
+   appStatus.setupLocationServices();
    
    attachPinch('#plattegrond');
 

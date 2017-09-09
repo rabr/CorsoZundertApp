@@ -113,6 +113,9 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 #wat .big1 {color:#000000; padding-top:30px;}
 #wat .big2 {color:#ea5514;}
 
+#uitzending h3 { color:#ffffff; font-size: 14px; font-weight: bold; margin-left: 20px; } 
+#uitzending p { color:#ffffff; font-size: 14px; margin-left: 35px; line-height: 1;} 
+
 /*
 #timetable { width: 100%; }
 #timetable #locaties { height: 226px; margin: 0px; float: left; }
@@ -150,8 +153,12 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 .optochtvolgorde .text p, .korps .text p { margin: 0; margin-top: 10px; font-size: 10px; }                                                                                                                                                                                            
 .optochtvolgorde .header, .korps .header { font-style: italic; }
 
+#optocht #countdown { margin-left: 20px; margin-right: 20px; font-style: italic; font-weight: bold;}
+#optocht #days { font-size: 36px; }
+
 .wageninfo { background: #ffffff; padding: 5px; margin: 0px; display: none; }
 .wageninfo .foto { margin: 0px; float: left; }
+.wageninfo .foto img { width: 320px; }
 .wageninfo .beschrijving { margin: 0px; float: left; }
 .wageninfo p { color: #000000; font-size: 12px; _10px; margin: 0px; }
 .wageninfo .tekstwagen { margin-bottom: 10px; }
@@ -164,6 +171,7 @@ footer { width: 100%; bottom:0; left:0; height:60px; background-color:#ffffff; }
 
 .korpsinfo { background: #ffffff; padding: 5px; margin: 0px; display: none; }
 .korpsinfo .foto { margin: 0px; float: left; }
+.korpsinfo .foto img { width: 320px; }
 .korpsinfo .beschrijving { margin: 0px; float: left; }
 .korpsinfo p { color: #000000; font-size: 12px; _10px; margin: 0px; }
 .korpsinfo .omschrijving { margin-bottom: 10px; }

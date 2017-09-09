@@ -26,8 +26,8 @@
 
 		// Putting together the Facebook Graph API URLs:
 
-		var graphUSER = 'https://graph.facebook.com/'+options.id+'/?fields=name,picture&access_token='+options.access_token+'&callback=?',
-			graphPOSTS = 'https://graph.facebook.com/'+options.id+'/feed/?access_token='+options.access_token+'&callback=?&date_format=U&limit='+options.limit;
+		var graphUSER = 'https://graph.facebook.com/'+options.id+'/?fields=name,picture&access_token='+options.access_token,                         //MODIFIED: removed '&callback=?' from url
+			graphPOSTS = 'https://graph.facebook.com/'+options.id+'/feed/?access_token='+options.access_token+'&date_format=U&limit='+options.limit;  //MODIFIED: removed '&callback=?' from url
 		
 		var wall = this;
 		

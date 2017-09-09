@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="3020100" id="nl.corsozundert.corsozundert" version="3.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="3050000" id="nl.corsozundert.corsozundert" version="3.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -22,6 +22,9 @@
     </feature>
     <feature name="Globalization">
         <param name="ios-package" value="CDVGlobalization" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
     </feature>
     <name>Corso Zundert</name>
     <description>
@@ -48,6 +51,7 @@
     <splash height="1136" platform="ios" src="www/res/splash-iphone5.png" width="640" />
     <splash height="1334" platform="ios" src="www/res/splash-iphone6.png" width="750" />
     <splash height="2208" platform="ios" src="www/res/splash-iphone6plus.png" width="1242" />
+    <splash height="1920" platform="ios" src="www/res/splash-iphone7plus.png" width="1080" />
     <splash height="2048" platform="ios" src="www/res/splash-ipad.png" width="1536" />
     <splash height="1024" platform="ios" src="www/res/splash-ipad2.png" width="768" />
     <splash height="320" platform="android" src="www/res/splash-ldpi.png" width="200" />

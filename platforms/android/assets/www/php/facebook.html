@@ -1,41 +1,16 @@
+<style>
 
-<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="http://www.corsozundert.nl/app/js/jquery.facebookWall.js"></script>
-<script src="http://www.corsozundert.nl/app/js/jquery.tmpl.min.js"></script>
-		
-<script id="feedTpl" type="text/x-jquery-tmpl">
-<li>
-	<div class="status">
-	   <div class="header">
-	     <img class="profile" src="${from.picture}">
-		  <h2><a href="http://www.facebook.com/profile.php?id=${from.id}" target="_blank">${from.name}</a></h2>
-		  <p class="meta">${created_time}</p>
-		</div>
-		<p class="message">{{html message}}</p>
-		{{if type == "photo"}}
-		<img class="picture" src="${pictureurl}" />
-		{{/if}}
-		{{if type == "link" }}
-			<div class="attachment">
-				{{if picture}}
-					<img src="${picture}" />
-				{{/if}}
-				<div class="attachment-data">
-					<p class="name"><a href="${link}" target="_blank">${name}</a></p>
-					<p class="caption">${caption}</p>
-					<p class="description">${description}</p>
-				</div>
-			</div>
-		{{/if}}
-	</div>
-	
-</li>
-</script>
+#wall p { color: #000000; font-size: 16px; margin: 0px; width: 90%; margin: 0px auto; padding: 10px 0px; }
+#fbsnapshot { max-width: 100% }
 
-<script>
-$(document).ready(function() {
-   $('#wall').facebookWall({ id:'195283690516839', access_token:'191042970944652|NGJyz1d0Kclt2XO3AyrjHmrKOHo'});
-});
-</script>
+</style>
 
-<div id="wall" class="facebookWall"></div>
+<div id="wall">
+   <ul><li>
+      <p>
+      Volg ons op<br>
+      Follow us on
+      </p>
+      <a href="https://www.facebook.com/CorsoZundert"><img id="fbsnapshot" src="img/fbsnapshot.jpg"></a>
+   </li></ul>
+</div>

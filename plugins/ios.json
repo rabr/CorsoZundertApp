@@ -76,7 +76,15 @@
         },
         "cordova-plugin-globalization": {
             "PACKAGE_NAME": "nl.corsozundert.corsozundert"
+        },
+        "cordova-plugin-geolocation": {
+            "GEOLOCATION_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "nl.corsozundert.corsozundert"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "nl.corsozundert.corsozundert"
+        }
+    }
 }
