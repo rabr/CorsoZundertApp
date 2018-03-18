@@ -197,13 +197,13 @@ var appStatus = {
     //
     supportedLangs : [ 'nl', 'en', 'fr' ],                  // supported languages
     defaultLang : 'en',                                     // default language in case phone language is not supported                     
-    jaar : 2017,                                            // the current year
+    jaar : 2018,                                            // the current year
     apiBaseUrl : 'http://www.corsozundert.nl/api/1.0/',     // the url of the api to the database, incl version number
     maxRefreshRate : 20,                                     // maximum refresh rate in secs of API call (for uitslag), to limit server load
     extContent : {                                          // External content, either from own server via CZ-API or from social media
       optocht : {
          id   : 'optocht',
-         live : false,
+         live : true,
          imgOnline : false
       },
       uitslag : {
@@ -243,7 +243,7 @@ var appStatus = {
          page3   : ''
       },
       section1 : {
-         enabled : true,
+         enabled : false,
          title1  : 'programma en tijden',
          page1   : '#wat',
          title2  : 'maandag',
@@ -253,7 +253,7 @@ var appStatus = {
       },  
       section2 : {
          enabled : true,
-         title1  : 'deelnemers optocht 2016',
+         title1  : 'deelnemers optocht 2018',
          page1   : '#wie'
       }, 
       section3 : {
@@ -538,11 +538,11 @@ var appStatus = {
          if (self.ovdata["data"].length == 0) {
             // data is empty so no optocht volgorde yet, we can do a count down
             var today = new Date();
-            var bm = new Date(2017,5,10,20); // months count from 0!
+            var bm = new Date(2018,5,9,20); // months count from 0!
             var timeDiff = Math.abs(bm.getTime() - today.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
             
-            var html = $('<p id="countdown">').append('Nog <span id="days">' + diffDays + '</span> dagen tot de optocht volgorde 2017 bekend is');
+            var html = $('<p id="countdown">').append('Nog <span id="days">' + diffDays + '</span> dagen tot de optocht volgorde 2018 bekend is');
             
             $(elem).append(html);
             

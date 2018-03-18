@@ -1,0 +1,36 @@
+{
+  "name": "nl.corsozundert.corsozundert",
+  "version": "3.6.0",
+  "displayName": "Corso Zundert",
+  "cordova": {
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-screen-orientation": {},
+      "cordova-plugin-globalization": {},
+      "cordova-plugin-geolocation": {
+        "GEOLOCATION_USAGE_DESCRIPTION": "de locatie wordt gebruikt om beter inzicht te krijgen tijdens het evenement in de spreiding van ons publiek"
+      }
+    }
+  },
+  "dependencies": {
+    "cordova-android": "^5.2.2",
+    "cordova-ios": "^4.5.4",
+    "cordova-plugin-device": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git",
+    "cordova-plugin-geolocation": "~2.4.3",
+    "cordova-plugin-globalization": "~1.0.2",
+    "cordova-plugin-inappbrowser": "^2.0.1",
+    "cordova-plugin-screen-orientation": "^3.0.1",
+    "cordova-plugin-splashscreen": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-splashscreen.git",
+    "cordova-plugin-statusbar": "~1.0.0",
+    "cordova-plugin-whitelist": "1",
+    "es6-promise-plugin": "^4.2.2"
+  }
+}
