@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="3060100" id="nl.corsozundert.corsozundert" version="3.6.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="LocalStorage">
+        <param name="ios-package" value="CDVLocalStorage" />
+    </feature>
+    <feature name="Console">
+        <param name="ios-package" value="CDVLogger" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="HandleOpenUrl">
+        <param name="ios-package" value="CDVHandleOpenURL" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="IntentAndNavigationFilter">
+        <param name="ios-package" value="CDVIntentAndNavigationFilter" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="GestureHandler">
+        <param name="ios-package" value="CDVGestureHandler" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+    </feature>
+    <feature name="Globalization">
+        <param name="ios-package" value="CDVGlobalization" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="ios-package" value="CDVSplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="CDVOrientation">
+        <param name="ios-package" value="CDVOrientation" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
+    <name>Corso Zundert</name>
+    <description>
+        The App from Corso Zundert.
+    </description>
+    <author email="info@corsozundert.nl" href="http://corsozundert.nl">
+        Stichting Bloemencorso Zundert
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon src="www/res/icon.png" />
+    <icon height="40" platform="ios" src="www/res/icon_ios40.png" width="40" />
+    <icon height="76" platform="ios" src="www/res/icon_ios76.png" width="76" />
+    <icon height="120" platform="ios" src="www/res/icon_ios120.png" width="120" />
+    <icon height="152" platform="ios" src="www/res/icon_ios152.png" width="152" />
+    <icon height="167" platform="ios" src="www/res/icon_ios167.png" width="167" />
+    <icon height="180" platform="ios" src="www/res/icon_ios180.png" width="180" />
+    <icon height="1024" platform="ios" src="www/res/icon.png" width="1024" />
+    <splash height="960" src="www/res/splash-iphone4.png" width="640" />
+    <splash height="1136" platform="ios" src="www/res/splash-iphone5.png" width="640" />
+    <splash height="1334" platform="ios" src="www/res/splash-iphone6.png" width="750" />
+    <splash height="2208" platform="ios" src="www/res/splash-iphone6plus.png" width="1242" />
+    <splash height="1920" platform="ios" src="www/res/splash-iphone7plus.png" width="1080" />
+    <splash height="2436" platform="ios" src="www/res/splash-iphoneX.png" width="1125" />
+    <splash height="2048" platform="ios" src="www/res/splash-ipad.png" width="1536" />
+    <splash height="1024" platform="ios" src="www/res/splash-ipad2.png" width="768" />
+    <splash height="2732" platform="ios" src="www/res/splash-ipadpro.png" width="2048" />
+    <splash height="320" platform="android" src="www/res/splash-ldpi.png" width="200" />
+    <splash height="480" platform="android" src="www/res/splash-mdpi.png" width="320" />
+    <splash height="800" platform="android" src="www/res/splash-hdpi.png" width="480" />
+    <splash height="1280" platform="android" src="www/res/splash-xhdpi.png" width="720" />
+    <splash height="1600" platform="android" src="www/res/splash-xxhdpi.png" width="960" />
+    <splash height="1920" platform="android" src="www/res/splash-xxxhdpi.png" width="1280" />
+    <preference name="AllowInlineMediaPlayback" value="false" />
+    <preference name="BackupWebStorage" value="cloud" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="SuppressesIncrementalRendering" value="false" />
+    <preference name="SuppressesLongPressGesture" value="false" />
+    <preference name="Suppresses3DTouchGesture" value="false" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="PaginationBreakingMode" value="page" />
+    <preference name="PaginationMode" value="unpaginated" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarStyle" value="black-opaque" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#ffffff" />
+    <preference name="stay-in-webview" value="true" />
+</widget>

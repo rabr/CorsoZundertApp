@@ -191,44 +191,55 @@ function attachPinch(imgID)
 //
 // Define global variable to keep track of the status of affaires
 //
+
+var urls = {
+    dbBaseUrl : 'http://www.bloemencorsozundert.nl/archief/',    // the base url towards the database with image files and the api
+    //dbBaseUrl : 'http://archief.corsozundert.nl/',
+    apiBaseExt : 'api/1.1/',                                      // the extension on the base url of the api to the database, incl version number
+    imgPathExt : 'images/',                                       // the extension for the location of the image files
+    socialExt  : 'api/app-social/'                               // the extension for the social media files
+}
+
 var appStatus = {
     // 
     // CONSTANTS
     //
     supportedLangs : [ 'nl', 'en', 'fr' ],                  // supported languages
     defaultLang : 'en',                                     // default language in case phone language is not supported                     
-    jaar : 2018,                                            // the current year
-    apiBaseUrl : 'http://www.corsozundert.nl/api/1.0/',     // the url of the api to the database, incl version number
+    jaar : 2018,                                            // the current year  
+    apiBaseUrl : urls.dbBaseUrl + urls.apiBaseExt,
+    imgPathOnline : urls.dbBaseUrl + urls.imgPathExt,
+    imgPathLocal : 'img/',
     maxRefreshRate : 20,                                     // maximum refresh rate in secs of API call (for uitslag), to limit server load
     extContent : {                                          // External content, either from own server via CZ-API or from social media
       optocht : {
          id   : 'optocht',
-         live : true,
+         live : false,
          imgOnline : false
       },
       uitslag : {
          page1 : {
             id   : 'livexmldoc',
-            year : 2017,
+            year : 2018,
             live : true
          },
          page2 : {
             id   : 'vorigjaarxml',
-            year : 2016,
+            year : 2017,
             live : false
          }
       },
       twitter : {
          id  : 'livexmlnieuws',
-         url : 'http://www.corsozundert.nl/app/php/twitterdb_live.php'
+         url : urls.dbBaseUrl + urls.socialExt + 'twitterdb_live.php'
       },
       facebook : {
          id  : 'facebookxml',
-         url : 'http://www.corsozundert.nl/app/php/facebook.html'
+         url : urls.dbBaseUrl + urls.socialExt + 'facebook.html'
       },
       instagram : {
          id  : 'instagramxml',
-         url : 'http://www.corsozundert.nl/app/php/instagram.php'
+         url : urls.dbBaseUrl + urls.socialExt + 'instagram.php'
       }
     },
     // Define the sections and pages in the app
@@ -510,9 +521,7 @@ var appStatus = {
    readOptochtVolgorde: function() {
       var ovurl = null;
       var fileurl = 'res/optochtvolgorde-' + this.lang +'.json';
-      var apiurl = this.apiBaseUrl + '?optocht&jaar=' + this.jaar + '&taal=' + this.lang;
-      var imgPathOnline = 'http://www.corsozundert.nl/uploads/images/archief/';
-      var imgPathLocal = 'img/';   
+      var apiurl = this.apiBaseUrl + '?optocht&jaar=' + this.jaar + '&taal=' + this.lang;  
       var imgPath = 'null';    
       var elem = '#' + this.extContent.optocht.id;
       var self = this; //closure for use inside callback function
@@ -520,8 +529,8 @@ var appStatus = {
       if (this.extContent.optocht.live) ovurl = apiurl;
       else ovurl = fileurl;
       
-      if (this.extContent.optocht.imgOnline) imgPath = imgPathOnline;
-      else imgPath = imgPathLocal;
+      if (this.extContent.optocht.imgOnline) imgPath = this.imgPathOnline;
+      else imgPath = this.imgPathLocal;
       
       console.log('Attempting to load ' + ovurl);
       jQuery.getJSON(ovurl, function(data) {
@@ -559,7 +568,7 @@ var appStatus = {
                var jaar = self.ovdata["jaar"];
                var foto_maquette1 = imgPath + 'wagens/' + jaar + '/' + jaar + '-' + b["afkorting"] + '-M00.jpg';
                var foto_maquette2 = imgPath + 'wagens/' + jaar + '/' + jaar + '-' + b["afkorting"] + '-M01.jpg';
-               var foto_heraldiek = imgPathLocal + 'heraldieken/' + b["afkorting"] + '.gif';
+               var foto_heraldiek = self.imgPathLocal + 'heraldieken/' + b["afkorting"] + '.gif';
                var ly = self.text.sentences["lastyear"];
                var lastyear;
                var titel;
@@ -665,8 +674,6 @@ var appStatus = {
       var fileurl = 'res/uitslag-' + year + '-' + this.lang +'.json';
       var apiurl = this.apiBaseUrl + '?uitslag&jaar=' + year + '&taal=' + this.lang;
       var self = this; //closure for use inside callback function
-      var imgPathOnline = 'http://www.corsozundert.nl/uploads/images/archief/wagens/' + year + '/';
-      var imgPathLocal = 'img/wagens/' + year + '/';
       var imgPath = null;
       var elem = '#' + content.id;
       var now = Date.now()/1000;  // convert back to secs instead of msecs
@@ -674,10 +681,10 @@ var appStatus = {
       
       if (content.live) {
          usurl = apiurl;
-         imgPath = imgPathOnline;
+         imgPath = this.imgPathOnline;
       } else {
          usurl = fileurl;
-         imgPath = imgPathLocal;
+         imgPath = this.imgPathLocal;
       }
       
       if (this.uitslag != null && content.live) {
@@ -719,7 +726,7 @@ var appStatus = {
                   )*/
                var wagen = $('<div class="wagen">');    
                
-               if (item["foto"]!="") $(wagen).append($('<img src="' + imgPath + item["foto"] + '">'));
+               if (item["foto"]!="") $(wagen).append($('<img src="' + imgPath + 'wagens/' + year + '/' + item["foto"] + '">'));
                
                $(wagen).append($('<p class="titel">').append(item["titel"]))
                        .append($('<p class="buurtschap">').append(item["buurtschap"])); // self.text.words["buurtschap"] + ' ' + 
